@@ -31,8 +31,8 @@ class App extends Component {
                 <div className="App">
                     <Reason selectReason={this.selectReason} deselectReason={this.deselectReason} />
                     <Calendar selectStartDate={this.selectStartDate} selectEndDate={this.selectEndDate} />
-                    <Preview startDate={this.props.startDate} endDate={this.props.endDate} reasonType={this.props.reasonType}/>
-                    <SubmitButton />
+                    <Preview name={this.props.name} startDate={this.props.startDate} endDate={this.props.endDate} reasonType={this.props.reasonType}/>
+                    <SubmitButton name={this.props.name} startDate={this.props.startDate} endDate={this.props.endDate} reasonType={this.props.reasonType} />
                 </div>
             </Provider>
         );
@@ -40,7 +40,7 @@ class App extends Component {
 }
 
 const mapStateToProps = (state) => {
-    return { startDate: state.startDate, endDate: state.endDate, reasonType: state.reasonType};
+    return { name: state.name, startDate: state.startDate, endDate: state.endDate, reasonType: state.reasonType};
 };
 
 const mapDispatchToProps = (dispatch) => {

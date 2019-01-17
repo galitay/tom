@@ -9,7 +9,7 @@ body {
   max-width: 330px;
   padding: 15px;
   box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.4);
-  border-radius: 12px;
+  border-radius: 8px;
   overflow: hidden; }
 
 .calendar--nav {
@@ -80,7 +80,7 @@ body {
 .calendar--days span.active {
   font-weight: 700;
   background-color: rgba(48, 113, 109, 0.05);
-  border-radius: 12px; }
+  border-radius: 8px; }
 
 .calendar--days span.muted {
   color: rgba(0, 0, 0, 0.3); }
@@ -93,13 +93,13 @@ body {
   color: #fff; }
 
 .calendar--days span.start {
-  border-radius: 12px 0 0 12px; }
+  border-radius: 8px 0 0 8px; }
 
 .calendar--days span.end {
-  border-radius: 0 12px 12px 0; }
+  border-radius: 0 8px 8px 0; }
 
 .calendar--days span.start.end {
-  border-radius: 12px; }
+  border-radius: 8px; }
 
 .calendar--days span.between:nth-child(7n):after, .calendar--days span.start:nth-child(7n):after {
   content: "";

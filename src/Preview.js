@@ -1,10 +1,9 @@
 import React from 'react';
 import './preview.css';
 import 'jquery-ui-bundle';
-import { connect } from 'react-redux';
 import moment from "moment";
 
-class Preview extends React.Component {
+export default class Preview extends React.Component {
     render () {
         const startDate = moment(this.props.startDate).format("DD.MM.YY");
         const endDate = moment(this.props.endDate).format("DD.MM.YY");
@@ -22,11 +21,3 @@ class Preview extends React.Component {
         );
     }
 }
-
-const mapStateToProps = (state) => {
-    return { startDate: state.startDate, reasonType: state.reasonType, name: state.name};
-};
-
-export default connect(
-    mapStateToProps
-)(Preview);

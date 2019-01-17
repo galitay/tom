@@ -3,14 +3,13 @@ $primary: #30716D;
 .preview{
   margin: 0 auto;
   margin-top: 30px;
-  width: 330px;
+  width: 360px;
   border: 1px solid #e5e5e5;
   border-bottom: 2px solid $primary;
   border-radius: 5px;
+  box-sizing: border-box;
   padding: 10px;
   padding-top: 15px;
-  color: $primary;
-  font-weight: bold;
   position: relative;
 }
 
