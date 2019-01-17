@@ -4,14 +4,19 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { createStore, compose, applyMiddleware } from 'redux';
+import soldier from './soldier.png';
+import baby from './baby.png';
+import vacation from './vacation.png';
+import early from './early.png';
+import sick from './sick.png';
 
 export const ReasonType = {
     NONE: {id: 0, name: "None", image: "none"},
-    VACATION: {id: 1, name: "Vacation", image: "vacation"},
-    SICK: {id: 2, name: "Sick"},
-    SICK_CHILD: {id: 3, name: "Sick Child"},
-    RESERVE_DUTY: {id: 4, name: "Reserve Duty"},
-    LEAVING_EARLY: {id: 5, name: "Leaving Early"}
+    VACATION: {id: 1, name: "Vacation", image: {vacation}},
+    SICK: {id: 2, name: "Sick", image: {sick}},
+    SICK_CHILD: {id: 3, name: "Sick Child", image: {baby}},
+    RESERVE_DUTY: {id: 4, name: "Reserve Duty", image : {soldier}},
+    LEAVING_EARLY: {id: 5, name: "Leaving Early", image: {early}}
 };
 
 const initialData = {reasonTypeId: ReasonType.NONE.id, description: "", name: "Itay Gal"};

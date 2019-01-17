@@ -30,16 +30,16 @@ class Reason extends React.Component {
         $(".message-content-container").addClass("message-content-container-shrink");
 
         setTimeout(function(){
-            $(".item").removeClass("selected");
-        }, 300);
-
-        setTimeout(function(){
             $(".menu-container").removeClass("menu-container-shrink");
             $(".back-to-reason").addClass("back-to-reason-shrink");
             $(".item").removeAttr("style");
             $(".item").removeClass("toTop");
             $(".calendar").css("display", "none");
             $(".submit-container").css("display", "none");
+        }, 300);
+
+        setTimeout(function(){
+            $(".item").removeClass("selected");
         }, 600);
     };
 
@@ -56,21 +56,19 @@ class Reason extends React.Component {
         this.animateReasonDeselected();
     };
     
-    
-    
     render() {
         return (
             <div className="container">
                 <div className="menu-container">
                     {Object.keys(ReasonType).map((reason) => {
-                        console.log(ReasonType[reason].name);
+                        console.log(Object.values(ReasonType[reason].image));
                         if (ReasonType[reason].name !== ReasonType.NONE.name) {
                             return <div className="item" onClick={(event) => this.reasonSelected(event, ReasonType[reason].id)}>
+                                <img src={Object.values(ReasonType[reason].image)[0]} />
                                 <div className="item-text">{ReasonType[reason].name}</div>
                             </div>;
                         }
                     })}
-                   
                 </div>
                 <div className="back-to-reason back-to-reason-shrink" onClick={(event) => this.reasonDeselected(event)}>&#9650;</div>
                 <div className="message-content-container message-content-container-shrink">
