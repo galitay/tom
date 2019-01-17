@@ -16,9 +16,9 @@ export default class Preview extends React.Component {
         return (
             <div className="preview">
                 <div className="preview-title">Preview</div>
-                {name} - OOO - {dateText} - {reasonText}
-                <hr />
-                {this.props.description}
+                <div>{name} - OOO - {dateText} - {reasonText}</div>
+                <div className="separator"></div>
+                <div>{this.props.description}</div>
             </div>  
         );
     }

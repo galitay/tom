@@ -18,7 +18,7 @@ export default class SubmitButton extends React.Component {
 
         const subject = name + " - OOO - " + dateText + " - " + reasonText;
         console.log(subject);
-        window.createEvent(this.props.startDate, this.props.endDate, subject);
+        window.createEvent(this.props.startDate, this.props.endDate, subject, this.props.description);
         
         $("#button").addClass("onclic", 250, this.validate);
     };

@@ -98,7 +98,7 @@
 
           window.getUserInfo();
           
-          window.createEvent = function(startDate, endDate, subject) {
+          window.createEvent = function(startDate, endDate, subject, description) {
               var startDateTime = moment(startDate).format("YYYY-MM-DD") + "T00:00";
               var endDateTime = moment(endDate).format("YYYY-MM-DD") + "T00:00";
               if (startDateTime === endDateTime){
@@ -109,7 +109,7 @@
                   "Subject": subject,
                   "Body": {
                       "ContentType": "HTML",
-                      "Content": "test description"
+                      "Content": description
                   },
                   "Attendees": [
                       {

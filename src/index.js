@@ -23,7 +23,7 @@ export const ReasonType = {
 const initialData = {
     reasonType: ReasonType.NONE,
     description: "",
-    name: "Itay Gal",
+    name: "ItayG",
     startDate: moment(),
     endDate: moment()
 };
@@ -35,6 +35,8 @@ const tomReducer = (state, action) => {
             return {...state, reasonType: action.reasonType};
         case 'DESELECT_REASON':
             return {...state, reasonType: ReasonType.NONE};
+        case 'DESCRIPTION_CHANGED':
+            return {...state, description: action.description};
         case 'SELECT_START_DATE':
             console.log("Current selected start date is: " + moment(action.startDate).format("YYYY-MM-DD"));
             return{...state, startDate: action.startDate};
@@ -56,9 +58,6 @@ ReactDOM.render(
     <App store={store} />,
     document.getElementById('root')
 );
-
-// registerServiceWorker();
-
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

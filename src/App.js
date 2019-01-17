@@ -16,6 +16,10 @@ class App extends Component {
     deselectReason = (event) => {
         this.props.tomActions.deselectReasonAction();
     };
+    
+    descriptionChanged = (event) => {
+        this.props.tomActions.descriptionChangedAction(event);
+    };
 
     selectStartDate = (startDate) => {
         this.props.tomActions.selectStartDateAction(startDate);  
@@ -29,7 +33,7 @@ class App extends Component {
         return (
             <Provider store={this.props.store}>
                 <div className="App">
-                    <Reason selectReason={this.selectReason} deselectReason={this.deselectReason} description={this.props.description} />
+                    <Reason selectReason={this.selectReason} deselectReason={this.deselectReason} description={this.props.description} descriptionChanged={this.descriptionChanged}/>
                     <Calendar selectStartDate={this.selectStartDate} selectEndDate={this.selectEndDate} />
                     <Preview name={this.props.name} startDate={this.props.startDate} endDate={this.props.endDate} reasonType={this.props.reasonType} description={this.props.description} />
                     <SubmitButton name={this.props.name} startDate={this.props.startDate} endDate={this.props.endDate} reasonType={this.props.reasonType} description={this.props.description} />

@@ -9,6 +9,12 @@ export const deselectReasonAction = () => ({
 });
 
 
+export const descriptionChangedAction = (event) => ({
+    type: 'DESCRIPTION_CHANGED',
+    description: event.target.value
+});
+
+
 export const selectStartDateAction = (newStartDate) => ({
     type: 'SELECT_START_DATE',
     startDate: newStartDate

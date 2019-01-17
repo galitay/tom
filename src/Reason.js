@@ -51,6 +51,10 @@ export default class Reason extends React.Component {
         this.animateReasonDeselected();
     };
     
+    handleDescriptionChange = (event) => {
+        this.props.descriptionChanged(event);
+    }
+    
     render() {
         return (
             <div className="container">
@@ -68,7 +72,7 @@ export default class Reason extends React.Component {
                 <div className="back-to-reason back-to-reason-shrink" onClick={(event) => this.reasonDeselected(event)}>&#9650;</div>
                 <div className="message-content-container message-content-container-shrink">
                     <div className="desc-title">Description</div>
-                    <textarea className="message-content" defaultValue={this.props.description}></textarea>
+                    <textarea className="message-content" defaultValue={this.props.description} onChange={(event) => this.handleDescriptionChange(event)} />
                 </div>
             </div>
         )
