@@ -1,11 +1,5 @@
-'use strict';
-
 import React from 'react';
-import App from './App';
 import './calendar.css';
-import * as actions from './actionTypes';
-import { bindActionCreators } from 'redux';
-import { connect, Provider } from 'react-redux';
 import moment from 'moment';
 
 const Heading = ({date, changeMonth, resetDate}) => (
@@ -40,7 +34,7 @@ const Day = ({currentDate, date, startDate, endDate, onClick}) => {
     }
 
     return (
-        <span onClick={() => onClick(date)} currentDate={date} className={className.join(' ')}>{date.date()}</span>
+        <span onClick={() => onClick(date)} /*currentDate={date}*/ className={className.join(' ')}>{date.date()}</span>
     )
 };
 
@@ -55,7 +49,7 @@ const Days = ({date, startDate, endDate, onClick}) => {
     let labels = [];
 
     for (let i = 1; i <= 7; i++) {
-        labels.push(<span className="label">{moment().day(i).format('ddd')}</span>);
+        labels.push(<span key={moment().day(i).format('ddd')} className="label">{moment().day(i).format('ddd')}</span>);
     }
 
     for (let i = firstDayDate.day(); i > 1; i--) {

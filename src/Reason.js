@@ -2,7 +2,6 @@ import React from 'react';
 import './reason.css';
 import $ from 'jquery';
 import 'jquery-ui-bundle';
-import { connect } from 'react-redux';
 import {ReasonType} from './index';
 
 export default class Reason extends React.Component {
@@ -58,17 +57,18 @@ export default class Reason extends React.Component {
                 <div className="menu-container">
                     {Object.keys(ReasonType).map((reason) => {
                         if (ReasonType[reason].name !== ReasonType.NONE.name) {
-                            return <div className="item" onClick={(event) => this.reasonSelected(event, ReasonType[reason])}>
-                                <img src={Object.values(ReasonType[reason].image)[0]} />
+                            return <div key={ReasonType[reason].name} className="item" onClick={(event) => this.reasonSelected(event, ReasonType[reason])}>
+                                <img src={Object.values(ReasonType[reason].image)[0]} alt="{ReasonType[reason].name}" />
                                 <div className="item-text">{ReasonType[reason].name}</div>
                             </div>;
                         }
+                        return "";
                     })}
                 </div>
                 <div className="back-to-reason back-to-reason-shrink" onClick={(event) => this.reasonDeselected(event)}>&#9650;</div>
                 <div className="message-content-container message-content-container-shrink">
                     <div className="desc-title">Description</div>
-                    <textarea className="message-content"></textarea>
+                    <textarea className="message-content" defaultValue={this.props.description}></textarea>
                 </div>
             </div>
         )
