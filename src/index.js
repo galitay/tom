@@ -5,17 +5,24 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { createStore, compose, applyMiddleware } from 'redux';
 
-const reasonsData = [{id: 1, name: "Vacation"},
-                {id: 2, name: "Sick"},
-                {id: 3, name: "Sick Child"},
-                {id: 4, name: "Reserve Duty"},
-                {id: 5, name: "Leaving Early"}];
+export const ReasonType = {
+    NONE: {id: 0, name: "None", image: "none"},
+    VACATION: {id: 1, name: "Vacation", image: "vacation"},
+    SICK: {id: 2, name: "Sick"},
+    SICK_CHILD: {id: 3, name: "Sick Child"},
+    RESERVE_DUTY: {id: 4, name: "Reserve Duty"},
+    LEAVING_EARLY: {id: 5, name: "Leaving Early"}
+};
 
-const initialData = {reasons: reasonsData};
+const initialData = {reasonTypeId: ReasonType.NONE.id, description: "", name: "Itay Gal"};
 
 const tomReducer = (state, action) => {
     switch (action.type) {
         case 'SELECT_REASON':
+            console.log("selected reason id: " + action.reasonTypeId);
+            return {...state, reasonTypeId: action.reasonTypeId};
+        case 'DESELECT_REASON':
+            return {...state, reasonType: ReasonType.NONE};
         case 'SELECT_START_DATE':
         default:
             return state;

@@ -3,6 +3,12 @@ import './reason.css';
 import $ from 'jquery';
 import 'jquery-ui-bundle';
 import { connect } from 'react-redux';
+import soldier from './soldier.png';
+import baby from './baby.png';
+import vacation from './vacation.png';
+import early from './early.png';
+import sick from './sick.png';
+import {ReasonType} from './index';
 
 class Reason extends React.Component {
 
@@ -37,7 +43,8 @@ class Reason extends React.Component {
         }, 600);
     };
 
-    reasonSelected = (event) => {
+    reasonSelected = (event, id) => {
+        this.props.selectReason(event, id);
         this.animateReasonSelected(event.currentTarget);
         setTimeout(function(){
             $(".message-content-container").removeClass("message-content-container-shrink");
@@ -49,25 +56,21 @@ class Reason extends React.Component {
         this.animateReasonDeselected();
     };
     
+    
+    
     render() {
         return (
             <div className="container">
                 <div className="menu-container">
-                    <div className="item" onClick={(event) => this.reasonSelected(event)}>
-                        <div className="item-text">Vacation</div>
-                    </div>
-                    <div className="item" onClick={(event) => this.reasonSelected(event)}>
-                        <div className="item-text">Sick</div>
-                    </div>
-                    <div className="item" onClick={(event) => this.reasonSelected(event)}>
-                        <div className="item-text">Sick Child</div>
-                    </div>
-                    <div className="item" onClick={(event) => this.reasonSelected(event)}>
-                        <div className="item-text">Reserve Duty</div>
-                    </div>
-                    <div className="item" onClick={(event) => this.reasonSelected(event)}>
-                        <div className="item-text">Leaving Early</div>
-                    </div>
+                    {Object.keys(ReasonType).map((reason) => {
+                        console.log(ReasonType[reason].name);
+                        if (ReasonType[reason].name !== ReasonType.NONE.name) {
+                            return <div className="item" onClick={(event) => this.reasonSelected(event, ReasonType[reason].id)}>
+                                <div className="item-text">{ReasonType[reason].name}</div>
+                            </div>;
+                        }
+                    })}
+                   
                 </div>
                 <div className="back-to-reason back-to-reason-shrink" onClick={(event) => this.reasonDeselected(event)}>&#9650;</div>
                 <div className="message-content-container message-content-container-shrink">

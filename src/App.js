@@ -8,17 +8,24 @@ import { bindActionCreators } from 'redux';
 import { connect, Provider } from 'react-redux';
 
 class App extends Component {
-  render() {
-    return (
-        <Provider store={this.props.store}>
-            <div className="App">
-                <Reason />
-                <Calendar />
-                <SubmitButton />
-            </div>
-        </Provider>
-    );
-  }
+    selectReason = (event, id) => {
+        if (event === undefined){
+            return;
+        }
+        this.props.tomActions.selectReasonAction(id);
+    };
+    
+    render() {
+        return (
+            <Provider store={this.props.store}>
+                <div className="App">
+                    <Reason selectReason={this.selectReason} />
+                    <Calendar />
+                    <SubmitButton />
+                </div>
+            </Provider>
+        );
+    }
 }
 
 const mapStateToProps = (state) => {
