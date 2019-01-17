@@ -3,14 +3,9 @@ import './reason.css';
 import $ from 'jquery';
 import 'jquery-ui-bundle';
 import { connect } from 'react-redux';
-import soldier from './soldier.png';
-import baby from './baby.png';
-import vacation from './vacation.png';
-import early from './early.png';
-import sick from './sick.png';
 import {ReasonType} from './index';
 
-class Reason extends React.Component {
+export default class Reason extends React.Component {
 
     animateReasonSelected(selectedElement) {
         var relativeY = selectedElement.getBoundingClientRect().top - $(".menu-container").offset().top;
@@ -43,8 +38,8 @@ class Reason extends React.Component {
         }, 600);
     };
 
-    reasonSelected = (event, id) => {
-        this.props.selectReason(event, id);
+    reasonSelected = (event, reasonType) => {
+        this.props.selectReason(event, reasonType);
         this.animateReasonSelected(event.currentTarget);
         setTimeout(function(){
             $(".message-content-container").removeClass("message-content-container-shrink");
@@ -52,6 +47,7 @@ class Reason extends React.Component {
     };
     
     reasonDeselected = (event) => {
+        this.props.deselectReason(event);
         event.stopPropagation();
         this.animateReasonDeselected();
     };
@@ -61,9 +57,8 @@ class Reason extends React.Component {
             <div className="container">
                 <div className="menu-container">
                     {Object.keys(ReasonType).map((reason) => {
-                        console.log(Object.values(ReasonType[reason].image));
                         if (ReasonType[reason].name !== ReasonType.NONE.name) {
-                            return <div className="item" onClick={(event) => this.reasonSelected(event, ReasonType[reason].id)}>
+                            return <div className="item" onClick={(event) => this.reasonSelected(event, ReasonType[reason])}>
                                 <img src={Object.values(ReasonType[reason].image)[0]} />
                                 <div className="item-text">{ReasonType[reason].name}</div>
                             </div>;
@@ -79,14 +74,3 @@ class Reason extends React.Component {
         )
     }
 }
-
-const mapStateToProps = (state) => {
-    return { reasons: state.reasons};
-};
-
-const mapDispatchToProps = null;
-
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(Reason);

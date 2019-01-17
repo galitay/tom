@@ -1,6 +1,6 @@
-export const selectReasonAction = (id) => ({
+export const selectReasonAction = (reasonType) => ({
     type: 'SELECT_REASON',
-    reasonTypeId: id
+    reasonType: reasonType
 });
 
 
@@ -9,9 +9,13 @@ export const deselectReasonAction = () => ({
 });
 
 
-export const selectStartDateAction = (yearVal, monthVal, dayVal) => ({
+export const selectStartDateAction = (newStartDate) => ({
     type: 'SELECT_START_DATE',
-    year: yearVal,
-    month: monthVal,
-    day: dayVal
+    startDate: newStartDate
 });
+
+export const selectEndDateAction = (newEndDate) => ({
+    type: 'SELECT_END_DATE',
+    endDate: newEndDate
+});
+

@@ -90,7 +90,7 @@ const Days = ({date, startDate, endDate, onClick}) => {
     );
 };
 
-class Calendar extends React.Component {
+export default class Calendar extends React.Component {
     constructor(props) {
         super(props);
 
@@ -130,6 +130,9 @@ class Calendar extends React.Component {
             endDate = moment(date);
         }
 
+        this.props.selectStartDate(startDate);
+        this.props.selectEndDate(endDate);
+        
         this.setState({
             startDate,
             endDate
@@ -148,15 +151,3 @@ class Calendar extends React.Component {
         );
     }
 }
-
-
-const mapStateToProps = (state) => {
-    return { reasons: state.reasons};
-};
-
-const mapDispatchToProps = null;
-
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(Calendar);

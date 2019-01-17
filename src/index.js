@@ -9,9 +9,10 @@ import baby from './baby.png';
 import vacation from './vacation.png';
 import early from './early.png';
 import sick from './sick.png';
+import moment from "moment";
 
 export const ReasonType = {
-    NONE: {id: 0, name: "None", image: "none"},
+    NONE: {id: 0, name: "N/A", image: "none"},
     VACATION: {id: 1, name: "Vacation", image: {vacation}},
     SICK: {id: 2, name: "Sick", image: {sick}},
     SICK_CHILD: {id: 3, name: "Sick Child", image: {baby}},
@@ -19,16 +20,27 @@ export const ReasonType = {
     LEAVING_EARLY: {id: 5, name: "Leaving Early", image: {early}}
 };
 
-const initialData = {reasonTypeId: ReasonType.NONE.id, description: "", name: "Itay Gal"};
+const initialData = {
+    reasonType: ReasonType.NONE,
+    description: "",
+    name: "Itay Gal",
+    startDate: moment(),
+    endDate: moment()
+};
 
 const tomReducer = (state, action) => {
     switch (action.type) {
         case 'SELECT_REASON':
-            console.log("selected reason id: " + action.reasonTypeId);
-            return {...state, reasonTypeId: action.reasonTypeId};
+            console.log("selected reason id: " + action.reasonType.id);
+            return {...state, reasonType: action.reasonType};
         case 'DESELECT_REASON':
             return {...state, reasonType: ReasonType.NONE};
         case 'SELECT_START_DATE':
+            console.log("Current selected start date is: " + moment(action.startDate).format("YYYY-MM-DD"));
+            return{...state, startDate: action.startDate};
+        case 'SELECT_END_DATE':
+            console.log("Current selected end date is: " + moment(action.endDate).format("YYYY-MM-DD"));
+            return{...state, endDate: action.endDate};
         default:
             return state;
     }
