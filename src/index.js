@@ -23,13 +23,19 @@ export const ReasonType = {
 const initialData = {
     reasonType: ReasonType.NONE,
     description: "",
-    name: "ItayG",
+    name: "John Doe",
     startDate: moment(),
-    endDate: moment()
+    endDate: moment(),
+    token: "",
+    tokenExpiration: ""
 };
 
 const tomReducer = (state, action) => {
     switch (action.type) {
+        case 'LOGIN':
+            return {...state, token: action.token, tokenExpiration: action.expiration};
+        case 'USER_DATA':
+            return {...state, name: action.name};
         case 'SELECT_REASON':
             console.log("selected reason id: " + action.reasonType.id);
             return {...state, reasonType: action.reasonType};

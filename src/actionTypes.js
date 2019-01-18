@@ -1,8 +1,18 @@
+export const loginAction = (token, expiration) => ({
+    type: 'LOGIN',
+    token: token,
+    expiration: expiration
+});
+
+export const userDataAction = (name) => ({
+    type: 'USER_DATA',
+    name: name
+});
+
 export const selectReasonAction = (reasonType) => ({
     type: 'SELECT_REASON',
     reasonType: reasonType
 });
-
 
 export const deselectReasonAction = () => ({
     type: 'DESELECT_REASON'
