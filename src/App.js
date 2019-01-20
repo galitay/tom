@@ -17,6 +17,7 @@ class App extends Component {
     mailingListName = "Itay Gal";
     timezone = "Asia/Jerusalem";
     appUrl = "http://localhost:3002/";
+    // appUrl = "https://www.itayg.com/tom/";
     
     selectReason = (event, reasonType) => {
         this.props.tomActions.selectReasonAction(reasonType);
@@ -121,6 +122,33 @@ class App extends Component {
         window.location = authUrl;
     };
 
+    getEvents = () => {
+        var startDateTime = moment().startOf("day").format("YYYY-MM-DDTHH:mm");
+        var endDateTime = moment().add(7, "days").endOf("day").format("YYYY-MM-DDTHH:mm");
+        var apiUrl = "https://outlook.office.com/api/v2.0/me/calendarview?startdatetime=" + startDateTime + "&enddatetime=" + endDateTime + "&$top=" + 100;;
+
+        $.ajax({
+            type: 'GET',
+            url: apiUrl,
+            headers: {
+                "Authorization": "Bearer " + this.props.token
+            }
+        }).done((data) => {
+            this.processAllEvenets(data);
+        }).fail(function (response) {
+            console.log("Could not retrieve events");
+        });
+    };
+
+    processAllEvenets = (data) => {
+        debugger;
+        let allEvents = data.value;
+        for (var i = 0; i < allEvents.length; i++) {
+            let event = allEvents[i];
+            console.log("Organizer: " + event.Organizer.EmailAddress.Address + " - " + event.Subject);
+        }
+    };
+
     processResults = (data) => {
         console.log(JSON.stringify(data));
     };
@@ -201,6 +229,10 @@ class App extends Component {
         if (!this.isLoggedIn() && !this.processLoginAnswer()){
             this.login();
         }
+        setTimeout(() => {
+            this.getEvents();
+        }, 10);
+        
     }
     
     render() {
