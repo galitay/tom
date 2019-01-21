@@ -1,4 +1,4 @@
-$main-color: #30716D;
+@import './_theme.scss';
 
 .report-container{
   display: flex;
@@ -10,7 +10,7 @@ $main-color: #30716D;
 
 .load-report{
   padding: 5px;
-  background-color: $main-color;
+  background-color: $primary;
   color: white;
   cursor: pointer;
 }

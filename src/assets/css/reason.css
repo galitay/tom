@@ -11,7 +11,7 @@ body, html {
 
 .menu-container {
   width: 360px;
-  height: 360px;
+  height: 420px;
   margin-top: 10px;
   display: flex;
   flex-direction: column;
@@ -36,20 +36,22 @@ body, html {
   border-radius: 4px;
   cursor: pointer;
   border: 1px solid #cccccc; }
-  .item img {
-    position: absolute;
-    left: 30px;
-    height: 50px;
-    opacity: 0.8; }
-  .item.selected img {
-    opacity: 0.4; }
+
+.item img {
+  position: absolute;
+  left: 30px;
+  height: 50px;
+  opacity: 0.8; }
+
+.item.selected img {
+  opacity: 0.4; }
 
 .item:hover {
   width: 100%;
   left: 0; }
 
 .item:nth-child(1) {
-  top: 0; }
+  top: 0px; }
 
 .item:nth-child(2) {
   top: 70px; }
@@ -63,6 +65,27 @@ body, html {
 .item:nth-child(5) {
   top: 280px; }
 
+.item:nth-child(6) {
+  top: 350px; }
+
+/*
+.item:nth-child(1){
+  @include item-top(1);
+}
+.item:nth-child(2){
+  @include item-top(2);
+}
+.item:nth-child(3){
+  top: 140px;
+}
+.item:nth-child(4){
+  top: 210px;
+}
+.item:nth-child(5){
+  top: 280px;
+}
+
+*/
 .item-text {
   flex-grow: 1;
   display: flex;

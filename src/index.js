@@ -9,6 +9,7 @@ import baby from './assets/img/baby.png';
 import vacation from './assets/img/vacation.png';
 import early from './assets/img/early.png';
 import sick from './assets/img/sick.png';
+import home from './assets/img/home.png';
 import moment from "moment";
 
 export const ReasonType = {
@@ -17,7 +18,8 @@ export const ReasonType = {
     SICK: {id: 2, name: "Sick", image: {sick}},
     SICK_CHILD: {id: 3, name: "Sick Child", image: {baby}},
     RESERVE_DUTY: {id: 4, name: "Reserve Duty", image : {soldier}},
-    LEAVING_EARLY: {id: 5, name: "Leaving Early", image: {early}}
+    LEAVING_EARLY: {id: 5, name: "Leaving Early", image: {early}},
+    WFH: {id: 6, name: "WFH", image: {home}}
 };
 
 const initialData = {

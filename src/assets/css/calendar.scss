@@ -1,5 +1,8 @@
-$primary: #30716D;
+@import './_theme.scss';
+@import './_variables.scss';
+
 $radius: 8px;
+$calendar-padding: 15px;
 
 body {
   font-family: 'Roboto', sans-serif;
@@ -10,8 +13,8 @@ body {
   display: none;
   margin: 0 auto;
   margin-top: 20px;
-  max-width: 330px;
-  padding: 15px;
+  max-width: $width - (2 * $calendar-padding);
+  padding: $calendar-padding;
   box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.4); // was 20px shadow
   border-radius: $radius;
   overflow: hidden;

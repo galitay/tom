@@ -212,14 +212,16 @@ class App extends Component {
     render() {
         return (
             <Provider store={this.props.store}>
-                <div className="App">
+                <div className="app">
                     <div className="send-event-page">
                         <Reason selectReason={this.selectReason} deselectReason={this.deselectReason} description={this.props.description} descriptionChanged={this.descriptionChanged}/>
                         <Calendar selectStartDate={this.selectStartDate} selectEndDate={this.selectEndDate} />
                         <Preview name={this.props.name} startDate={this.props.startDate} endDate={this.props.endDate} reasonType={this.props.reasonType} description={this.props.description} />
                         <SubmitButton name={this.props.name} startDate={this.props.startDate} endDate={this.props.endDate} reasonType={this.props.reasonType} description={this.props.description} createEvent={this.createEvent} />
                     </div>
-                    <Report events={this.props.events} token={this.props.token} updateEvents={this.updateEvents} />
+                    <div className="report-page">
+                        <Report events={this.props.events} token={this.props.token} updateEvents={this.updateEvents} />
+                    </div>
                 </div>
             </Provider>
         );

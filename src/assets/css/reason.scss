@@ -1,3 +1,9 @@
+@import './_theme.scss';
+@import './_variables.scss';
+
+$item-height: 60px;
+$item-margin: 10px;
+
 body, html{
   height: 100%;
   padding: 0;
@@ -10,8 +16,8 @@ body, html{
   align-items: center;
 }
 .menu-container{
-  width: 360px;
-  height: 360px;
+  width: $width;
+  height: $reasons-number * ($item-height + $item-margin);
   margin-top: 10px;
   display: flex;
   flex-direction: column;
@@ -26,7 +32,7 @@ body, html{
 }
 
 .item{
-  height: 60px;
+  height: $item-height;
   width: 94%;
   display: flex;
   align-items: center;
@@ -59,11 +65,22 @@ body, html{
 
 }
 
+@mixin item-top($order) {
+  top: ($order - 1) * ($item-height + $item-margin);
+}
+
+@for $i from 1 through $reasons-number {
+  .item:nth-child(#{$i}) {
+    @include item-top($i);
+  }
+}
+
+/*
 .item:nth-child(1){
-  top: 0;
+  @include item-top(1);
 }
 .item:nth-child(2){
-  top: 70px;
+  @include item-top(2);
 }
 .item:nth-child(3){
   top: 140px;
@@ -75,6 +92,7 @@ body, html{
   top: 280px;
 }
 
+*/
 .item-text{
   flex-grow: 1;
   display: flex;

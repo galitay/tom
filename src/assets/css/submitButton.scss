@@ -1,4 +1,5 @@
-$green: #30716D;
+@import './_theme.scss';
+
 $gray: #bbbbbb;
 
 .submit-container {
@@ -11,6 +12,7 @@ $gray: #bbbbbb;
   font-family: 'Roboto', sans-serif;
   margin-buttom: 20px;
 }
+
 button {
   outline:none;
   height: 40px;
@@ -18,8 +20,8 @@ button {
   width: 360px;
   border-radius: 8px;
   background: #fff;
-  border: 2px solid $green;
-  color:$green;
+  border: 2px solid $primary;
+  color: $primary;
   letter-spacing:1px;
   text-shadow: 0;
   font:{
@@ -30,7 +32,7 @@ button {
   transition: all 0.25s ease;
   &:hover {
     color:white;
-    background: $green;
+    background: $primary;
   }
   &:active {
     //letter-spacing: 2px;
@@ -46,21 +48,21 @@ button {
   border-width: 3px;
   border-radius: 40px;
   font-size: 0;
-  border-left-color: $green;
+  border-left-color: $primary;
   animation: rotating 2s 0.25s linear infinite;
 
   &:after {
     content:"";
   }
   &:hover {
-    color:$green;
+    color: $primary;
     background: white;
   }
 }
 .validate {
   font-size:13px;
   color: white;
-  background: $green;
+  background: $primary;
   &:after {
     font-family:'FontAwesome';
     content:"✓";

@@ -1,9 +1,10 @@
-$primary: #30716D;
+@import './_theme.scss';
+@import './_variables.scss';
 
 .preview{
   margin: 0 auto;
   margin-top: 30px;
-  width: 360px;
+  width: $width;
   border: 1px solid #e5e5e5;
   border-bottom: 2px solid $primary;
   border-radius: 5px;
