@@ -17,6 +17,7 @@ export default class Reason extends React.Component {
             $(".back-to-reason").removeClass("back-to-reason-shrink");
             $(".calendar").css("display", "block");
             $(".submit-container").css("display", "block");
+            $(".preview").css("display", "block");
         }, 300);
     };
 
@@ -30,6 +31,7 @@ export default class Reason extends React.Component {
             $(".item").removeClass("toTop");
             $(".calendar").css("display", "none");
             $(".submit-container").css("display", "none");
+            $(".preview").css("display", "none");
         }, 300);
 
         setTimeout(function(){

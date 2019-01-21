@@ -1,4 +1,5 @@
 .preview {
+  display: none;
   margin: 0 auto;
   margin-top: 30px;
   width: 340px;

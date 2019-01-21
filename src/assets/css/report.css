@@ -1,7 +1,7 @@
 .report-container {
   display: flex;
   flex-direction: column;
-  width: 360px;
+  width: 340px;
   margin: 0 auto;
   margin-top: 10px; }
 
@@ -9,7 +9,8 @@
   padding: 5px;
   background-color: #30716D;
   color: white;
-  cursor: pointer; }
+  cursor: pointer;
+  border-radius: 4px; }
 
 .employee-container {
   margin-top: 10px;
