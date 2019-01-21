@@ -1,5 +1,5 @@
 import React from 'react';
-import './calendar.css';
+import './../assets/css/calendar.css';
 import moment from 'moment';
 
 const Heading = ({date, changeMonth, resetDate}) => (

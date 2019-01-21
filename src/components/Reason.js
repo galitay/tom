@@ -1,8 +1,8 @@
 import React from 'react';
-import './reason.css';
+import './../assets/css/reason.css';
 import $ from 'jquery';
 import 'jquery-ui-bundle';
-import {ReasonType} from './index';
+import {ReasonType} from './../index';
 
 export default class Reason extends React.Component {
 

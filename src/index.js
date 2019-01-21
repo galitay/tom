@@ -4,11 +4,11 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { createStore, compose, applyMiddleware } from 'redux';
-import soldier from './soldier.png';
-import baby from './baby.png';
-import vacation from './vacation.png';
-import early from './early.png';
-import sick from './sick.png';
+import soldier from './assets/img/soldier.png';
+import baby from './assets/img/baby.png';
+import vacation from './assets/img/vacation.png';
+import early from './assets/img/early.png';
+import sick from './assets/img/sick.png';
 import moment from "moment";
 
 export const ReasonType = {

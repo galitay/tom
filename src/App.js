@@ -1,25 +1,24 @@
 import React, { Component } from 'react';
-import './App.css';
-import Calendar from './Calendar';
-import Reason from './Reason';
-import SubmitButton from './SubmitButton';
-import Preview from './Preview';
-import Report from './Report';
+import './assets/css/app.css';
+import Calendar from './components/Calendar';
+import Reason from './components/Reason';
+import SubmitButton from './components/SubmitButton';
+import Preview from './components/Preview';
+import Report from './components/Report';
 import * as actions from './actionTypes';
 import { bindActionCreators } from 'redux';
 import { connect, Provider } from 'react-redux';
 import moment from "moment";
 import $ from 'jquery';
 import 'jquery-ui-bundle';
-import {ReasonType} from "./index";
 
 
 class App extends Component {
     mailingList = "itay84@gmail.com";
     mailingListName = "Itay Gal";
     timezone = "Asia/Jerusalem";
-    // appUrl = "http://localhost:3002/";
-    appUrl = "https://www.itayg.com/tom/";
+    appUrl = "http://localhost:3002/";
+    // appUrl = "https://www.itayg.com/tom/";
     
     selectReason = (event, reasonType) => {
         this.props.tomActions.selectReasonAction(reasonType);
@@ -214,10 +213,12 @@ class App extends Component {
         return (
             <Provider store={this.props.store}>
                 <div className="App">
-                    <Reason selectReason={this.selectReason} deselectReason={this.deselectReason} description={this.props.description} descriptionChanged={this.descriptionChanged}/>
-                    <Calendar selectStartDate={this.selectStartDate} selectEndDate={this.selectEndDate} />
-                    <Preview name={this.props.name} startDate={this.props.startDate} endDate={this.props.endDate} reasonType={this.props.reasonType} description={this.props.description} />
-                    <SubmitButton name={this.props.name} startDate={this.props.startDate} endDate={this.props.endDate} reasonType={this.props.reasonType} description={this.props.description} createEvent={this.createEvent} />
+                    <div className="send-event-page">
+                        <Reason selectReason={this.selectReason} deselectReason={this.deselectReason} description={this.props.description} descriptionChanged={this.descriptionChanged}/>
+                        <Calendar selectStartDate={this.selectStartDate} selectEndDate={this.selectEndDate} />
+                        <Preview name={this.props.name} startDate={this.props.startDate} endDate={this.props.endDate} reasonType={this.props.reasonType} description={this.props.description} />
+                        <SubmitButton name={this.props.name} startDate={this.props.startDate} endDate={this.props.endDate} reasonType={this.props.reasonType} description={this.props.description} createEvent={this.createEvent} />
+                    </div>
                     <Report events={this.props.events} token={this.props.token} updateEvents={this.updateEvents} />
                 </div>
             </Provider>

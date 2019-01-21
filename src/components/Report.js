@@ -1,9 +1,9 @@
 import React from 'react';
-import './report.css';
+import './../assets/css/report.css';
 import $ from 'jquery';
 import 'jquery-ui-bundle';
 import moment from "moment";
-import {ReasonType} from "./index";
+import {ReasonType} from "./../index";
 
 export default class Report extends React.Component {
     
