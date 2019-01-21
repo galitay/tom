@@ -39,6 +39,7 @@ export default class LoadReportButton extends SubmitButton {
             let event = allEvents[i];
             const email = event.Organizer.EmailAddress.Address;
             const eventEntry = {
+                "id": event.Id,
                 "organizerName": event.Organizer.EmailAddress.Name,
                 "subject": event.Subject,
                 "start": event.Start.DateTime,
@@ -70,6 +71,9 @@ export default class LoadReportButton extends SubmitButton {
         }
         if (subject.includes("vacation") || subject.includes("pto") || subject.includes("day off")){
             return ReasonType.VACATION
+        }
+        if (subject.includes("wfh") || subject.includes("home")){
+            return ReasonType.WFH
         }
         return ReasonType.NONE;
     }

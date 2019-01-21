@@ -16,3 +16,25 @@
   margin-top: 10px;
   padding-bottom: 10px;
   border-bottom: 1px solid #cccccc; }
+
+.employee-name {
+  text-align: left;
+  padding: 4px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #30716D;
+  margin-bottom: 10px; }
+
+.event-container {
+  background-color: #efefef;
+  margin-bottom: 3px;
+  padding: 4px;
+  display: flex; }
+
+.reason-label {
+  padding: 3px;
+  background-color: #30716D;
+  margin-right: 10px;
+  margin-left: 10px;
+  color: white;
+  border-radius: 4px;
+  font-size: 12px; }

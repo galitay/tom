@@ -99,7 +99,7 @@ class App extends Component {
                 cookie = token + ";expires=" + hourLater.toUTCString();
             }
             document.cookie = "myEventsCookie=" + cookie;
-            const expiration = moment().add(expiresIn, "milliseconds").valueOf().toString();
+            const expiration = moment().add(expiresIn, "seconds").valueOf().toString();
             localStorage.setItem('token', token);
             localStorage.setItem('tokenExpirationDate', expiration);
             this.props.tomActions.loginAction(token, moment().add(expiresIn, "seconds"));
