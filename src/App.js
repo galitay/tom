@@ -4,20 +4,22 @@ import Calendar from './Calendar';
 import Reason from './Reason';
 import SubmitButton from './SubmitButton';
 import Preview from './Preview';
+import Report from './Report';
 import * as actions from './actionTypes';
 import { bindActionCreators } from 'redux';
 import { connect, Provider } from 'react-redux';
 import moment from "moment";
 import $ from 'jquery';
 import 'jquery-ui-bundle';
+import {ReasonType} from "./index";
 
 
 class App extends Component {
     mailingList = "itay84@gmail.com";
     mailingListName = "Itay Gal";
     timezone = "Asia/Jerusalem";
-    appUrl = "http://localhost:3002/";
-    // appUrl = "https://www.itayg.com/tom/";
+    // appUrl = "http://localhost:3002/";
+    appUrl = "https://www.itayg.com/tom/";
     
     selectReason = (event, reasonType) => {
         this.props.tomActions.selectReasonAction(reasonType);
@@ -92,7 +94,7 @@ class App extends Component {
                 cookie = token + ";expires=" + hourLater.toUTCString();
             }
             document.cookie = "myEventsCookie=" + cookie;
-            const expiration = moment().add(expiresIn, "seconds").valueOf().toString();
+            const expiration = moment().add(expiresIn, "milliseconds").valueOf().toString();
             localStorage.setItem('token', token);
             localStorage.setItem('tokenExpirationDate', expiration);
             this.props.tomActions.loginAction(token, moment().add(expiresIn, "seconds"));
@@ -121,34 +123,7 @@ class App extends Component {
             "&state=" + stateParam;
         window.location = authUrl;
     };
-
-    getEvents = () => {
-        var startDateTime = moment().startOf("day").format("YYYY-MM-DDTHH:mm");
-        var endDateTime = moment().add(7, "days").endOf("day").format("YYYY-MM-DDTHH:mm");
-        var apiUrl = "https://outlook.office.com/api/v2.0/me/calendarview?startdatetime=" + startDateTime + "&enddatetime=" + endDateTime + "&$top=" + 100;;
-
-        $.ajax({
-            type: 'GET',
-            url: apiUrl,
-            headers: {
-                "Authorization": "Bearer " + this.props.token
-            }
-        }).done((data) => {
-            this.processAllEvenets(data);
-        }).fail(function (response) {
-            console.log("Could not retrieve events");
-        });
-    };
-
-    processAllEvenets = (data) => {
-        debugger;
-        let allEvents = data.value;
-        for (var i = 0; i < allEvents.length; i++) {
-            let event = allEvents[i];
-            console.log("Organizer: " + event.Organizer.EmailAddress.Address + " - " + event.Subject);
-        }
-    };
-
+    
     processResults = (data) => {
         console.log(JSON.stringify(data));
     };
@@ -170,6 +145,10 @@ class App extends Component {
         }).fail(function (response) {
             console.log("Could not get user info");
         });
+    };
+    
+    updateEvents = (events) => {
+        this.props.tomActions.updateEventsAction(events);
     };
 
     createEvent = (startDate, endDate, subject, description) => {
@@ -229,10 +208,6 @@ class App extends Component {
         if (!this.isLoggedIn() && !this.processLoginAnswer()){
             this.login();
         }
-        setTimeout(() => {
-            this.getEvents();
-        }, 10);
-        
     }
     
     render() {
@@ -243,6 +218,7 @@ class App extends Component {
                     <Calendar selectStartDate={this.selectStartDate} selectEndDate={this.selectEndDate} />
                     <Preview name={this.props.name} startDate={this.props.startDate} endDate={this.props.endDate} reasonType={this.props.reasonType} description={this.props.description} />
                     <SubmitButton name={this.props.name} startDate={this.props.startDate} endDate={this.props.endDate} reasonType={this.props.reasonType} description={this.props.description} createEvent={this.createEvent} />
+                    <Report events={this.props.events} token={this.props.token} updateEvents={this.updateEvents} />
                 </div>
             </Provider>
         );
@@ -256,7 +232,9 @@ const mapStateToProps = (state) => {
         reasonType: state.reasonType, 
         description: state.description,
         token: state.token,
-        tokenExpiration: state.tokenExpiration};
+        tokenExpiration: state.tokenExpiration,
+        events: state.events
+    };
 };
 
 const mapDispatchToProps = (dispatch) => {

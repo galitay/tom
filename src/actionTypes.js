@@ -35,3 +35,8 @@ export const selectEndDateAction = (newEndDate) => ({
     endDate: newEndDate
 });
 
+export const updateEventsAction = (events) => ({
+    type: 'UPDATE_EVENTS',
+    events: events
+});
+

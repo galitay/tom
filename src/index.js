@@ -27,7 +27,8 @@ const initialData = {
     startDate: moment(),
     endDate: moment(),
     token: "",
-    tokenExpiration: ""
+    tokenExpiration: "",
+    events: {}
 };
 
 const tomReducer = (state, action) => {
@@ -45,10 +46,12 @@ const tomReducer = (state, action) => {
             return {...state, description: action.description};
         case 'SELECT_START_DATE':
             console.log("Current selected start date is: " + moment(action.startDate).format("YYYY-MM-DD"));
-            return{...state, startDate: action.startDate};
+            return {...state, startDate: action.startDate};
         case 'SELECT_END_DATE':
             console.log("Current selected end date is: " + moment(action.endDate).format("YYYY-MM-DD"));
-            return{...state, endDate: action.endDate};
+            return {...state, endDate: action.endDate};
+        case 'UPDATE_EVENTS':
+            return {...state, events: action.events};
         default:
             return state;
     }

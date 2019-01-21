@@ -1,0 +1,22 @@
+$main-color: #30716D;
+
+.report-container{
+  display: flex;
+  flex-direction: column;
+  width: 360px;
+  margin: 0 auto;
+  margin-top: 10px;
+}
+
+.load-report{
+  padding: 5px;
+  background-color: $main-color;
+  color: white;
+  cursor: pointer;
+}
+
+.employee-container {
+  margin-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #cccccc;
+}
