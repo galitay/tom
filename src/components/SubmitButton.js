@@ -1,12 +1,13 @@
 import React from 'react';
 import './../assets/css/submitButton.css';
+import PageType from './../PageType';
 import $ from 'jquery';
 import 'jquery-ui-bundle';
 import moment from "moment";
 
 export default class SubmitButton extends React.Component {
-
-    submitClicked = (event) => {
+    
+    onclickAction = () => {
         const startDate = moment(this.props.startDate).format("DD.MM.YY");
         const endDate = moment(this.props.endDate).format("DD.MM.YY");
         let dateText = startDate;
@@ -19,7 +20,10 @@ export default class SubmitButton extends React.Component {
         const subject = name + " - OOO - " + dateText + " - " + reasonText;
         console.log(subject);
         this.props.createEvent(this.props.startDate, this.props.endDate, subject, this.props.description);
-        
+    };
+    
+    submitClicked = () => {
+        this.onclickAction();
         $("#button").addClass("onclic", 250, this.validate);
     };
     
@@ -39,7 +43,7 @@ export default class SubmitButton extends React.Component {
     render() {
         return (
             <div className="submit-container">
-                <button id="button" onClick={(event) => this.submitClicked(event)}/>
+                <button id="button" className={this.props.pageType === PageType.REPORT ? "load-report-button" : null} onClick={() => this.submitClicked()} />
             </div>
         )
     }

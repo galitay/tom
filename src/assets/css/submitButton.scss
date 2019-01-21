@@ -4,7 +4,6 @@
 $gray: #bbbbbb;
 
 .submit-container {
-  display: none;
   margin: 0 auto;
   margin-top: 25px;
   width: $width;
@@ -41,6 +40,15 @@ button {
   }
   &:after {
     content:"SUBMIT";
+  }
+  
+  &.load-report-button:after{
+    content:"LOAD REPORT";
+  }
+
+  &.load-report-button.validate:after{
+    font-family:'FontAwesome';
+    content:"✓";
   }
 }
 .onclic {

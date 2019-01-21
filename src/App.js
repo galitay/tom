@@ -3,8 +3,10 @@ import './assets/css/app.css';
 import Calendar from './components/Calendar';
 import Reason from './components/Reason';
 import SubmitButton from './components/SubmitButton';
+import LoadReportButton from './components/LoadReportButton';
 import Preview from './components/Preview';
 import Report from './components/Report';
+import PageType from './PageType';
 import * as actions from './actionTypes';
 import { bindActionCreators } from 'redux';
 import { connect, Provider } from 'react-redux';
@@ -38,6 +40,10 @@ class App extends Component {
 
     selectEndDate = (endDate) => {
         this.props.tomActions.selectEndDateAction(endDate);
+    };
+    
+    toggleSubmit = (visible) => {
+        this.props.tomActions.toggleSubmitAction(visible);
     };
 
     getQueryVariable = (variable) => {
@@ -202,6 +208,14 @@ class App extends Component {
             console.log("Could not create event");
         });
     };
+    
+    togglePages = () => {
+        let newPageType = PageType.SEND_EVENT;
+        if (this.props.pageType === PageType.SEND_EVENT) {
+            newPageType = PageType.REPORT;
+        }  
+        this.props.tomActions.togglePageAction(newPageType);
+    };
 
     componentWillMount() {
         if (!this.isLoggedIn() && !this.processLoginAnswer()){
@@ -213,15 +227,47 @@ class App extends Component {
         return (
             <Provider store={this.props.store}>
                 <div className="app">
+                    
+                    {this.props.pageType === PageType.SEND_EVENT ?
                     <div className="send-event-page">
-                        <Reason selectReason={this.selectReason} deselectReason={this.deselectReason} description={this.props.description} descriptionChanged={this.descriptionChanged}/>
+                        <Reason selectReason={this.selectReason} deselectReason={this.deselectReason} description={this.props.description} descriptionChanged={this.descriptionChanged} toggleSubmit={this.toggleSubmit} />
                         <Calendar selectStartDate={this.selectStartDate} selectEndDate={this.selectEndDate} />
                         <Preview name={this.props.name} startDate={this.props.startDate} endDate={this.props.endDate} reasonType={this.props.reasonType} description={this.props.description} />
-                        <SubmitButton name={this.props.name} startDate={this.props.startDate} endDate={this.props.endDate} reasonType={this.props.reasonType} description={this.props.description} createEvent={this.createEvent} />
-                    </div>
+                        {this.props.showSubmit ?
+                        <SubmitButton 
+                            name={this.props.name} 
+                            startDate={this.props.startDate} 
+                            endDate={this.props.endDate} 
+                            reasonType={this.props.reasonType} 
+                            description={this.props.description} 
+                            createEvent={this.createEvent} 
+                            pageType={this.props.pageType}
+                            showSubmit={this.props.showSubmit}
+                            toggleSubmit={this.toggleSubmit} />
+                            : null}
+                    </div> 
+                        : null }
+                        
+                    {this.props.pageType === PageType.REPORT ?
                     <div className="report-page">
-                        <Report events={this.props.events} token={this.props.token} updateEvents={this.updateEvents} />
+                        {this.props.showSubmit ? 
+                        <LoadReportButton 
+                            name={this.props.name} 
+                            startDate={this.props.startDate} 
+                            endDate={this.props.endDate} 
+                            reasonType={this.props.reasonType} 
+                            description={this.props.description} 
+                            createEvent={this.createEvent} 
+                            pageType={this.props.pageType} 
+                            showSubmit={this.props.showSubmit}
+                            toggleSubmit={this.toggleSubmit}
+                            token={this.props.token}
+                            updateEvents={this.updateEvents} />
+                            : null}
+                        <Report events={this.props.events} token={this.props.token} updateEvents={this.updateEvents} toggleSubmit={this.toggleSubmit} /> 
                     </div>
+                        : null }
+                        <div className="toggle-page" onClick={() => this.togglePages()}>Go To {this.props.pageType === PageType.REPORT ? PageType.SEND_EVENT.name : PageType.REPORT.name}</div>
                 </div>
             </Provider>
         );
@@ -236,7 +282,9 @@ const mapStateToProps = (state) => {
         description: state.description,
         token: state.token,
         tokenExpiration: state.tokenExpiration,
-        events: state.events
+        events: state.events,
+        pageType: state.pageType,
+        showSubmit: state.showSubmit
     };
 };
 

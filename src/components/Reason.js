@@ -6,6 +6,10 @@ import {ReasonType} from './../index';
 
 export default class Reason extends React.Component {
 
+    componentWillMount(){
+        this.props.toggleSubmit(false);
+    }
+
     animateReasonSelected(selectedElement) {
         var relativeY = selectedElement.getBoundingClientRect().top - $(".menu-container").offset().top;
         $(selectedElement).addClass("selected");
@@ -40,6 +44,7 @@ export default class Reason extends React.Component {
     };
 
     reasonSelected = (event, reasonType) => {
+        this.props.toggleSubmit(true);
         this.props.selectReason(event, reasonType);
         this.animateReasonSelected(event.currentTarget);
         setTimeout(function(){
@@ -48,6 +53,7 @@ export default class Reason extends React.Component {
     };
     
     reasonDeselected = (event) => {
+        this.props.toggleSubmit(false);
         this.props.deselectReason(event);
         event.stopPropagation();
         this.animateReasonDeselected();

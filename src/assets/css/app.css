@@ -1,2 +1,13 @@
 .app {
   text-align: center; }
+
+.toggle-page {
+  margin: 0 auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  background-color: #30716D;
+  border-radius: 4px;
+  display: inline-block;
+  color: white;
+  padding: 7px 12px 7px 12px; }

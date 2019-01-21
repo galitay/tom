@@ -1,6 +1,5 @@
 @charset "UTF-8";
 .submit-container {
-  display: none;
   margin: 0 auto;
   margin-top: 25px;
   width: 340px;
@@ -34,6 +33,13 @@ button:active {
 
 button:after {
   content: "SUBMIT"; }
+
+button.load-report-button:after {
+  content: "LOAD REPORT"; }
+
+button.load-report-button.validate:after {
+  font-family: 'FontAwesome';
+  content: "✓"; }
 
 .onclic {
   width: 40px;

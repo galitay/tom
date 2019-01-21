@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import PageType from './PageType';
 import * as serviceWorker from './serviceWorker';
 import { createStore, compose, applyMiddleware } from 'redux';
 import soldier from './assets/img/soldier.png';
@@ -30,7 +31,9 @@ const initialData = {
     endDate: moment(),
     token: "",
     tokenExpiration: "",
-    events: {}
+    events: {},
+    pageType: PageType.SEND_EVENT,
+    showSubmit: false
 };
 
 const tomReducer = (state, action) => {
@@ -54,6 +57,10 @@ const tomReducer = (state, action) => {
             return {...state, endDate: action.endDate};
         case 'UPDATE_EVENTS':
             return {...state, events: action.events};
+        case 'TOGGLE_PAGE':
+            return {...state, pageType: action.pageType};
+        case 'TOGGLE_SUBMIT':
+            return {...state, showSubmit: action.visible};
         default:
             return state;
     }

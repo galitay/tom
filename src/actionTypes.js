@@ -40,3 +40,13 @@ export const updateEventsAction = (events) => ({
     events: events
 });
 
+export const togglePageAction = (newPageType) => ({
+    type: 'TOGGLE_PAGE',
+    pageType: newPageType
+});
+
+export const toggleSubmitAction = (visible) => ({
+    type: 'TOGGLE_SUBMIT',
+    visible: visible
+});
+

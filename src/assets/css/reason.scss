@@ -75,24 +75,6 @@ body, html{
   }
 }
 
-/*
-.item:nth-child(1){
-  @include item-top(1);
-}
-.item:nth-child(2){
-  @include item-top(2);
-}
-.item:nth-child(3){
-  top: 140px;
-}
-.item:nth-child(4){
-  top: 210px;
-}
-.item:nth-child(5){
-  top: 280px;
-}
-
-*/
 .item-text{
   flex-grow: 1;
   display: flex;
