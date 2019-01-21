@@ -14,12 +14,12 @@ import moment from "moment";
 
 export const ReasonType = {
     NONE: {id: 0, name: "N/A", image: "none"},
+    WFH: {id: 6, name: "WFH", image: {home}},
     VACATION: {id: 1, name: "Vacation", image: {vacation}},
     SICK: {id: 2, name: "Sick", image: {sick}},
     SICK_CHILD: {id: 3, name: "Sick Child", image: {baby}},
-    RESERVE_DUTY: {id: 4, name: "Reserve Duty", image : {soldier}},
     LEAVING_EARLY: {id: 5, name: "Leaving Early", image: {early}},
-    WFH: {id: 6, name: "WFH", image: {home}}
+    RESERVE_DUTY: {id: 4, name: "Reserve Duty", image : {soldier}}
 };
 
 const initialData = {
