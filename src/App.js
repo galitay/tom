@@ -204,8 +204,10 @@ class App extends Component {
             data: JSON.stringify(postData)
         }).done((data) => {
             this.processResults(data);
-        }).fail(function (response) {
+            this.props.updateLoadingAnimationVisibility(false);
+        }).fail((response) => {
             console.log("Could not create event");
+            this.props.updateLoadingAnimationVisibility(false);
         });
     };
     
@@ -215,6 +217,10 @@ class App extends Component {
             newPageType = PageType.REPORT;
         }  
         this.props.tomActions.togglePageAction(newPageType);
+    };
+    
+    updateLoadingAnimationVisibility = (visible) => {
+        this.props.tomActions.loadingAnimationChangeAction(visible);
     };
 
     componentWillMount() {
@@ -231,7 +237,7 @@ class App extends Component {
                     {this.props.pageType === PageType.SEND_EVENT ?
                     <div className="send-event-page">
                         <Reason selectReason={this.selectReason} deselectReason={this.deselectReason} description={this.props.description} descriptionChanged={this.descriptionChanged} toggleSubmit={this.toggleSubmit} />
-                        <Calendar selectStartDate={this.selectStartDate} selectEndDate={this.selectEndDate} />
+                        <Calendar selectStartDate={this.selectStartDate} selectEndDate={this.selectEndDate} pageType={this.props.pageType}  />
                         <Preview name={this.props.name} startDate={this.props.startDate} endDate={this.props.endDate} reasonType={this.props.reasonType} description={this.props.description} />
                         {this.props.showSubmit ?
                         <SubmitButton 
@@ -243,14 +249,16 @@ class App extends Component {
                             createEvent={this.createEvent} 
                             pageType={this.props.pageType}
                             showSubmit={this.props.showSubmit}
-                            toggleSubmit={this.toggleSubmit} />
+                            toggleSubmit={this.toggleSubmit}
+                            updateLoadingAnimationVisibility={this.updateLoadingAnimationVisibility}
+                            loadingAnimation={this.props.loadingAnimation}/>
                             : null}
                     </div> 
                         : null }
                         
                     {this.props.pageType === PageType.REPORT ?
                     <div className="report-page">
-                        {this.props.showSubmit ? 
+                        <Calendar selectStartDate={this.selectStartDate} selectEndDate={this.selectEndDate} pageType={this.props.pageType} />
                         <LoadReportButton 
                             name={this.props.name} 
                             startDate={this.props.startDate} 
@@ -262,8 +270,9 @@ class App extends Component {
                             showSubmit={this.props.showSubmit}
                             toggleSubmit={this.toggleSubmit}
                             token={this.props.token}
-                            updateEvents={this.updateEvents} />
-                            : null}
+                            updateEvents={this.updateEvents}
+                            updateLoadingAnimationVisibility={this.updateLoadingAnimationVisibility}
+                            loadingAnimation={this.props.loadingAnimation}/>
                         <Report events={this.props.events} token={this.props.token} updateEvents={this.updateEvents} toggleSubmit={this.toggleSubmit} /> 
                     </div>
                         : null }
@@ -284,7 +293,8 @@ const mapStateToProps = (state) => {
         tokenExpiration: state.tokenExpiration,
         events: state.events,
         pageType: state.pageType,
-        showSubmit: state.showSubmit
+        showSubmit: state.showSubmit,
+        loadingAnimation: state.loadingAnimation
     };
 };
 

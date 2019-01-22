@@ -1,4 +1,5 @@
 import React from 'react';
+import PageType from './../PageType';
 import './../assets/css/calendar.css';
 import moment from 'moment';
 
@@ -135,9 +136,11 @@ export default class Calendar extends React.Component {
 
     render() {
         const {date, startDate, endDate} = this.state;
-
+        const forceVisible = {
+          display: "block"  
+        };
         return (
-            <div className="calendar">
+            <div className="calendar" style={this.props.pageType === PageType.REPORT ? forceVisible : null} >
                 <Heading date={date} changeMonth={(month) => this.changeMonth(month)} resetDate={() => this.resetDate()} />
 
                 <Days onClick={(date) => this.changeDate(date)} date={date} startDate={startDate} endDate={endDate} />

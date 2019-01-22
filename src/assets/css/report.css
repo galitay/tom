@@ -30,11 +30,14 @@
   padding: 4px;
   display: flex; }
 
-.reason-label {
+.reason-label, .reason-label-unknown {
   padding: 3px;
-  background-color: #30716D;
+  background-color: #1f9670;
   margin-right: 10px;
   margin-left: 10px;
   color: white;
   border-radius: 4px;
   font-size: 12px; }
+
+.reason-label-unknown {
+  background-color: #7a948c; }

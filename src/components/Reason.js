@@ -2,7 +2,7 @@ import React from 'react';
 import './../assets/css/reason.css';
 import $ from 'jquery';
 import 'jquery-ui-bundle';
-import {ReasonType} from './../index';
+import ReasonType from './../ReasonType';
 
 export default class Reason extends React.Component {
 

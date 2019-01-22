@@ -23,10 +23,12 @@ export default class SubmitButton extends React.Component {
     };
     
     submitClicked = () => {
+        this.props.updateLoadingAnimationVisibility(true);
         this.onclickAction();
-        $("#button").addClass("onclic", 250, this.validate);
+        // $("#button").addClass("onclic", 250, this.validate);
     };
     
+    /*
     validate() {
         setTimeout(function() {
             $("#button").removeClass("onclic");
@@ -39,11 +41,11 @@ export default class SubmitButton extends React.Component {
             $("#button").removeClass("validate");
         }, 1250 );
     }
-    
+    */
     render() {
         return (
             <div className="submit-container">
-                <button id="button" className={this.props.pageType === PageType.REPORT ? "load-report-button" : null} onClick={() => this.submitClicked()} />
+                <button id="button" className={(this.props.pageType === PageType.REPORT ? "load-report-button" : "") + (this.props.loadingAnimation ? " onclic" : "") } onClick={() => this.submitClicked()} />
             </div>
         )
     }

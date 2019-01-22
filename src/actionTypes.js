@@ -50,3 +50,8 @@ export const toggleSubmitAction = (visible) => ({
     visible: visible
 });
 
+export const loadingAnimationChangeAction = (visible) => ({
+    type: 'LOADING_ANIMATION_CHANGE',
+    visible: visible
+});
+

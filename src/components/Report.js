@@ -1,4 +1,5 @@
 import React from 'react';
+import ReasonType from './../ReasonType';
 import './../assets/css/report.css';
 import 'jquery-ui-bundle';
 import moment from "moment";
@@ -20,7 +21,7 @@ export default class Report extends React.Component {
                                 <div className="employee-events">
                                     {this.props.events[employeeKey].map((event) => {
                                         return <div key={event.id} className="event-container" title={event.subject}>
-                                            <div className="reason-label">{event.reason.name}</div>
+                                            <div className={event.reason === ReasonType.NONE ? "reason-label-unknown" : "reason-label"}>{event.reason.name}</div>
                                             <div>{moment(event.start).format("DD.MM.YY")} {moment(event.start).add(1, "days").format("DD.MM.YY") !== moment(event.end).format("DD.MM.YY") ? " - " + moment(event.end).format("DD.MM.YY") : ""}</div> 
                                         </div>
                                     })}

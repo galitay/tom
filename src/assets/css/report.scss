@@ -40,10 +40,15 @@
 
 .reason-label{
   padding: 3px;
-  background-color: $primary;
+  background-color: #1f9670;
   margin-right: 10px;
   margin-left: 10px;
   color: white;
   border-radius: 4px;
   font-size: 12px;
+}
+
+.reason-label-unknown{
+  @extend  .reason-label;
+  background-color: #7a948c;
 }

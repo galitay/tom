@@ -4,14 +4,15 @@ import SubmitButton from './SubmitButton';
 import $ from 'jquery';
 import 'jquery-ui-bundle';
 import moment from "moment";
-import {ReasonType} from "../index";
+import ReasonType from './../ReasonType';
 
 export default class LoadReportButton extends SubmitButton {
     
     onclickAction = () => {
         console.log("Loading reports");
-        const start = moment("2018-12-01").startOf("day").format("YYYY-MM-DDTHH:mm");
-        const end = moment("2019-01-01").startOf("day").format("YYYY-MM-DDTHH:mm");
+        console.log("*****************" + this.props.loadingAnimation);
+        const start = moment(this.props.startDate).startOf("day").format("YYYY-MM-DDTHH:mm:ss");
+        const end = moment(this.props.endDate).startOf("day").format("YYYY-MM-DDTHH:mm:ss");
         this.getEvents(start, end);
     };
 
@@ -26,8 +27,10 @@ export default class LoadReportButton extends SubmitButton {
             }
         }).done((data) => {
             this.processAllEvents(data);
-        }).fail(function (response) {
+            this.props.updateLoadingAnimationVisibility(false);
+        }).fail((response) => {
             console.log("Could not retrieve events");
+            this.props.updateLoadingAnimationVisibility(false);
         });
     };
 
@@ -37,6 +40,14 @@ export default class LoadReportButton extends SubmitButton {
 
         for (var i = 0; i < allEvents.length; i++) {
             let event = allEvents[i];
+            
+            // filter out of scope events because of query date limitation
+            // console.log("event end " + moment(event.End.DateTime).startOf("day").format("YYYY-MM-DDTHH:mm:ss") + " - start selected " +  moment(this.props.startDate).startOf("day").format("YYYY-MM-DDTHH:mm:ss"));
+            if (moment(event.End.DateTime).startOf("day") <= moment(this.props.startDate).startOf("day")) {
+                console.log("filtered: start at " + event.Start.DateTime + " until " + event.End.DateTime);
+                continue;
+            }
+            
             const email = event.Organizer.EmailAddress.Address;
             const eventEntry = {
                 "id": event.Id,
@@ -66,7 +77,7 @@ export default class LoadReportButton extends SubmitButton {
         if (subject.includes("reserve") && subject.includes("duty")){
             return ReasonType.RESERVE_DUTY
         }
-        if (subject.includes("leaving")){
+        if (subject.includes("leaving") || subject.includes("leave")){
             return ReasonType.LEAVING_EARLY
         }
         if (subject.includes("vacation") || subject.includes("pto") || subject.includes("day off")){

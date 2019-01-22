@@ -3,25 +3,10 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import PageType from './PageType';
+import ReasonType from './ReasonType';
 import * as serviceWorker from './serviceWorker';
 import { createStore, compose, applyMiddleware } from 'redux';
-import soldier from './assets/img/soldier.png';
-import baby from './assets/img/baby.png';
-import vacation from './assets/img/vacation.png';
-import early from './assets/img/early.png';
-import sick from './assets/img/sick.png';
-import home from './assets/img/home.png';
 import moment from "moment";
-
-export const ReasonType = {
-    NONE: {id: 0, name: "N/A", image: "none"},
-    WFH: {id: 6, name: "WFH", image: {home}},
-    VACATION: {id: 1, name: "Vacation", image: {vacation}},
-    SICK: {id: 2, name: "Sick", image: {sick}},
-    SICK_CHILD: {id: 3, name: "Sick Child", image: {baby}},
-    LEAVING_EARLY: {id: 5, name: "Leaving Early", image: {early}},
-    RESERVE_DUTY: {id: 4, name: "Reserve Duty", image : {soldier}}
-};
 
 const initialData = {
     reasonType: ReasonType.NONE,
@@ -33,7 +18,8 @@ const initialData = {
     tokenExpiration: "",
     events: {},
     pageType: PageType.SEND_EVENT,
-    showSubmit: false
+    showSubmit: false,
+    loadingAnimation: false
 };
 
 const tomReducer = (state, action) => {
@@ -61,6 +47,9 @@ const tomReducer = (state, action) => {
             return {...state, pageType: action.pageType};
         case 'TOGGLE_SUBMIT':
             return {...state, showSubmit: action.visible};
+        case 'LOADING_ANIMATION_CHANGE':
+            console.log("animation is now " + action.visible);
+            return {...state, loadingAnimation: action.visible};
         default:
             return state;
     }
