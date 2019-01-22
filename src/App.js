@@ -221,12 +221,25 @@ class App extends Component {
         let newPageType = PageType.SEND_EVENT;
         if (this.props.pageType === PageType.SEND_EVENT) {
             newPageType = PageType.REPORT;
+            this.props.tomActions.reasonFormVisibilityAction(false);
         }  
         this.props.tomActions.togglePageAction(newPageType);
     };
     
     updateLoadingAnimationVisibility = (visible) => {
         this.props.tomActions.loadingAnimationChangeAction(visible);
+    };
+
+    updateReasonFormVisibility = (visible) => {
+        this.props.tomActions.reasonFormVisibilityAction(visible);
+    };
+
+    updateMessageContainerVisibility = (visible) => {
+        this.props.tomActions.messageContainerVisibilityAction(visible);
+    };
+
+    reasonSelect = (id) => {
+        this.props.tomActions.reasonSelectAction(id);
     };
 
     componentWillMount() {
@@ -245,9 +258,24 @@ class App extends Component {
                     </div>
                     {this.props.pageType === PageType.SEND_EVENT ?
                     <div className="send-event-page">
-                        <Reason selectReason={this.selectReason} deselectReason={this.deselectReason} description={this.props.description} descriptionChanged={this.descriptionChanged} toggleSubmit={this.toggleSubmit} />
+                        <Reason 
+                            selectReason={this.selectReason} 
+                            deselectReason={this.deselectReason} 
+                            description={this.props.description} 
+                            descriptionChanged={this.descriptionChanged} 
+                            toggleSubmit={this.toggleSubmit}
+                            reasonFormVisible={this.props.reasonFormVisible}
+                            messageContainerVisible={this.props.messageContainerVisible}
+                            reasonSelected={this.props.reasonSelected}
+                            updateReasonFormVisibility={this.updateReasonFormVisibility}
+                            updateMessageContainerVisibility={this.updateMessageContainerVisibility}
+                            reasonSelect={this.reasonSelect} />
+                        {this.props.reasonFormVisible ?
                         <Calendar selectStartDate={this.selectStartDate} selectEndDate={this.selectEndDate} pageType={this.props.pageType}  />
+                            : null }
+                        {this.props.reasonFormVisible ?
                         <Preview name={this.props.name} startDate={this.props.startDate} endDate={this.props.endDate} reasonType={this.props.reasonType} description={this.props.description} />
+                            : null}
                         {this.props.showSubmit ?
                         <SubmitButton 
                             name={this.props.name} 
@@ -260,7 +288,7 @@ class App extends Component {
                             showSubmit={this.props.showSubmit}
                             toggleSubmit={this.toggleSubmit}
                             updateLoadingAnimationVisibility={this.updateLoadingAnimationVisibility}
-                            loadingAnimation={this.props.loadingAnimation}/>
+                            loadingAnimation={this.props.loadingAnimation} />
                             : null}
                     </div> 
                         : null }
@@ -281,7 +309,7 @@ class App extends Component {
                             token={this.props.token}
                             updateEvents={this.updateEvents}
                             updateLoadingAnimationVisibility={this.updateLoadingAnimationVisibility}
-                            loadingAnimation={this.props.loadingAnimation}/>
+                            loadingAnimation={this.props.loadingAnimation} />
                         <Report events={this.props.events} token={this.props.token} updateEvents={this.updateEvents} toggleSubmit={this.toggleSubmit} /> 
                     </div>
                         : null }
@@ -303,7 +331,10 @@ const mapStateToProps = (state) => {
         events: state.events,
         pageType: state.pageType,
         showSubmit: state.showSubmit,
-        loadingAnimation: state.loadingAnimation
+        loadingAnimation: state.loadingAnimation,
+        reasonFormVisible: state.reasonFormVisible,
+        messageContainerVisible: state.messageContainerVisible,
+        reasonSelected: state.reasonSelected
     };
 };
 

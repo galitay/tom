@@ -19,7 +19,10 @@ const initialData = {
     events: {},
     pageType: PageType.SEND_EVENT,
     showSubmit: false,
-    loadingAnimation: false
+    loadingAnimation: false,
+    reasonFormVisible: false,
+    messageContainerVisible: false,
+    reasonSelected: ReasonType.NONE.id
 };
 
 const tomReducer = (state, action) => {
@@ -50,6 +53,12 @@ const tomReducer = (state, action) => {
         case 'LOADING_ANIMATION_CHANGE':
             console.log("animation is now " + action.visible);
             return {...state, loadingAnimation: action.visible};
+        case 'REASON_SELECT':
+            return {...state, reasonSelected: action.id};
+        case 'REASON_FORM_VISIBILITY':
+            return {...state, reasonFormVisible: action.visible};
+        case 'MESSAGE_CONTAINER_VISIBILITY':
+            return {...state, messageContainerVisible: action.visible};
         default:
             return state;
     }

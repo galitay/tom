@@ -18,12 +18,10 @@ export const deselectReasonAction = () => ({
     type: 'DESELECT_REASON'
 });
 
-
 export const descriptionChangedAction = (event) => ({
     type: 'DESCRIPTION_CHANGED',
     description: event.target.value
 });
-
 
 export const selectStartDateAction = (newStartDate) => ({
     type: 'SELECT_START_DATE',
@@ -54,4 +52,20 @@ export const loadingAnimationChangeAction = (visible) => ({
     type: 'LOADING_ANIMATION_CHANGE',
     visible: visible
 });
+
+export const reasonSelectAction = (id) => ({
+    type: 'REASON_SELECT',
+    id: id
+});
+
+export const reasonFormVisibilityAction = (visible) => ({
+    type: 'REASON_FORM_VISIBILITY',
+    visible: visible
+});
+
+export const messageContainerVisibilityAction = (visible) => ({
+    type: 'MESSAGE_CONTAINER_VISIBILITY',
+    visible: visible
+});
+
 
