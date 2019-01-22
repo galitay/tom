@@ -1,6 +1,5 @@
 import React from 'react';
 import './../assets/css/preview.css';
-import 'jquery-ui-bundle';
 import moment from "moment";
 
 export default class Preview extends React.Component {

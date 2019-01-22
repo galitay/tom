@@ -1,7 +1,6 @@
 import React from 'react';
 import ReasonType from './../ReasonType';
 import './../assets/css/report.css';
-import 'jquery-ui-bundle';
 import moment from "moment";
 
 export default class Report extends React.Component {

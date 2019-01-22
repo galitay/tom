@@ -1,7 +1,5 @@
 import './../assets/css/submitButton.css';
 import SubmitButton from './SubmitButton';
-import $ from 'jquery';
-import 'jquery-ui-bundle';
 import moment from "moment";
 import ReasonType from './../ReasonType';
 
@@ -9,7 +7,6 @@ export default class LoadReportButton extends SubmitButton {
     
     onclickAction = () => {
         console.log("Loading reports");
-        console.log("*****************" + this.props.loadingAnimation);
         const start = moment(this.props.startDate).startOf("day").format("YYYY-MM-DDTHH:mm:ss");
         const end = moment(this.props.endDate).startOf("day").format("YYYY-MM-DDTHH:mm:ss");
         this.getEvents(start, end);
@@ -18,19 +15,21 @@ export default class LoadReportButton extends SubmitButton {
     getEvents = (startDateTime, endDateTime) => {
         var apiUrl = "https://outlook.office.com/api/v2.0/me/calendarview?startdatetime=" + startDateTime + "&enddatetime=" + endDateTime + "&$top=" + 10000;
 
-        $.ajax({
-            type: 'GET',
-            url: apiUrl,
+        fetch(apiUrl,{
+            method: 'GET',
             headers: {
                 "Authorization": "Bearer " + this.props.token
             }
-        }).done((data) => {
-            this.processAllEvents(data);
-            this.props.updateLoadingAnimationVisibility(false);
-        }).fail((response) => {
-            console.log("Could not retrieve events");
-            this.props.updateLoadingAnimationVisibility(false);
-        });
+        }).then((res) => res.json())
+            .then(
+            (data) => {
+                this.processAllEvents(data);
+                this.props.updateLoadingAnimationVisibility(false);
+            },
+            (error) => {
+                console.log("Could not retrieve events");
+                this.props.updateLoadingAnimationVisibility(false);
+            });
     };
 
     processAllEvents = (data) => {

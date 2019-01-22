@@ -11,8 +11,6 @@ import * as actions from './actionTypes';
 import { bindActionCreators } from 'redux';
 import { connect, Provider } from 'react-redux';
 import moment from "moment";
-import $ from 'jquery';
-import 'jquery-ui-bundle';
 import logo from './assets/img/tom_logo.png';
 
 
@@ -136,21 +134,25 @@ class App extends Component {
 
     getUserInfo = () => {
         var apiUrl = "https://outlook.office.com/api/v2.0/me";
-        $.ajax({
-            type: 'GET',
-            url: apiUrl,
+        
+        fetch(apiUrl, {
+            method: 'GET',
             headers: {
                 "Authorization": "Bearer " + this.props.token
             },
             contentType: 'application/json'
-        }).done((data) => {
-            this.props.tomActions.userDataAction(data.DisplayName);
-            localStorage.setItem("name", data.DisplayName);
-            console.log("User display name wat set to: " + data.DisplayName);
-            this.processResults(data);
-        }).fail(function (response) {
-            console.log("Could not get user info");
-        });
+        }).then((res) => res.json())
+            .then(
+            (data) => {
+                this.props.tomActions.userDataAction(data.DisplayName);
+                localStorage.setItem("name", data.DisplayName);
+                console.log("User display name was set to " + data.DisplayName);
+                this.processResults(data);
+            },
+            (error) => {
+                console.log("Could not get user info");
+            }
+        );
     };
     
     updateEvents = (events) => {
@@ -195,21 +197,24 @@ class App extends Component {
             "IsAllDay": true,
         };
 
-        $.ajax({
-            type: 'POST',
-            url: apiUrl,
+        fetch(apiUrl, {
+            method: 'POST',
             headers: {
-                "Authorization": "Bearer " + this.props.token
+                "Authorization": "Bearer " + this.props.token,
+                'Content-Type':'application/json'
             },
-            contentType: 'application/json',
-            data: JSON.stringify(postData)
-        }).done((data) => {
-            this.processResults(data);
-            this.props.updateLoadingAnimationVisibility(false);
-        }).fail((response) => {
-            console.log("Could not create event");
-            this.props.updateLoadingAnimationVisibility(false);
-        });
+            body: JSON.stringify(postData)
+        }).then((res) => res.json())
+            .then(
+            (data) => {
+                this.processResults(data);
+                this.updateLoadingAnimationVisibility(false);
+            },
+            (error) => {
+                console.log("Could not create event");
+                this.updateLoadingAnimationVisibility(false);
+            }
+        );
     };
     
     togglePages = () => {

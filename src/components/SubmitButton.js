@@ -1,7 +1,6 @@
 import React from 'react';
 import './../assets/css/submitButton.css';
 import PageType from './../PageType';
-import 'jquery-ui-bundle';
 import moment from "moment";
 
 export default class SubmitButton extends React.Component {
