@@ -1,6 +1,20 @@
 .app {
   text-align: center; }
 
+.app-header {
+  width: 340px;
+  margin: 0 auto;
+  display: flex;
+  padding-top: 10px;
+  align-items: center; }
+  .app-header img {
+    height: 40px; }
+  .app-header .page-title {
+    font-size: 30px;
+    color: #30716D;
+    font-weight: bold;
+    margin-left: 10px; }
+
 .toggle-page {
   margin: 0 auto;
   margin-top: 20px;

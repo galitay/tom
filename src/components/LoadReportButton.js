@@ -1,4 +1,3 @@
-import React from 'react';
 import './../assets/css/submitButton.css';
 import SubmitButton from './SubmitButton';
 import $ from 'jquery';

@@ -13,6 +13,7 @@ import { connect, Provider } from 'react-redux';
 import moment from "moment";
 import $ from 'jquery';
 import 'jquery-ui-bundle';
+import logo from './assets/img/tom_logo.png';
 
 
 class App extends Component {
@@ -233,7 +234,10 @@ class App extends Component {
         return (
             <Provider store={this.props.store}>
                 <div className="app">
-                    
+                    <div className="app-header">
+                        <div><img src={logo} alt="TOM LOGO"/></div>
+                        <div className="page-title">{this.props.pageType === PageType.REPORT ? PageType.REPORT.name : PageType.SEND_EVENT.name}</div>
+                    </div>
                     {this.props.pageType === PageType.SEND_EVENT ?
                     <div className="send-event-page">
                         <Reason selectReason={this.selectReason} deselectReason={this.deselectReason} description={this.props.description} descriptionChanged={this.descriptionChanged} toggleSubmit={this.toggleSubmit} />

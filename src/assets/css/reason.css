@@ -88,7 +88,8 @@ body, html {
 .message-content-container {
   display: flex;
   width: 340px;
-  position: relative; }
+  position: relative;
+  margin-bottom: 10px; }
 
 .message-content {
   border: 1px solid #e5e5e5;

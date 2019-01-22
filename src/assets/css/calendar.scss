@@ -12,7 +12,7 @@ body {
 .calendar {
   display: none;
   margin: 0 auto;
-  margin-top: 20px;
+  margin-top: 10px;
   max-width: $width - (2 * $calendar-padding);
   padding: $calendar-padding;
   box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.4); // was 20px shadow
