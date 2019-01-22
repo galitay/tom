@@ -8,9 +8,6 @@
     <e p="C:\Users\itay.gal\.Rider2018.2\system\extResources" t="IncludeRecursive" />
     <e p="C:\Users\itay.gal\.Rider2018.2\system\resharper-host\local\Transient\ReSharperHost\v182\SolutionCaches\_tom-app.568947187.00" t="ExcludeRecursive" />
     <e p="D:\tom-app" t="IncludeFlat">
-      <e p="node_modules\jquery" t="IncludeRecursive" />
-      <e p="node_modules\jquery-ui" t="IncludeRecursive" />
-      <e p="node_modules\jquery-ui-bundle" t="IncludeRecursive" />
       <e p="node_modules\moment" t="IncludeRecursive" />
       <e p="node_modules\node-sass" t="IncludeRecursive" />
       <e p="node_modules\npm-run-all" t="IncludeRecursive" />
