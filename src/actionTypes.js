@@ -53,10 +53,10 @@ export const loadingAnimationChangeAction = (visible) => ({
     visible: visible
 });
 
-export const reasonSelectAction = (id) => ({
+/*export const reasonSelectAction = (id) => ({
     type: 'REASON_SELECT',
     id: id
-});
+});*/
 
 export const reasonFormVisibilityAction = (visible) => ({
     type: 'REASON_FORM_VISIBILITY',

@@ -4,7 +4,7 @@ import moment from "moment";
 
 export default class Preview extends React.Component {
     render () {
-        const startDate = moment(this.props.startDate).format("DD.MM.YY");
+        const startDate = moment(this.props.startDate).format("DD.MM.YY"); 
         const endDate = moment(this.props.endDate).format("DD.MM.YY");
         let dateText = startDate;
         if (startDate !== endDate) {

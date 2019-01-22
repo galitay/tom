@@ -12,7 +12,7 @@ export default class Reason extends React.Component {
     animateReasonSelected(selectedElement, reasonType) {
         let relativeY = selectedElement.getBoundingClientRect().top -  ReactDOM.findDOMNode(this).getElementsByClassName("menu-container")[0].getBoundingClientRect().top;
 
-        this.props.reasonSelect(reasonType.id);
+        this.props.selectReason(reasonType);
 
         let items = ReactDOM.findDOMNode(this).getElementsByClassName("item");
         for (let item of items){
@@ -35,12 +35,12 @@ export default class Reason extends React.Component {
         }, 300);
 
         setTimeout(() => {
-            this.props.reasonSelect(ReasonType.NONE.id);
+            this.props.selectReason(ReasonType.NONE);
         }, 600);
     };
 
     reasonSelected = (event, reasonType) => {
-        this.props.selectReason(event, reasonType);
+        this.props.selectReason(reasonType);
         this.animateReasonSelected(event.currentTarget, reasonType);
         setTimeout(() => {
             this.props.toggleSubmit(true);
@@ -64,7 +64,7 @@ export default class Reason extends React.Component {
                 <div className={"menu-container" + (this.props.reasonFormVisible ? " menu-container-shrink" : "")}>
                     {Object.keys(ReasonType).map((reason) => {
                         if (ReasonType[reason].name !== ReasonType.NONE.name) {
-                            return <div key={ReasonType[reason].name} className={"item" + (this.props.reasonFormVisible ? " toTop" : "") + (this.props.reasonSelected === ReasonType[reason].id ? " selected" : "")} onClick={(event) => this.reasonSelected(event, ReasonType[reason])}>
+                            return <div key={ReasonType[reason].name} className={"item" + (this.props.reasonFormVisible ? " toTop" : "") + (this.props.reasonType === ReasonType[reason] ? " selected" : "")} onClick={(event) => this.reasonSelected(event, ReasonType[reason])}>
                                 <img src={Object.values(ReasonType[reason].image)[0]} alt="{ReasonType[reason].name}" />
                                 <div className="item-text">{ReasonType[reason].name}</div>
                             </div>;

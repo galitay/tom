@@ -12,6 +12,7 @@ import { bindActionCreators } from 'redux';
 import { connect, Provider } from 'react-redux';
 import moment from "moment";
 import logo from './assets/img/tom_logo.png';
+import ReasonType from "./ReasonType";
 
 
 class App extends Component {
@@ -21,7 +22,7 @@ class App extends Component {
     appUrl = "http://localhost:3002/";
     // appUrl = "https://www.itayg.com/tom/";
     
-    selectReason = (event, reasonType) => {
+    selectReason = (reasonType) => {
         this.props.tomActions.selectReasonAction(reasonType);
     };
     
@@ -222,6 +223,8 @@ class App extends Component {
         if (this.props.pageType === PageType.SEND_EVENT) {
             newPageType = PageType.REPORT;
             this.props.tomActions.reasonFormVisibilityAction(false);
+            this.updateMessageContainerVisibility(false);
+            this.selectReason(ReasonType.NONE);
         }  
         this.props.tomActions.togglePageAction(newPageType);
     };
@@ -238,9 +241,9 @@ class App extends Component {
         this.props.tomActions.messageContainerVisibilityAction(visible);
     };
 
-    reasonSelect = (id) => {
+   /* reasonSelect = (id) => {
         this.props.tomActions.reasonSelectAction(id);
-    };
+    };*/
 
     componentWillMount() {
         if (!this.isLoggedIn() && !this.processLoginAnswer()){
@@ -266,10 +269,11 @@ class App extends Component {
                             toggleSubmit={this.toggleSubmit}
                             reasonFormVisible={this.props.reasonFormVisible}
                             messageContainerVisible={this.props.messageContainerVisible}
-                            reasonSelected={this.props.reasonSelected}
+                            reasonType={this.props.reasonType}
+                            //reasonSelected={this.props.reasonSelected}
                             updateReasonFormVisibility={this.updateReasonFormVisibility}
                             updateMessageContainerVisibility={this.updateMessageContainerVisibility}
-                            reasonSelect={this.reasonSelect} />
+                            /*reasonSelect={this.reasonSelect}*/ />
                         {this.props.reasonFormVisible ?
                         <Calendar selectStartDate={this.selectStartDate} selectEndDate={this.selectEndDate} pageType={this.props.pageType}  />
                             : null }
@@ -333,8 +337,8 @@ const mapStateToProps = (state) => {
         showSubmit: state.showSubmit,
         loadingAnimation: state.loadingAnimation,
         reasonFormVisible: state.reasonFormVisible,
-        messageContainerVisible: state.messageContainerVisible,
-        reasonSelected: state.reasonSelected
+        messageContainerVisible: state.messageContainerVisible
+        //reasonSelected: state.reasonSelected
     };
 };
 
