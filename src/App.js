@@ -53,7 +53,7 @@ class App extends Component {
         var vars = query.split("&");
         for (var i=0;i<vars.length;i++) {
             var pair = vars[i].split("=");
-            if(pair[0] == variable){return pair[1];}
+            if(pair[0] === variable){return pair[1];}
         }
         return(false);
     };
@@ -64,10 +64,10 @@ class App extends Component {
         var ca = decodedCookie.split(';');
         for(var i = 0; i <ca.length; i++) {
             var c = ca[i];
-            while (c.charAt(0) == ' ') {
+            while (c.charAt(0) === ' ') {
                 c = c.substring(1);
             }
-            if (c.indexOf(name) == 0) {
+            if (c.indexOf(name) === 0) {
                 return c.substring(name.length, c.length);
             }
         }
@@ -93,7 +93,7 @@ class App extends Component {
         var expiresIn = this.getQueryVariable("expires_in"); // getHashParameterByName("expires_in");
         var returnedState = this.getQueryVariable("state"); // getHashParameterByName("state");
         var stateToMatch = this.getCookie("myEventsState"); // getBrowserCookie("myEventsState"); //state parameter cookie
-        if (token && stateToMatch && (stateToMatch == returnedState)) {
+        if (token && stateToMatch && (stateToMatch === returnedState)) {
             var cookie = token;
             if (expiresIn) {
                 var now = new Date();
