@@ -20,7 +20,7 @@ export default class Reason extends React.Component {
         }
         setTimeout(() => {
             this.props.updateReasonFormVisibility(true);
-        }, 600);
+        }, 300);
     };
 
     animateReasonDeselected() {

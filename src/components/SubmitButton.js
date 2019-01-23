@@ -23,23 +23,8 @@ export default class SubmitButton extends React.Component {
     submitClicked = () => {
         this.props.updateLoadingAnimationVisibility(true);
         this.onclickAction();
-        // $("#button").addClass("onclic", 250, this.validate);
     };
     
-    /*
-    validate() {
-        setTimeout(function() {
-            $("#button").removeClass("onclic");
-            $("#button").addClass("validate", 450, this.callback);
-        }, 2250 );
-    }
-    
-    callback() {
-        setTimeout(function() {
-            $("#button").removeClass("validate");
-        }, 1250 );
-    }
-    */
     render() {
         return (
             <div className="submit-container">
