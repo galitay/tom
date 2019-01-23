@@ -48,22 +48,22 @@ class App extends Component {
     };
 
     getQueryVariable = (variable) => {
-        var query = window.location.hash;
+        let query = window.location.hash;
         query = query.substring(1, query.length);
-        var vars = query.split("&");
-        for (var i=0;i<vars.length;i++) {
-            var pair = vars[i].split("=");
+        let vars = query.split("&");
+        for (let i=0;i<vars.length;i++) {
+            let pair = vars[i].split("=");
             if(pair[0] === variable){return pair[1];}
         }
         return(false);
     };
 
     getCookie = (cname) => {
-        var name = cname + "=";
-        var decodedCookie = decodeURIComponent(document.cookie);
-        var ca = decodedCookie.split(';');
-        for(var i = 0; i <ca.length; i++) {
-            var c = ca[i];
+        let name = cname + "=";
+        let decodedCookie = decodeURIComponent(document.cookie);
+        let ca = decodedCookie.split(';');
+        for(let i = 0; i <ca.length; i++) {
+            let c = ca[i];
             while (c.charAt(0) === ' ') {
                 c = c.substring(1);
             }
@@ -89,15 +89,15 @@ class App extends Component {
     };
     
     processLoginAnswer = () => {
-        var token = this.getQueryVariable("access_token"); // getHashParameterByName("access_token");
-        var expiresIn = this.getQueryVariable("expires_in"); // getHashParameterByName("expires_in");
-        var returnedState = this.getQueryVariable("state"); // getHashParameterByName("state");
-        var stateToMatch = this.getCookie("myEventsState"); // getBrowserCookie("myEventsState"); //state parameter cookie
+        const token = this.getQueryVariable("access_token");
+        const expiresIn = this.getQueryVariable("expires_in");
+        const returnedState = this.getQueryVariable("state");
+        const stateToMatch = this.getCookie("myEventsState");
         if (token && stateToMatch && (stateToMatch === returnedState)) {
-            var cookie = token;
+            let cookie = token;
             if (expiresIn) {
-                var now = new Date();
-                var hourLater = new Date(now.getTime() + (expiresIn * 1000));
+                let now = new Date();
+                let hourLater = new Date(now.getTime() + (expiresIn * 1000));
                 cookie = token + ";expires=" + hourLater.toUTCString();
             }
             document.cookie = "myEventsCookie=" + cookie;
@@ -116,14 +116,14 @@ class App extends Component {
     };
     
     login = () => {
-        var clientId = "ddc9bc57-5764-4dea-b006-63e86db2a060";
-        var redirectUrl = this.appUrl;
-        var authServer = "https://login.microsoftonline.com/common/oauth2/v2.0/authorize?";
-        var responseType = "token";
-        var stateParam = Math.random() * new Date().getTime();
+        const clientId = "ddc9bc57-5764-4dea-b006-63e86db2a060";
+        const redirectUrl = this.appUrl;
+        const authServer = "https://login.microsoftonline.com/common/oauth2/v2.0/authorize?";
+        const responseType = "token";
+        const stateParam = Math.random() * new Date().getTime();
         document.cookie = "myEventsState=" + stateParam;
 
-        var authUrl = authServer +
+        const authUrl = authServer +
             "response_type=" + encodeURI(responseType) +
             "&client_id=" + encodeURI(clientId) +
             "&scope=" + encodeURI("https://outlook.office.com/User.Read https://outlook.office.com/User.ReadBasic.All https://outlook.office.com/Calendars.Read https://outlook.office.com/Calendars.Read.Shared  https://outlook.office.com/Calendars.ReadWrite https://outlook.office.com/Calendars.ReadWrite.Shared") +
@@ -137,7 +137,7 @@ class App extends Component {
     };
 
     getUserInfo = () => {
-        var apiUrl = "https://outlook.office.com/api/v2.0/me";
+        const apiUrl = "https://outlook.office.com/api/v2.0/me";
         
         fetch(apiUrl, {
             method: 'GET',
@@ -164,15 +164,15 @@ class App extends Component {
     };
 
     createEvent = (startDate, endDate, subject, description) => {
-        var startDateTime = moment(startDate).format("YYYY-MM-DD") + "T00:00";
+        const startDateTime = moment(startDate).format("YYYY-MM-DD") + "T00:00";
         // end date should be 1 day later at 00:00 - for allDay event
-        var endDateTime = moment(endDate).add(1, 'd').format("YYYY-MM-DD") + "T00:00";
+        const endDateTime = moment(endDate).add(1, 'd').format("YYYY-MM-DD") + "T00:00";
      
         console.log("start " + startDate);
         console.log("end " + endDate);
         
-        var apiUrl = "https://outlook.office.com/api/v2.0/me/events";
-        var postData = {
+        const apiUrl = "https://outlook.office.com/api/v2.0/me/events";
+        const postData = {
             "Subject": subject,
             "Body": {
                 "ContentType": "HTML",
