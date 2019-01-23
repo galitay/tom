@@ -7,15 +7,13 @@
   display: flex;
   padding-top: 10px;
   align-items: center; }
-
-.app-header img {
-  height: 40px; }
-
-.app-header .page-title {
-  font-size: 30px;
-  color: #30716D;
-  font-weight: bold;
-  margin-left: 10px; }
+  .app-header img {
+    height: 40px; }
+  .app-header .page-title {
+    font-size: 30px;
+    color: #30716D;
+    font-weight: bold;
+    margin-left: 10px; }
 
 .toggle-page {
   margin: 0 auto;
@@ -33,10 +31,9 @@
   display: flex;
   align-items: center;
   justify-content: center; }
-
-.loading-page img {
-  width: 100px;
-  animation: rotating 2s linear infinite; }
+  .loading-page img {
+    width: 100px;
+    animation: rotating 2s linear infinite; }
 
 @keyframes rotating {
   from {

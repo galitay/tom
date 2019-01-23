@@ -11,17 +11,21 @@ import * as actions from './actionTypes';
 import { bindActionCreators } from 'redux';
 import { connect, Provider } from 'react-redux';
 import moment from "moment";
-import logo from './assets/img/tom_logo.png';
-import logo_sign from './assets/img/tom_logo_sign.png';
 import ReasonType from "./ReasonType";
 
 
 class App extends Component {
+    /*
     mailingList = "itay84@gmail.com";
     mailingListName = "Itay Gal";
-    timezone = "Asia/Jerusalem";
     appUrl = "http://localhost:3002/";
-    // appUrl = "https://www.itayg.com/tom/";
+    */
+    timezone = "Asia/Jerusalem";
+    
+    appUrl = "https://www.itayg.com/tom/";
+    mailingList = "Toluna-Office-Haifa@toluna.com";
+    mailingListName = "Toluna Haifa";
+    
     
     selectReason = (reasonType) => {
         this.props.tomActions.selectReasonAction(reasonType);
@@ -255,12 +259,12 @@ class App extends Component {
             <Provider store={this.props.store}>
                 <div className="app">
                     <div className="app-header">
-                        <div><img src={logo} alt="TOM LOGO"/></div>
+                        <div><img src="http://www.itayg.com/tom/static/media/tom_logo.png" alt="TOM LOGO"/></div>
                         <div className="page-title">{this.props.pageType === PageType.REPORT ? PageType.REPORT.name : PageType.SEND_EVENT.name}</div>
                     </div>
                     {this.props.pageType === PageType.LOGIN ?
                         <div className="loading-page">
-                            <img src={logo_sign} alt="loading" />
+                            <img src="http://www.itayg.com/tom/static/media/tom_logo_sign.png" alt="loading" />
                         </div>
                         : null }
                     {this.props.pageType === PageType.SEND_EVENT ?
