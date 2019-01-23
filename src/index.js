@@ -64,7 +64,7 @@ const tomReducer = (state, action) => {
 
 const store = createStore(tomReducer, initialData, compose(
     applyMiddleware(...[]),
-    window.devToolsExtension ? window.devToolsExtension() : f => f // add support for Redux dev tools
+    /*window.devToolsExtension ? window.devToolsExtension() : f => f // add support for Redux dev tools*/
     )
 );
 

@@ -15,17 +15,18 @@ import ReasonType from "./ReasonType";
 
 
 class App extends Component {
-    /*
+    
     mailingList = "itay84@gmail.com";
     mailingListName = "Itay Gal";
     appUrl = "http://localhost:3002/";
-    */
+    
     timezone = "Asia/Jerusalem";
     
+    /*
     appUrl = "https://www.itayg.com/tom/";
     mailingList = "Toluna-Office-Haifa@toluna.com";
     mailingListName = "Toluna Haifa";
-    
+    */
     
     selectReason = (reasonType) => {
         this.props.tomActions.selectReasonAction(reasonType);
