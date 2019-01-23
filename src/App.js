@@ -82,6 +82,7 @@ class App extends Component {
             this.props.tomActions.userDataAction(name);
             this.props.tomActions.loginAction(token, tokenExpirationDate);
             console.log("User already logged in");
+            this.props.tomActions.togglePageAction(PageType.SEND_EVENT);
             return true;
         }
         return false;
@@ -104,7 +105,7 @@ class App extends Component {
             localStorage.setItem('token', token);
             localStorage.setItem('tokenExpirationDate', expiration);
             this.props.tomActions.loginAction(token, moment().add(expiresIn, "seconds"));
-            this.props.pageType = PageType.SEND_EVENT;
+            this.props.tomActions.togglePageAction(PageType.SEND_EVENT);
             setTimeout(() => {
                 this.getUserInfo();
                 }, 10);
@@ -243,10 +244,6 @@ class App extends Component {
         this.props.tomActions.messageContainerVisibilityAction(visible);
     };
 
-   /* reasonSelect = (id) => {
-        this.props.tomActions.reasonSelectAction(id);
-    };*/
-
     componentWillMount() {
         if (!this.isLoggedIn() && !this.processLoginAnswer()){
             this.login();
@@ -277,10 +274,8 @@ class App extends Component {
                             reasonFormVisible={this.props.reasonFormVisible}
                             messageContainerVisible={this.props.messageContainerVisible}
                             reasonType={this.props.reasonType}
-                            //reasonSelected={this.props.reasonSelected}
                             updateReasonFormVisibility={this.updateReasonFormVisibility}
-                            updateMessageContainerVisibility={this.updateMessageContainerVisibility}
-                            /*reasonSelect={this.reasonSelect}*/ />
+                            updateMessageContainerVisibility={this.updateMessageContainerVisibility} />
                         {this.props.reasonFormVisible ?
                         <Calendar selectStartDate={this.selectStartDate} selectEndDate={this.selectEndDate} pageType={this.props.pageType}  />
                             : null }
@@ -347,7 +342,6 @@ const mapStateToProps = (state) => {
         loadingAnimation: state.loadingAnimation,
         reasonFormVisible: state.reasonFormVisible,
         messageContainerVisible: state.messageContainerVisible
-        //reasonSelected: state.reasonSelected
     };
 };
 
