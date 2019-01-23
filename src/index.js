@@ -17,7 +17,7 @@ const initialData = {
     token: "",
     tokenExpiration: "",
     events: {},
-    pageType: PageType.SEND_EVENT,
+    pageType: PageType.LOGIN,
     showSubmit: false,
     loadingAnimation: false,
     reasonFormVisible: false,

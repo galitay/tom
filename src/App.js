@@ -12,6 +12,7 @@ import { bindActionCreators } from 'redux';
 import { connect, Provider } from 'react-redux';
 import moment from "moment";
 import logo from './assets/img/tom_logo.png';
+import logo_sign from './assets/img/tom_logo_sign.png';
 import ReasonType from "./ReasonType";
 
 
@@ -103,6 +104,7 @@ class App extends Component {
             localStorage.setItem('token', token);
             localStorage.setItem('tokenExpirationDate', expiration);
             this.props.tomActions.loginAction(token, moment().add(expiresIn, "seconds"));
+            this.props.pageType = PageType.SEND_EVENT;
             setTimeout(() => {
                 this.getUserInfo();
                 }, 10);
@@ -259,6 +261,11 @@ class App extends Component {
                         <div><img src={logo} alt="TOM LOGO"/></div>
                         <div className="page-title">{this.props.pageType === PageType.REPORT ? PageType.REPORT.name : PageType.SEND_EVENT.name}</div>
                     </div>
+                    {this.props.pageType === PageType.LOGIN ?
+                        <div className="loading-page">
+                            <img src={logo_sign} alt="loading" />
+                        </div>
+                        : null }
                     {this.props.pageType === PageType.SEND_EVENT ?
                     <div className="send-event-page">
                         <Reason 
@@ -317,7 +324,9 @@ class App extends Component {
                         <Report events={this.props.events} token={this.props.token} updateEvents={this.updateEvents} toggleSubmit={this.toggleSubmit} /> 
                     </div>
                         : null }
+                    {this.props.pageType !== PageType.LOGIN ? 
                         <div className="toggle-page" onClick={() => this.togglePages()}>Go To {this.props.pageType === PageType.REPORT ? PageType.SEND_EVENT.name : PageType.REPORT.name}</div>
+                        : null}
                 </div>
             </Provider>
         );
