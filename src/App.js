@@ -12,6 +12,7 @@ import { bindActionCreators } from 'redux';
 import { connect, Provider } from 'react-redux';
 import moment from "moment";
 import ReasonType from "./ReasonType";
+import Logger from "./components/Logger";
 
 
 class App extends Component {
@@ -218,10 +219,26 @@ class App extends Component {
             (data) => {
                 this.processResults(data);
                 this.updateLoadingAnimationVisibility(false);
+                const postData = {
+                    username: this.props.name,
+                    action: "Create Event",
+                    success: true,
+                    start: startDate,
+                    end: endDate
+                };
+                Logger.log(postData);
             },
             (error) => {
                 console.log("Could not create event");
                 this.updateLoadingAnimationVisibility(false);
+                const postData = {
+                    username: this.props.name,
+                    action: "Create Event",
+                    success: false,
+                    start: startDate,
+                    end: endDate
+                };
+                Logger.log(postData);
             }
         );
     };

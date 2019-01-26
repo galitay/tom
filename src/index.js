@@ -22,7 +22,6 @@ const initialData = {
     loadingAnimation: false,
     reasonFormVisible: false,
     messageContainerVisible: false,
-    //reasonSelected: ReasonType.NONE.id
 };
 
 const tomReducer = (state, action) => {
@@ -51,8 +50,6 @@ const tomReducer = (state, action) => {
             return {...state, showSubmit: action.visible};
         case 'LOADING_ANIMATION_CHANGE':
             return {...state, loadingAnimation: action.visible};
-        //case 'REASON_SELECT':
-            //return {...state, reasonSelected: action.id};
         case 'REASON_FORM_VISIBILITY':
             return {...state, reasonFormVisible: action.visible};
         case 'MESSAGE_CONTAINER_VISIBILITY':

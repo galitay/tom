@@ -2,6 +2,7 @@ import './../assets/css/submitButton.css';
 import SubmitButton from './SubmitButton';
 import moment from "moment";
 import ReasonType from './../ReasonType';
+import Logger from './Logger';
 
 export default class LoadReportButton extends SubmitButton {
     
@@ -25,10 +26,26 @@ export default class LoadReportButton extends SubmitButton {
             (data) => {
                 this.processAllEvents(data);
                 this.props.updateLoadingAnimationVisibility(false);
+                const postData = {
+                    username: this.props.name,
+                    action: "Load Report",
+                    success: true,
+                    start: startDateTime,
+                    end: endDateTime
+                };
+                Logger.log(postData);
             },
             (error) => {
                 console.log("Could not retrieve events");
                 this.props.updateLoadingAnimationVisibility(false);
+                const postData = {
+                    username: this.props.name,
+                    action: "Load Report",
+                    success: false,
+                    start: startDateTime,
+                    end: endDateTime
+                };
+                Logger.log(postData);
             });
     };
 

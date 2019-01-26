@@ -21,7 +21,7 @@ export default class Report extends React.Component {
                                     {this.props.events[employeeKey].map((event) => {
                                         return <div key={event.id} className="event-container" title={event.subject}>
                                             <div className={event.reason === ReasonType.NONE ? "reason-label-unknown" : "reason-label"}>{event.reason.name}</div>
-                                            <div>{moment(event.start).format("DD.MM.YY")} {moment(event.start).add(1, "days").format("DD.MM.YY") !== moment(event.end).format("DD.MM.YY") ? " - " + moment(event.end).format("DD.MM.YY") : ""}</div> 
+                                            <div>{moment(event.start).format("DD.MM.YY")} {moment(event.end).subtract(1, "days").isSameOrBefore(moment(event.start), "day") ? "" : " - " + moment(event.end).subtract(1, "days").format("DD.MM.YY")}</div> 
                                         </div>
                                     })}
                                 </div>
