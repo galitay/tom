@@ -99,7 +99,7 @@ class App extends Component {
         const expiresIn = this.getQueryVariable("expires_in");
         const returnedState = this.getQueryVariable("state");
         const stateToMatch = this.getCookie("myEventsState");
-        if (token && stateToMatch && (stateToMatch === returnedState)) {
+        if (token && stateToMatch && (stateToMatch === returnedState) && token !== localStorage.getItem('token')) {
             let cookie = token;
             if (expiresIn) {
                 let now = new Date();
