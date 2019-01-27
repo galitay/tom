@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8bb334c3-c615-49ee-8289-743c14ef9fa4" name="Default Changelist" comment="fix login expiration">
+    <list default="true" id="8bb334c3-c615-49ee-8289-743c14ef9fa4" name="Default Changelist" comment="improving logs">
+      <change afterPath="$PROJECT_DIR$/logger.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.tom-app/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.tom-app/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/LoadReportButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/LoadReportButton.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -29,8 +28,9 @@
           <entry key="html" value="10" />
           <entry key="ico" value="1" />
           <entry key="js" value="82" />
-          <entry key="json" value="8" />
+          <entry key="json" value="9" />
           <entry key="md" value="1" />
+          <entry key="php" value="1" />
           <entry key="png" value="10" />
           <entry key="scss" value="43" />
           <entry key="svg" value="2" />
@@ -42,9 +42,9 @@
           <entry key="CSS" value="18" />
           <entry key="HTML" value="10" />
           <entry key="Image" value="11" />
-          <entry key="JSON" value="8" />
+          <entry key="JSON" value="9" />
           <entry key="JavaScript" value="82" />
-          <entry key="PLAIN_TEXT" value="2" />
+          <entry key="PLAIN_TEXT" value="3" />
           <entry key="SCSS" value="43" />
           <entry key="SVG" value="2" />
           <entry key="TypeScript" value="7" />
@@ -54,19 +54,19 @@
         <counts>
           <entry key="css" value="3" />
           <entry key="html" value="754" />
-          <entry key="js" value="16350" />
-          <entry key="json" value="56" />
+          <entry key="js" value="16356" />
+          <entry key="json" value="107" />
           <entry key="scss" value="2581" />
-          <entry key="txt" value="908" />
+          <entry key="txt" value="933" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="3" />
           <entry key="HTML" value="754" />
-          <entry key="JSON" value="56" />
-          <entry key="JavaScript" value="16350" />
-          <entry key="PLAIN_TEXT" value="908" />
+          <entry key="JSON" value="107" />
+          <entry key="JavaScript" value="16356" />
+          <entry key="PLAIN_TEXT" value="933" />
           <entry key="SCSS" value="2581" />
         </counts>
       </usages-collector>
@@ -109,11 +109,29 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/App.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="435">
-              <caret line="164" column="57" lean-forward="true" selection-start-line="164" selection-start-column="57" selection-end-line="164" selection-end-column="57" />
+            <state relative-caret-position="309">
+              <caret line="296" column="53" lean-forward="true" selection-start-line="296" selection-start-column="53" selection-end-line="296" selection-end-column="53" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/package.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="420">
+              <caret line="28" column="3" selection-start-line="28" selection-start-column="3" selection-end-line="28" selection-end-column="3" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/logger.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="345">
+              <caret line="23" column="64" selection-start-line="23" selection-start-column="64" selection-end-line="23" selection-end-column="64" />
             </state>
           </provider>
         </entry>
@@ -131,33 +149,12 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/PageType.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" column="24" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="24" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/Reason.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="75">
               <caret line="5" selection-start-line="5" selection-end-line="5" selection-end-column="14" />
               <folding>
                 <element signature="e#0#38#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/Preview.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" column="49" selection-start-line="18" selection-start-column="49" selection-end-line="18" selection-end-column="49" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -179,7 +176,7 @@
         <entry file="file://$PROJECT_DIR$/src/components/LoadReportButton.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="375">
-              <caret line="37" column="24" lean-forward="true" selection-start-line="37" selection-start-column="24" selection-end-line="37" selection-end-column="24" />
+              <caret line="37" column="24" selection-start-line="37" selection-start-column="24" selection-end-line="37" selection-end-column="24" />
               <folding>
                 <element signature="e#0#42#0" expanded="true" />
               </folding>
@@ -264,7 +261,6 @@
         <option value="$PROJECT_DIR$/src/assets/css/preview.scss" />
         <option value="$PROJECT_DIR$/src/assets/css/calendar.scss" />
         <option value="$PROJECT_DIR$/src/assets/css/reason.scss" />
-        <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/src/components/Preview.js" />
         <option value="$PROJECT_DIR$/src/actionTypes.js" />
         <option value="$PROJECT_DIR$/src/PageType.js" />
@@ -276,6 +272,7 @@
         <option value="$PROJECT_DIR$/public/index.html" />
         <option value="$PROJECT_DIR$/src/components/Logger.js" />
         <option value="$PROJECT_DIR$/src/components/LoadReportButton.js" />
+        <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/src/App.js" />
       </list>
     </option>
@@ -317,24 +314,7 @@
             <path>
               <item name="Project" type="161ac34:FileSystemExplorerRootNode" />
               <item name="tom-app" type="34e6ba20:FileSystemExplorerNode" />
-              <item name="public" type="34e6ba20:FileSystemExplorerNode" />
-            </path>
-            <path>
-              <item name="Project" type="161ac34:FileSystemExplorerRootNode" />
-              <item name="tom-app" type="34e6ba20:FileSystemExplorerNode" />
               <item name="src" type="34e6ba20:FileSystemExplorerNode" />
-            </path>
-            <path>
-              <item name="Project" type="161ac34:FileSystemExplorerRootNode" />
-              <item name="tom-app" type="34e6ba20:FileSystemExplorerNode" />
-              <item name="src" type="34e6ba20:FileSystemExplorerNode" />
-              <item name="assets" type="34e6ba20:FileSystemExplorerNode" />
-            </path>
-            <path>
-              <item name="Project" type="161ac34:FileSystemExplorerRootNode" />
-              <item name="tom-app" type="34e6ba20:FileSystemExplorerNode" />
-              <item name="src" type="34e6ba20:FileSystemExplorerNode" />
-              <item name="components" type="34e6ba20:FileSystemExplorerNode" />
             </path>
           </expand>
           <select />
@@ -377,7 +357,7 @@
       <workItem from="1547461357250" duration="3068000" />
       <workItem from="1547534009921" duration="643000" />
       <workItem from="1547631979552" duration="1920000" />
-      <workItem from="1547644437707" duration="132986000" />
+      <workItem from="1547644437707" duration="135622000" />
     </task>
     <task id="LOCAL-00001" summary="Do things in the react way">
       <created>1547722499437</created>
@@ -589,11 +569,18 @@
       <option name="project" value="LOCAL" />
       <updated>1548543962584</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="improving logs">
+      <created>1548569861015</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1548569861015</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="155373000" />
+    <option name="totallyTimeSpent" value="158009000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -654,7 +641,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Connect the app to the microsoft app and make work together" />
     <MESSAGE value="cleaning the console errors" />
     <MESSAGE value="Add description" />
     <MESSAGE value="Login with react + save login info + get display name from Outlook api" />
@@ -679,7 +665,8 @@
     <MESSAGE value="commented out the ability to debug on the browser" />
     <MESSAGE value="Adding log + fixing end dates on report" />
     <MESSAGE value="fix login expiration" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix login expiration" />
+    <MESSAGE value="improving logs" />
+    <option name="LAST_COMMIT_MESSAGE" value="improving logs" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -692,13 +679,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/calendar.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="36" selection-start-line="4" selection-start-column="36" selection-end-line="4" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/calendar.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="525">
@@ -902,13 +882,6 @@
     <entry file="file://$PROJECT_DIR$/node_modules/react-dom/index.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="19" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/assets/css/preview.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
@@ -1031,17 +1004,31 @@
     <entry file="file://$PROJECT_DIR$/src/components/LoadReportButton.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="375">
-          <caret line="37" column="24" lean-forward="true" selection-start-line="37" selection-start-column="24" selection-end-line="37" selection-end-column="24" />
+          <caret line="37" column="24" selection-start-line="37" selection-start-column="24" selection-end-line="37" selection-end-column="24" />
           <folding>
             <element signature="e#0#42#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="28" column="3" selection-start-line="28" selection-start-column="3" selection-end-line="28" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/logger.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="23" column="64" selection-start-line="23" selection-start-column="64" selection-end-line="23" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/App.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="164" column="57" lean-forward="true" selection-start-line="164" selection-start-column="57" selection-end-line="164" selection-end-column="57" />
+        <state relative-caret-position="309">
+          <caret line="296" column="53" lean-forward="true" selection-start-line="296" selection-start-column="53" selection-end-line="296" selection-end-column="53" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>

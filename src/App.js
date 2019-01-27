@@ -16,18 +16,18 @@ import Logger from "./components/Logger";
 
 
 class App extends Component {
-    
+    /*
     mailingList = "itay84@gmail.com";
     mailingListName = "Itay Gal";
     appUrl = "http://localhost:3002/";
-    
+    */
     timezone = "Asia/Jerusalem";
     
-    /*
+    
     appUrl = "https://www.itayg.com/tom/";
     mailingList = "Toluna-Office-Haifa@toluna.com";
     mailingListName = "Toluna Haifa";
-    */
+    
     
     selectReason = (reasonType) => {
         this.props.tomActions.selectReasonAction(reasonType);
@@ -285,12 +285,12 @@ class App extends Component {
             <Provider store={this.props.store}>
                 <div className="app">
                     <div className="app-header">
-                        <div><img src="http://www.itayg.com/tom/static/media/tom_logo.png" alt="TOM LOGO"/></div>
+                        <div><img src="https://www.itayg.com/tom/static/media/tom_logo.png" alt="TOM LOGO"/></div>
                         <div className="page-title">{this.props.pageType === PageType.REPORT ? PageType.REPORT.name : PageType.SEND_EVENT.name}</div>
                     </div>
                     {this.props.pageType === PageType.LOGIN ?
                         <div className="loading-page">
-                            <img src="http://www.itayg.com/tom/static/media/tom_logo_sign.png" alt="loading" />
+                            <img src="https://www.itayg.com/tom/static/media/tom_logo_sign.png" alt="loading" />
                         </div>
                         : null }
                     {this.props.pageType === PageType.SEND_EVENT ?
