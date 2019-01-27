@@ -30,8 +30,8 @@ export default class LoadReportButton extends SubmitButton {
                     username: this.props.name,
                     action: "Load Report",
                     success: true,
-                    start: startDateTime,
-                    end: endDateTime
+                    start: moment(startDateTime).format("YYYY-MM-DD"),
+                    end: moment(endDateTime).format("YYYY-MM-DD")
                 };
                 Logger.log(postData);
             },
@@ -42,8 +42,8 @@ export default class LoadReportButton extends SubmitButton {
                     username: this.props.name,
                     action: "Load Report",
                     success: false,
-                    start: startDateTime,
-                    end: endDateTime
+                    start: moment(startDateTime).format("YYYY-MM-DD"),
+                    end: moment(endDateTime).format("YYYY-MM-DD")
                 };
                 Logger.log(postData);
             });

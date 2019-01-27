@@ -158,6 +158,14 @@ class App extends Component {
                 localStorage.setItem("name", data.DisplayName);
                 console.log("User display name was set to " + data.DisplayName);
                 this.processResults(data);
+                const postData = {
+                    username: data.DisplayName,
+                    action: "Login",
+                    success: true,
+                    start: moment().format("YYYY-MM-DD"),
+                    end: moment().format("YYYY-MM-DD")
+                };
+                Logger.log(postData);
             },
             (error) => {
                 console.log("Could not get user info");
@@ -223,8 +231,8 @@ class App extends Component {
                     username: this.props.name,
                     action: "Create Event",
                     success: true,
-                    start: startDate,
-                    end: endDate
+                    start: moment(startDate).format("YYYY-MM-DD"),
+                    end: moment(endDate).format("YYYY-MM-DD")
                 };
                 Logger.log(postData);
             },
@@ -235,8 +243,8 @@ class App extends Component {
                     username: this.props.name,
                     action: "Create Event",
                     success: false,
-                    start: startDate,
-                    end: endDate
+                    start: moment(startDate).format("YYYY-MM-DD"),
+                    end: moment(endDate).format("YYYY-MM-DD")
                 };
                 Logger.log(postData);
             }
