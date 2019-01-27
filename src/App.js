@@ -16,18 +16,18 @@ import Logger from "./components/Logger";
 
 
 class App extends Component {
-    /*
+    
     mailingList = "itay84@gmail.com";
     mailingListName = "Itay Gal";
     appUrl = "http://localhost:3002/";
-    */
+    
     timezone = "Asia/Jerusalem";
     
-    
+    /*
     appUrl = "https://www.itayg.com/tom/";
     mailingList = "Toluna-Office-Haifa@toluna.com";
     mailingListName = "Toluna Haifa";
-    
+    */
     
     selectReason = (reasonType) => {
         this.props.tomActions.selectReasonAction(reasonType);
@@ -92,6 +92,14 @@ class App extends Component {
             return true;
         }
         return false;
+    };
+    
+    isTokenExpired = () => {
+        let tokenExpirationDate = localStorage.getItem('tokenExpirationDate');
+        if (!tokenExpirationDate){
+            return true;
+        }
+        return moment() > tokenExpirationDate;
     };
     
     processLoginAnswer = () => {
@@ -178,6 +186,9 @@ class App extends Component {
     };
 
     createEvent = (startDate, endDate, subject, description) => {
+        if (this.isTokenExpired()){
+            this.login();
+        }
         const startDateTime = moment(startDate).format("YYYY-MM-DD") + "T00:00";
         // end date should be 1 day later at 00:00 - for allDay event
         const endDateTime = moment(endDate).add(1, 'd').format("YYYY-MM-DD") + "T00:00";
@@ -345,7 +356,10 @@ class App extends Component {
                             token={this.props.token}
                             updateEvents={this.updateEvents}
                             updateLoadingAnimationVisibility={this.updateLoadingAnimationVisibility}
-                            loadingAnimation={this.props.loadingAnimation} />
+                            loadingAnimation={this.props.loadingAnimation}
+                            isTokenExpired={this.isTokenExpired}
+                            login={this.login}
+                        />
                         <Report events={this.props.events} token={this.props.token} updateEvents={this.updateEvents} toggleSubmit={this.toggleSubmit} /> 
                     </div>
                         : null }

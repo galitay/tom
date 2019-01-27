@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8bb334c3-c615-49ee-8289-743c14ef9fa4" name="Default Changelist" comment="improving logs">
-      <change afterPath="$PROJECT_DIR$/logger.php" afterDir="false" />
+    <list default="true" id="8bb334c3-c615-49ee-8289-743c14ef9fa4" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.tom-app/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.tom-app/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/LoadReportButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/LoadReportButton.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -54,10 +54,10 @@
         <counts>
           <entry key="css" value="3" />
           <entry key="html" value="754" />
-          <entry key="js" value="16356" />
+          <entry key="js" value="16513" />
           <entry key="json" value="107" />
           <entry key="scss" value="2581" />
-          <entry key="txt" value="933" />
+          <entry key="txt" value="965" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
@@ -65,8 +65,8 @@
           <entry key="CSS" value="3" />
           <entry key="HTML" value="754" />
           <entry key="JSON" value="107" />
-          <entry key="JavaScript" value="16356" />
-          <entry key="PLAIN_TEXT" value="933" />
+          <entry key="JavaScript" value="16513" />
+          <entry key="PLAIN_TEXT" value="965" />
           <entry key="SCSS" value="2581" />
         </counts>
       </usages-collector>
@@ -109,8 +109,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/App.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="309">
-              <caret line="296" column="53" lean-forward="true" selection-start-line="296" selection-start-column="53" selection-end-line="296" selection-end-column="53" />
+            <state relative-caret-position="435">
+              <caret line="29" column="6" selection-start-line="29" selection-start-column="6" selection-end-line="29" selection-end-column="6" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -175,8 +175,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/LoadReportButton.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="37" column="24" selection-start-line="37" selection-start-column="24" selection-end-line="37" selection-end-column="24" />
+            <state relative-caret-position="255">
+              <caret line="17" column="23" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
               <folding>
                 <element signature="e#0#42#0" expanded="true" />
               </folding>
@@ -197,7 +197,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>selectStartDateAction</find>
       <find>startDate</find>
       <find>desc</find>
       <find>currentDate</find>
@@ -227,6 +226,7 @@
       <find>reasonSelected</find>
       <find>PageType</find>
       <find>reasonType</find>
+      <find>tom_lo</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -271,8 +271,8 @@
         <option value="$PROJECT_DIR$/src/components/Report.js" />
         <option value="$PROJECT_DIR$/public/index.html" />
         <option value="$PROJECT_DIR$/src/components/Logger.js" />
-        <option value="$PROJECT_DIR$/src/components/LoadReportButton.js" />
         <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/src/components/LoadReportButton.js" />
         <option value="$PROJECT_DIR$/src/App.js" />
       </list>
     </option>
@@ -316,6 +316,12 @@
               <item name="tom-app" type="34e6ba20:FileSystemExplorerNode" />
               <item name="src" type="34e6ba20:FileSystemExplorerNode" />
             </path>
+            <path>
+              <item name="Project" type="161ac34:FileSystemExplorerRootNode" />
+              <item name="tom-app" type="34e6ba20:FileSystemExplorerNode" />
+              <item name="src" type="34e6ba20:FileSystemExplorerNode" />
+              <item name="components" type="34e6ba20:FileSystemExplorerNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -357,7 +363,7 @@
       <workItem from="1547461357250" duration="3068000" />
       <workItem from="1547534009921" duration="643000" />
       <workItem from="1547631979552" duration="1920000" />
-      <workItem from="1547644437707" duration="135622000" />
+      <workItem from="1547644437707" duration="140208000" />
     </task>
     <task id="LOCAL-00001" summary="Do things in the react way">
       <created>1547722499437</created>
@@ -576,11 +582,18 @@
       <option name="project" value="LOCAL" />
       <updated>1548569861015</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="improving logs + set img links with https">
+      <created>1548588126403</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1548588126403</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="158009000" />
+    <option name="totallyTimeSpent" value="162595000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -592,8 +605,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13219616" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -641,7 +653,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="cleaning the console errors" />
     <MESSAGE value="Add description" />
     <MESSAGE value="Login with react + save login info + get display name from Outlook api" />
     <MESSAGE value="Add get events call in the background" />
@@ -666,7 +677,8 @@
     <MESSAGE value="Adding log + fixing end dates on report" />
     <MESSAGE value="fix login expiration" />
     <MESSAGE value="improving logs" />
-    <option name="LAST_COMMIT_MESSAGE" value="improving logs" />
+    <MESSAGE value="improving logs + set img links with https" />
+    <option name="LAST_COMMIT_MESSAGE" value="improving logs + set img links with https" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1001,16 +1013,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/LoadReportButton.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="37" column="24" selection-start-line="37" selection-start-column="24" selection-end-line="37" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#42#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
@@ -1025,10 +1027,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/LoadReportButton.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="23" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#42#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/App.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="309">
-          <caret line="296" column="53" lean-forward="true" selection-start-line="296" selection-start-column="53" selection-end-line="296" selection-end-column="53" />
+        <state relative-caret-position="435">
+          <caret line="29" column="6" selection-start-line="29" selection-start-column="6" selection-end-line="29" selection-end-column="6" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>

@@ -14,6 +14,10 @@ export default class LoadReportButton extends SubmitButton {
     };
 
     getEvents = (startDateTime, endDateTime) => {
+        if (this.props.isTokenExpired()){
+            this.props.login();
+        }
+        
         var apiUrl = "https://outlook.office.com/api/v2.0/me/calendarview?startdatetime=" + startDateTime + "&enddatetime=" + endDateTime + "&$top=" + 10000;
 
         fetch(apiUrl,{
