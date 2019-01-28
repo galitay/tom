@@ -337,7 +337,8 @@ class App extends Component {
                             : null }
                         {this.props.pageType === PageType.LOGOUT ?
                             <div className="logout-page">
-                                Thank you for using TOM
+                                Thank you for using <br />
+                                <img src="https://www.itayg.com/tom/static/media/tom_logo.png" alt="TOM LOGO"/>
                             </div>
                             : null }
                         {this.props.pageType === PageType.SEND_EVENT ?

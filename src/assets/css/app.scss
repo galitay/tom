@@ -52,7 +52,7 @@
   padding: 7px 12px 7px 12px;
 }
 
-.loading-page, .logout-page{
+.loading-page{
   height: 70vh;
   display: flex;
   align-items: center;
@@ -61,6 +61,22 @@
   img{
     width: 100px;
     animation: rotating 2s linear infinite;
+  }
+}
+
+.logout-page{
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: $primary;
+  font-weight: bold;
+  font-size: 40px;
+  
+  img{
+    margin-top: 30px;
+    width: 50%;
   }
 }
 

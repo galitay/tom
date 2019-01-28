@@ -43,15 +43,29 @@
   color: white;
   padding: 7px 12px 7px 12px; }
 
-.loading-page, .logout-page {
+.loading-page {
   height: 70vh;
   display: flex;
   align-items: center;
   justify-content: center; }
 
-.loading-page img, .logout-page img {
+.loading-page img {
   width: 100px;
   animation: rotating 2s linear infinite; }
+
+.logout-page {
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #30716D;
+  font-weight: bold;
+  font-size: 40px; }
+
+.logout-page img {
+  margin-top: 30px;
+  width: 50%; }
 
 @keyframes rotating {
   from {
