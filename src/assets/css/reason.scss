@@ -15,7 +15,7 @@ body, html{
   height: 100%;
   align-items: center;
 }
-.menu-container{
+.reason-container{
   width: $width;
   height: $reasons-number * ($item-height + $item-margin);
   margin-top: 10px;
@@ -27,7 +27,7 @@ body, html{
   transition: all 0.3s ease;
 }
 
-.menu-container-shrink{
+.reason-container-shrink{
   height: 80px;
 }
 

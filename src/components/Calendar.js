@@ -91,8 +91,8 @@ export default class Calendar extends React.Component {
 
         this.state = {
             date: moment(),
-            startDate: moment(), //.subtract(5, 'day'),
-            endDate: moment() //.add(3, 'day')
+            startDate: moment(), 
+            endDate: moment()
         };
     }
 

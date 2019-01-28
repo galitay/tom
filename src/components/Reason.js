@@ -10,7 +10,7 @@ export default class Reason extends React.Component {
     }
 
     animateReasonSelected(selectedElement, reasonType) {
-        let relativeY = selectedElement.getBoundingClientRect().top -  ReactDOM.findDOMNode(this).getElementsByClassName("menu-container")[0].getBoundingClientRect().top;
+        let relativeY = selectedElement.getBoundingClientRect().top -  ReactDOM.findDOMNode(this).getElementsByClassName("reason-container")[0].getBoundingClientRect().top;
 
         this.props.selectReason(reasonType);
 
@@ -61,7 +61,7 @@ export default class Reason extends React.Component {
     render() {
         return (
             <div className="container">
-                <div className={"menu-container" + (this.props.reasonFormVisible ? " menu-container-shrink" : "")}>
+                <div className={"reason-container" + (this.props.reasonFormVisible ? " reason-container-shrink" : "")}>
                     {Object.keys(ReasonType).map((reason) => {
                         if (ReasonType[reason].name !== ReasonType.NONE.name) {
                             return <div key={ReasonType[reason].name} className={"item" + (this.props.reasonFormVisible ? " toTop" : "") + (this.props.reasonType === ReasonType[reason] ? " selected" : "")} onClick={(event) => this.reasonSelected(event, ReasonType[reason])}>

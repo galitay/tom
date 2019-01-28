@@ -6,6 +6,7 @@ import SubmitButton from './components/SubmitButton';
 import LoadReportButton from './components/LoadReportButton';
 import Preview from './components/Preview';
 import Report from './components/Report';
+import Menu from './components/Menu';
 import PageType from './PageType';
 import * as actions from './actionTypes';
 import { bindActionCreators } from 'redux';
@@ -146,6 +147,13 @@ class App extends Component {
         window.location = authUrl;
     };
     
+    logout = () => {
+        localStorage.setItem('token', '');
+        localStorage.setItem('tokenExpirationDate', '0');
+        localStorage.setItem('name', '');
+        document.cookie = "myEventsState=";
+    };
+    
     processResults = (data) => {
         console.log(JSON.stringify(data));
     };
@@ -262,15 +270,31 @@ class App extends Component {
         );
     };
     
-    togglePages = () => {
-        let newPageType = PageType.SEND_EVENT;
-        if (this.props.pageType === PageType.SEND_EVENT) {
-            newPageType = PageType.REPORT;
+    togglePages = (targetPage) => {
+        if (targetPage === PageType.REPORT) {
             this.props.tomActions.reasonFormVisibilityAction(false);
             this.updateMessageContainerVisibility(false);
             this.selectReason(ReasonType.NONE);
+            this.selectStartDate(moment());
+            this.selectEndDate(moment());
         }  
-        this.props.tomActions.togglePageAction(newPageType);
+        
+        if (targetPage === PageType.SEND_EVENT){
+            this.selectStartDate(moment());
+            this.selectEndDate(moment());
+        }
+        
+        if (targetPage === PageType.LOGOUT) {
+            this.logout();
+        }
+        else{
+            if (this.isTokenExpired()){
+                this.login();
+                return;
+            }
+        }
+        
+        this.props.tomActions.togglePageAction(targetPage);
     };
     
     updateLoadingAnimationVisibility = (visible) => {
@@ -298,11 +322,22 @@ class App extends Component {
                     <div className="app">
                         <div className="app-header">
                             <div><img src="https://www.itayg.com/tom/static/media/tom_logo.png" alt="TOM LOGO"/></div>
-                            <div className="page-title">{this.props.pageType === PageType.REPORT ? PageType.REPORT.name : PageType.SEND_EVENT.name}</div>
+                            <div className="page-title">{this.props.pageType.name}</div>
+                            <div className="menu-container">
+                                <Menu 
+                                    pageType={this.props.pageType} 
+                                    togglePages={this.togglePages}
+                                />
+                            </div>
                         </div>
                         {this.props.pageType === PageType.LOGIN ?
                             <div className="loading-page">
                                 <img src="https://www.itayg.com/tom/static/media/tom_logo_sign.png" alt="loading" />
+                            </div>
+                            : null }
+                        {this.props.pageType === PageType.LOGOUT ?
+                            <div className="logout-page">
+                                Thank you for using TOM
                             </div>
                             : null }
                         {this.props.pageType === PageType.SEND_EVENT ?
@@ -364,9 +399,6 @@ class App extends Component {
                             <Report events={this.props.events} token={this.props.token} updateEvents={this.updateEvents} toggleSubmit={this.toggleSubmit} /> 
                         </div>
                             : null }
-                        {this.props.pageType !== PageType.LOGIN ? 
-                            <div className="toggle-page" onClick={() => this.togglePages()}>Go To {this.props.pageType === PageType.REPORT ? PageType.SEND_EVENT.name : PageType.REPORT.name}</div>
-                            : null}
                     </div>
                 </div>
             </Provider>

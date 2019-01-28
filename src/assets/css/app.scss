@@ -11,6 +11,7 @@
 .app {
   text-align: center;
   width: $width;
+  overflow: hidden;
 }
 .app-header{
   width: $width;  
@@ -21,13 +22,21 @@
   
   img{
     height: 40px;
+    margin-left: 10px;
   }
   
-  .page-title{
+  .page-title {
     font-size: 30px;
     color: $primary;
     font-weight: bold;
     margin-left: 10px;
+    flex-grow: 1;
+    text-align: left;
+  }
+  
+  .menu-container {
+    flex-basis: 40px;
+    margin-right: 20px;
   }
 }
 
@@ -43,7 +52,7 @@
   padding: 7px 12px 7px 12px;
 }
 
-.loading-page{
+.loading-page, .logout-page{
   height: 70vh;
   display: flex;
   align-items: center;
@@ -64,8 +73,8 @@
   }
 }
 
-@media ( min-width : 620px) {
+@media ( min-width : 520px) {
   .app {
-    width: 600px;
+    width: 500px;
   }
 }
