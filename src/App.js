@@ -294,78 +294,80 @@ class App extends Component {
     render() {
         return (
             <Provider store={this.props.store}>
-                <div className="app">
-                    <div className="app-header">
-                        <div><img src="https://www.itayg.com/tom/static/media/tom_logo.png" alt="TOM LOGO"/></div>
-                        <div className="page-title">{this.props.pageType === PageType.REPORT ? PageType.REPORT.name : PageType.SEND_EVENT.name}</div>
-                    </div>
-                    {this.props.pageType === PageType.LOGIN ?
-                        <div className="loading-page">
-                            <img src="https://www.itayg.com/tom/static/media/tom_logo_sign.png" alt="loading" />
+                <div className="app-container">
+                    <div className="app">
+                        <div className="app-header">
+                            <div><img src="https://www.itayg.com/tom/static/media/tom_logo.png" alt="TOM LOGO"/></div>
+                            <div className="page-title">{this.props.pageType === PageType.REPORT ? PageType.REPORT.name : PageType.SEND_EVENT.name}</div>
                         </div>
-                        : null }
-                    {this.props.pageType === PageType.SEND_EVENT ?
-                    <div className="send-event-page">
-                        <Reason 
-                            selectReason={this.selectReason} 
-                            deselectReason={this.deselectReason} 
-                            description={this.props.description} 
-                            descriptionChanged={this.descriptionChanged} 
-                            toggleSubmit={this.toggleSubmit}
-                            reasonFormVisible={this.props.reasonFormVisible}
-                            messageContainerVisible={this.props.messageContainerVisible}
-                            reasonType={this.props.reasonType}
-                            updateReasonFormVisibility={this.updateReasonFormVisibility}
-                            updateMessageContainerVisibility={this.updateMessageContainerVisibility} />
-                        {this.props.reasonFormVisible ?
-                        <Calendar selectStartDate={this.selectStartDate} selectEndDate={this.selectEndDate} pageType={this.props.pageType}  />
+                        {this.props.pageType === PageType.LOGIN ?
+                            <div className="loading-page">
+                                <img src="https://www.itayg.com/tom/static/media/tom_logo_sign.png" alt="loading" />
+                            </div>
                             : null }
-                        {this.props.reasonFormVisible ?
-                        <Preview name={this.props.name} startDate={this.props.startDate} endDate={this.props.endDate} reasonType={this.props.reasonType} description={this.props.description} />
+                        {this.props.pageType === PageType.SEND_EVENT ?
+                        <div className="send-event-page">
+                            <Reason 
+                                selectReason={this.selectReason} 
+                                deselectReason={this.deselectReason} 
+                                description={this.props.description} 
+                                descriptionChanged={this.descriptionChanged} 
+                                toggleSubmit={this.toggleSubmit}
+                                reasonFormVisible={this.props.reasonFormVisible}
+                                messageContainerVisible={this.props.messageContainerVisible}
+                                reasonType={this.props.reasonType}
+                                updateReasonFormVisibility={this.updateReasonFormVisibility}
+                                updateMessageContainerVisibility={this.updateMessageContainerVisibility} />
+                            {this.props.reasonFormVisible ?
+                            <Calendar selectStartDate={this.selectStartDate} selectEndDate={this.selectEndDate} pageType={this.props.pageType}  />
+                                : null }
+                            {this.props.reasonFormVisible ?
+                            <Preview name={this.props.name} startDate={this.props.startDate} endDate={this.props.endDate} reasonType={this.props.reasonType} description={this.props.description} />
+                                : null}
+                            {this.props.showSubmit ?
+                            <SubmitButton 
+                                name={this.props.name} 
+                                startDate={this.props.startDate} 
+                                endDate={this.props.endDate} 
+                                reasonType={this.props.reasonType} 
+                                description={this.props.description} 
+                                createEvent={this.createEvent} 
+                                pageType={this.props.pageType}
+                                showSubmit={this.props.showSubmit}
+                                toggleSubmit={this.toggleSubmit}
+                                updateLoadingAnimationVisibility={this.updateLoadingAnimationVisibility}
+                                loadingAnimation={this.props.loadingAnimation} />
+                                : null}
+                        </div> 
+                            : null }
+                            
+                        {this.props.pageType === PageType.REPORT ?
+                        <div className="report-page">
+                            <Calendar selectStartDate={this.selectStartDate} selectEndDate={this.selectEndDate} pageType={this.props.pageType} />
+                            <LoadReportButton 
+                                name={this.props.name} 
+                                startDate={this.props.startDate} 
+                                endDate={this.props.endDate} 
+                                reasonType={this.props.reasonType} 
+                                description={this.props.description} 
+                                createEvent={this.createEvent} 
+                                pageType={this.props.pageType} 
+                                showSubmit={this.props.showSubmit}
+                                toggleSubmit={this.toggleSubmit}
+                                token={this.props.token}
+                                updateEvents={this.updateEvents}
+                                updateLoadingAnimationVisibility={this.updateLoadingAnimationVisibility}
+                                loadingAnimation={this.props.loadingAnimation}
+                                isTokenExpired={this.isTokenExpired}
+                                login={this.login}
+                            />
+                            <Report events={this.props.events} token={this.props.token} updateEvents={this.updateEvents} toggleSubmit={this.toggleSubmit} /> 
+                        </div>
+                            : null }
+                        {this.props.pageType !== PageType.LOGIN ? 
+                            <div className="toggle-page" onClick={() => this.togglePages()}>Go To {this.props.pageType === PageType.REPORT ? PageType.SEND_EVENT.name : PageType.REPORT.name}</div>
                             : null}
-                        {this.props.showSubmit ?
-                        <SubmitButton 
-                            name={this.props.name} 
-                            startDate={this.props.startDate} 
-                            endDate={this.props.endDate} 
-                            reasonType={this.props.reasonType} 
-                            description={this.props.description} 
-                            createEvent={this.createEvent} 
-                            pageType={this.props.pageType}
-                            showSubmit={this.props.showSubmit}
-                            toggleSubmit={this.toggleSubmit}
-                            updateLoadingAnimationVisibility={this.updateLoadingAnimationVisibility}
-                            loadingAnimation={this.props.loadingAnimation} />
-                            : null}
-                    </div> 
-                        : null }
-                        
-                    {this.props.pageType === PageType.REPORT ?
-                    <div className="report-page">
-                        <Calendar selectStartDate={this.selectStartDate} selectEndDate={this.selectEndDate} pageType={this.props.pageType} />
-                        <LoadReportButton 
-                            name={this.props.name} 
-                            startDate={this.props.startDate} 
-                            endDate={this.props.endDate} 
-                            reasonType={this.props.reasonType} 
-                            description={this.props.description} 
-                            createEvent={this.createEvent} 
-                            pageType={this.props.pageType} 
-                            showSubmit={this.props.showSubmit}
-                            toggleSubmit={this.toggleSubmit}
-                            token={this.props.token}
-                            updateEvents={this.updateEvents}
-                            updateLoadingAnimationVisibility={this.updateLoadingAnimationVisibility}
-                            loadingAnimation={this.props.loadingAnimation}
-                            isTokenExpired={this.isTokenExpired}
-                            login={this.login}
-                        />
-                        <Report events={this.props.events} token={this.props.token} updateEvents={this.updateEvents} toggleSubmit={this.toggleSubmit} /> 
                     </div>
-                        : null }
-                    {this.props.pageType !== PageType.LOGIN ? 
-                        <div className="toggle-page" onClick={() => this.togglePages()}>Go To {this.props.pageType === PageType.REPORT ? PageType.SEND_EVENT.name : PageType.REPORT.name}</div>
-                        : null}
                 </div>
             </Provider>
         );

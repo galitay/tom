@@ -1,8 +1,15 @@
+.app-container {
+  display: flex;
+  padding-left: 10px;
+  padding-right: 10px;
+  justify-content: center; }
+
 .app {
-  text-align: center; }
+  text-align: center;
+  width: 100%; }
 
 .app-header {
-  width: 340px;
+  width: 100%;
   margin: 0 auto;
   display: flex;
   padding-top: 10px;
@@ -43,3 +50,7 @@
     transform: rotate(0deg); }
   to {
     transform: rotate(360deg); } }
+
+@media (min-width: 620px) {
+  .app {
+    width: 600px; } }
