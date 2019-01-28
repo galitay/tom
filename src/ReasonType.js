@@ -4,6 +4,7 @@ import sick from "./assets/img/sick.png";
 import baby from "./assets/img/baby.png";
 import early from "./assets/img/early.png";
 import soldier from "./assets/img/soldier.png";
+import late from "./assets/img/late.png";
 
 const ReasonType = {
     NONE: {id: 0, name: "N/A", image: "none"},
@@ -12,6 +13,7 @@ const ReasonType = {
     SICK: {id: 2, name: "Sick", image: {sick}},
     SICK_CHILD: {id: 3, name: "Sick Child", image: {baby}},
     LEAVING_EARLY: {id: 5, name: "Leaving Early", image: {early}},
+    ARRIVING_LATE: {id: 7, name: "Arriving Late", image : {late}},
     RESERVE_DUTY: {id: 4, name: "Reserve Duty", image : {soldier}}
 };
 

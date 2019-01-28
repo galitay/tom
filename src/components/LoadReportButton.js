@@ -105,6 +105,9 @@ export default class LoadReportButton extends SubmitButton {
         if (subject.includes("wfh") || subject.includes("home")){
             return ReasonType.WFH
         }
+        if (subject.includes("arriving") || subject.includes("late")){
+            return ReasonType.ARRIVING_LATE
+        }
         return ReasonType.NONE;
     }
 
