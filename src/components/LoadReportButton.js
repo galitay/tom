@@ -74,7 +74,8 @@ export default class LoadReportButton extends SubmitButton {
                 "subject": event.Subject,
                 "start": event.Start.DateTime,
                 "end": event.End.DateTime,
-                "reason": this.extractReasonFromSubject(event.Subject)
+                "reason": this.extractReasonFromSubject(event.Subject),
+                "halfDay": this.isHalfDay(event.Subject)
             };
             if (!eventsData[email]){
                 eventsData[email] = [];
@@ -84,7 +85,11 @@ export default class LoadReportButton extends SubmitButton {
         }
         this.props.updateEvents(eventsData);
     };
-
+    
+    isHalfDay(subject){
+        return subject.toLowerCase().includes("half");
+    }
+    
     extractReasonFromSubject(subject){
         subject = subject.toLowerCase();
         if (subject.includes("sick") && subject.includes("child")){
