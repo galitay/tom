@@ -80,6 +80,17 @@
   }
 }
 
+input{
+  padding: 5px;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  
+  &:focus{
+    outline: none !important;
+    box-shadow: 0 0 5px #30716D;
+  }
+}
+
 @keyframes rotating {
   from {
     transform: rotate(0deg);

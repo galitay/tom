@@ -22,6 +22,8 @@ const initialData = {
     loadingAnimation: false,
     reasonFormVisible: false,
     messageContainerVisible: false,
+    halfDay: false,
+    titleSuffix: ""
 };
 
 const tomReducer = (state, action) => {
@@ -54,6 +56,10 @@ const tomReducer = (state, action) => {
             return {...state, reasonFormVisible: action.visible};
         case 'MESSAGE_CONTAINER_VISIBILITY':
             return {...state, messageContainerVisible: action.visible};
+        case 'TOGGLE_HALF_DAY':
+            return {...state, halfDay: action.halfDay};
+        case 'TITLE_SUFFIX_CHANGED':
+            return {...state, titleSuffix: action.titleSuffix};
         default:
             return state;
     }

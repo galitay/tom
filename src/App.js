@@ -3,6 +3,7 @@ import './assets/css/app.css';
 import Calendar from './components/Calendar';
 import Reason from './components/Reason';
 import SubmitButton from './components/SubmitButton';
+import AdvancedOptions from './components/AdvancedOptions';
 import LoadReportButton from './components/LoadReportButton';
 import Preview from './components/Preview';
 import Report from './components/Report';
@@ -52,6 +53,14 @@ class App extends Component {
     
     toggleSubmit = (visible) => {
         this.props.tomActions.toggleSubmitAction(visible);
+    };
+    
+    toggleHalfDay = () => {
+        this.props.tomActions.toggleHalfDayAction(!this.props.halfDay);
+    };
+
+    titleSuffixChange = (e) => {
+        this.props.tomActions.titleSuffixChangeAction(e.target.value);
     };
 
     getQueryVariable = (variable) => {
@@ -357,8 +366,22 @@ class App extends Component {
                             {this.props.reasonFormVisible ?
                             <Calendar selectStartDate={this.selectStartDate} selectEndDate={this.selectEndDate} pageType={this.props.pageType}  />
                                 : null }
+                            {this.props.reasonFormVisible ? 
+                            <AdvancedOptions 
+                                toggleHalfDay={this.toggleHalfDay}
+                                halfDay={this.props.halfDay}
+                                titleSuffixChange={this.titleSuffixChange}
+                                titleSuffix={this.props.titleSuffix} />
+                                : null }
                             {this.props.reasonFormVisible ?
-                            <Preview name={this.props.name} startDate={this.props.startDate} endDate={this.props.endDate} reasonType={this.props.reasonType} description={this.props.description} />
+                            <Preview 
+                                name={this.props.name}
+                                startDate={this.props.startDate} 
+                                endDate={this.props.endDate} 
+                                reasonType={this.props.reasonType} 
+                                description={this.props.description} 
+                                halfDay={this.props.halfDay}
+                                titleSuffix={this.props.titleSuffix} />
                                 : null}
                             {this.props.showSubmit ?
                             <SubmitButton 
@@ -372,7 +395,9 @@ class App extends Component {
                                 showSubmit={this.props.showSubmit}
                                 toggleSubmit={this.toggleSubmit}
                                 updateLoadingAnimationVisibility={this.updateLoadingAnimationVisibility}
-                                loadingAnimation={this.props.loadingAnimation} />
+                                loadingAnimation={this.props.loadingAnimation}
+                                halfDay={this.props.halfDay} 
+                                titleSuffix={this.props.titleSuffix} />
                                 : null}
                         </div> 
                             : null }
@@ -420,7 +445,9 @@ const mapStateToProps = (state) => {
         showSubmit: state.showSubmit,
         loadingAnimation: state.loadingAnimation,
         reasonFormVisible: state.reasonFormVisible,
-        messageContainerVisible: state.messageContainerVisible
+        messageContainerVisible: state.messageContainerVisible,
+        halfDay: state.halfDay,
+        titleSuffix: state.titleSuffix
     };
 };
 

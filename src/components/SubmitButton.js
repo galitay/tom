@@ -14,8 +14,10 @@ export default class SubmitButton extends React.Component {
         }
         const reasonText = this.props.reasonType.name;
         const name = this.props.name;
+        const halfDay = this.props.halfDay ? " - Half Day" : "";
+        const suffix = this.props.titleSuffix;
 
-        const subject = name + " - OOO - " + dateText + " - " + reasonText;
+        const subject = name + " - OOO - " + dateText + " - " + reasonText + halfDay + " " + suffix;
         console.log(subject);
         this.props.createEvent(this.props.startDate, this.props.endDate, subject, this.props.description);
     };

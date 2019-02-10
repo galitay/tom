@@ -68,4 +68,15 @@ export const messageContainerVisibilityAction = (visible) => ({
     visible: visible
 });
 
+export const toggleHalfDayAction = (halfDay) => ({
+   type: 'TOGGLE_HALF_DAY',
+   halfDay: halfDay 
+});
+
+export const titleSuffixChangeAction = (titleSuffix) => ({
+    type: 'TITLE_SUFFIX_CHANGED',
+    titleSuffix: titleSuffix
+});
+
+
 

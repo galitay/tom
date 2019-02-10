@@ -12,10 +12,13 @@ export default class Preview extends React.Component {
         }
         const reasonText = this.props.reasonType.name;
         const name = this.props.name;
+        const halfDay = this.props.halfDay ? " - Half Day" : "";
+        const suffix = this.props.titleSuffix;
+        
         return (
             <div className="preview">
                 <div className="preview-title">Preview</div>
-                <div>{name} - OOO - {dateText} - {reasonText}</div>
+                <div>{name} - OOO - {dateText} - {reasonText} {halfDay} {suffix}</div>
                 <div className="separator"></div>
                 <div>{this.props.description}</div>
             </div>  

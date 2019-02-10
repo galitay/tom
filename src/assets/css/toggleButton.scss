@@ -1,0 +1,52 @@
+@import './_theme.scss';
+@import './_variables.scss';
+
+$button-width: 100px;
+$indicator-width: 48%;
+
+.toggle-button-container{
+  width: $button-width;
+  border-radius: 6px;
+  height: 40px;
+  position: relative;
+  cursor: pointer;
+  
+  &.toggle-on{
+    background-color: $primary;
+    border: 2px solid $primary;
+    .toggle-indicator{
+      left: 100% - $indicator-width;
+    }
+  }
+  
+  &.toggle-off{
+    background-color: #cccccc;
+    border: 2px solid #cccccc;
+    .toggle-indicator{
+      left: 0;
+    }
+  }
+
+  .toggle-indicator{
+    width: $indicator-width;
+    height: 100%;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    position: absolute;
+    background-color: white;
+    box-sizing: border-box;
+  }
+  
+  .out-of-indicator-text{
+    position: absolute;
+    width: $indicator-width;
+    left: 100% - $indicator-width;
+    
+    &.toggle-on{
+      left: 0;
+      color: white;
+    }
+  }
+  
+  
+}
