@@ -1,0 +1,27 @@
+.advanced-options-container {
+  display: flex;
+  position: relative;
+  align-items: center;
+  width: 100%;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  border: 1px solid #e5e5e5;
+  border-bottom: 2px solid #30716D;
+  border-radius: 5px;
+  box-sizing: border-box;
+  padding: 15px; }
+  .advanced-options-container input {
+    margin-left: 20px;
+    box-sizing: border-box;
+    height: 44px;
+    padding-left: 10px; }
+
+.advanced-options-title {
+  position: absolute;
+  width: 150px;
+  left: calc(50% - 75px);
+  top: -10px;
+  text-align: center;
+  color: #30716D;
+  font-weight: bold;
+  background-color: white; }

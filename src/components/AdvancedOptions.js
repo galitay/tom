@@ -9,7 +9,7 @@ export default class AdvancedOptions extends React.Component {
             <div className={"advanced-options-container"}>
                 <div className="advanced-options-title">Advanced Options</div>
                 <ToggleButton toggleIsOn={this.props.toggleHalfDay} isOn={this.props.halfDay} />
-                <div><input placeholder="Add title suffix here..." type="text" onChange={(event) => this.props.titleSuffixChange(event)} /></div>
+                <div><input placeholder="Add title suffix here..." type="text" onChange={(event) => this.props.titleSuffixChange(event.target.value)} /></div>
             </div>
         )
     }

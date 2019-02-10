@@ -59,8 +59,8 @@ class App extends Component {
         this.props.tomActions.toggleHalfDayAction(!this.props.halfDay);
     };
 
-    titleSuffixChange = (e) => {
-        this.props.tomActions.titleSuffixChangeAction(e.target.value);
+    titleSuffixChange = (suffix) => {
+        this.props.tomActions.titleSuffixChangeAction(suffix);
     };
 
     getQueryVariable = (variable) => {
@@ -291,6 +291,7 @@ class App extends Component {
         if (targetPage === PageType.SEND_EVENT){
             this.selectStartDate(moment());
             this.selectEndDate(moment());
+            this.titleSuffixChange("");
         }
         
         if (targetPage === PageType.LOGOUT) {
