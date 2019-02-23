@@ -13,14 +13,30 @@ export default class Preview extends React.Component {
         const reasonText = this.props.reasonType.name;
         const name = this.props.name;
         const halfDay = this.props.halfDay ? " - Half Day" : "";
-        const suffix = this.props.titleSuffix;
+        const subjectText = name + " - OOO - " + dateText + " - " + reasonText + " " + halfDay;
         
         return (
             <div className="preview">
                 <div className="preview-title">Preview</div>
-                <div>{name} - OOO - {dateText} - {reasonText} {halfDay} {suffix}</div>
+                <div className="preview-section-container">
+                    <div className="preview-section-title">TO</div>
+                    <div className="mailing-list">Toluna Haifa</div>
+                </div>
                 <div className="separator"></div>
-                <div>{this.props.description}</div>
+                <div className="preview-section-container">
+                    <div className="preview-section-title">SUBJECT</div>
+                    <div className="preview-subject-value">
+                        <div className="preview-fixed-text">{subjectText}</div>
+                        <div>
+                            <input placeholder="Custom subject..." type="text" onChange={(event) =>  this.props.titleSuffixChange(event.target.value)} />
+                        </div>
+                    </div>
+                </div>
+                <div className="separator"></div>
+                <div className="preview-section-container">
+                    <div className="preview-section-title">CONTENT</div>
+                    <div className="preview-section-content-container"><textarea placeholder="Add content here..." value={this.props.description} onChange={(event) =>  this.props.descriptionChanged(event)} /></div>
+                </div>
             </div>  
         );
     }

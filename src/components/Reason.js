@@ -73,10 +73,15 @@ export default class Reason extends React.Component {
                     })}
                 </div>
                 <div className={"back-to-reason" + (!this.props.reasonFormVisible ? " back-to-reason-shrink" : "")} onClick={(event) => this.reasonDeselected(event)}>&#9650;</div>
-                <div className={"message-content-container" + (!this.props.messageContainerVisible ? " message-content-container-shrink" : "")}>
-                    <div className="desc-title">Description</div>
-                    <textarea className="message-content" placeholder="Enter your description here..." defaultValue={this.props.description} onChange={(event) => this.handleDescriptionChange(event)} />
-                </div>
+                {/*
+                    <div
+                        className={"message-content-container" + (!this.props.messageContainerVisible ? " message-content-container-shrink" : "")}>
+                        <div className="desc-title">Description</div>
+                        <textarea className="message-content" placeholder="Enter your description here..."
+                                  defaultValue={this.props.description}
+                                  onChange={(event) => this.handleDescriptionChange(event)}/>
+                    </div>
+                */}
             </div>
         )
     }

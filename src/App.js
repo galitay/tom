@@ -371,8 +371,7 @@ class App extends Component {
                             <AdvancedOptions 
                                 toggleHalfDay={this.toggleHalfDay}
                                 halfDay={this.props.halfDay}
-                                titleSuffixChange={this.titleSuffixChange}
-                                titleSuffix={this.props.titleSuffix} />
+                                 />
                                 : null }
                             {this.props.reasonFormVisible ?
                             <Preview 
@@ -382,7 +381,9 @@ class App extends Component {
                                 reasonType={this.props.reasonType} 
                                 description={this.props.description} 
                                 halfDay={this.props.halfDay}
-                                titleSuffix={this.props.titleSuffix} />
+                                titleSuffix={this.props.titleSuffix}
+                                titleSuffixChange={this.titleSuffixChange}
+                                descriptionChanged={this.descriptionChanged} />
                                 : null}
                             {this.props.showSubmit ?
                             <SubmitButton 
