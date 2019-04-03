@@ -15,6 +15,7 @@ import { connect, Provider } from 'react-redux';
 import moment from "moment";
 import ReasonType from "./ReasonType";
 import Logger from "./components/Logger";
+import Modal from './components/Modal';
 
 
 class App extends Component {
@@ -24,6 +25,9 @@ class App extends Component {
     appUrl = "http://localhost:3002/";
     
     timezone = "Asia/Jerusalem";
+
+    SECONDS_TO_CLOSE_MODAL = 6;
+    EVENT_CREATED_MESSAGE = "Your event was created successfully";
     
     /*
     appUrl = "https://www.itayg.com/tom/";
@@ -263,6 +267,7 @@ class App extends Component {
                     end: moment(endDate).format("YYYY-MM-DD")
                 };
                 Logger.log(postData);
+                this.toggleModal(true, this.EVENT_CREATED_MESSAGE)
             },
             (error) => {
                 console.log("Could not create event");
@@ -319,6 +324,34 @@ class App extends Component {
         this.props.tomActions.messageContainerVisibilityAction(visible);
     };
 
+    toggleModal = (isModal, message) => {
+        this.props.tomActions.modalToggleAction(isModal, message);
+        if (isModal) {
+            this.props.tomActions.countdownAction(this.SECONDS_TO_CLOSE_MODAL);
+            this.countdown();
+        }
+        else{
+            this.props.tomActions.countdownAction(0); 
+        }
+    };
+    
+    modalCountdown = (timeLeft) => {
+        this.props.tomActions.countdownAction(timeLeft);  
+    };
+    
+    countdown = () => {
+        if (this.props.modalCountdown > 0) {
+            this.modalCountdown(this.props.modalCountdown - 1);
+            console.log(this.props.modalCountdown);
+            setTimeout(() => {
+                this.countdown();
+            }, 1000);
+        }
+        else{
+            this.toggleModal(false, null);
+        }
+    };
+
     componentWillMount() {
         if (!this.isLoggedIn() && !this.processLoginAnswer()){
             this.login();
@@ -329,6 +362,12 @@ class App extends Component {
         return (
             <Provider store={this.props.store}>
                 <div className="app-container">
+                    {this.props.isModal ?
+                    <Modal
+                        toggleModal={this.toggleModal}
+                        modalMessage={this.props.modalMessage}
+                        modalCountdown={this.props.modalCountdown} />
+                        : null }
                     <div className="app">
                         <div className="app-header">
                             <div><img src="https://www.itayg.com/tom/static/media/tom_logo.png" alt="TOM LOGO"/></div>
@@ -449,7 +488,10 @@ const mapStateToProps = (state) => {
         reasonFormVisible: state.reasonFormVisible,
         messageContainerVisible: state.messageContainerVisible,
         halfDay: state.halfDay,
-        titleSuffix: state.titleSuffix
+        titleSuffix: state.titleSuffix,
+        isModal: state.isModal,
+        modalMessage: state.modalMessage,
+        modalCountdown: state.modalCountdown
     };
 };
 

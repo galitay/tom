@@ -78,5 +78,15 @@ export const titleSuffixChangeAction = (titleSuffix) => ({
     titleSuffix: titleSuffix
 });
 
+export const modalToggleAction = (isModal, message) => ({
+    type: 'MODAL_TOGGLE',
+    isModal: isModal,
+    modalMessage: message
+});
+
+export const countdownAction = (timeLeft) => ({
+    type: 'COUNTDOWN',
+    modalCountdown: timeLeft
+});
 
 

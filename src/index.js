@@ -23,7 +23,10 @@ const initialData = {
     reasonFormVisible: false,
     messageContainerVisible: false,
     halfDay: false,
-    titleSuffix: ""
+    titleSuffix: "",
+    isModal: false,
+    modalMessage: "",
+    modalCountdown: 0
 };
 
 const tomReducer = (state, action) => {
@@ -60,6 +63,10 @@ const tomReducer = (state, action) => {
             return {...state, halfDay: action.halfDay};
         case 'TITLE_SUFFIX_CHANGED':
             return {...state, titleSuffix: action.titleSuffix};
+        case 'MODAL_TOGGLE':
+            return {...state, isModal: action.isModal, modalMessage: action.modalMessage};
+        case 'COUNTDOWN':
+            return {...state, modalCountdown: action.modalCountdown};
         default:
             return state;
     }
