@@ -52,8 +52,13 @@ const Days = ({date, startDate, endDate, onClick}) => {
     for (let i = 1; i <= 7; i++) {
         labels.push(<span key={moment().day(i).format('ddd')} className="label">{moment().day(i).format('ddd')}</span>);
     }
-
-    for (let i = firstDayDate.day(); i > 1; i--) {
+    
+    let daysToAddFromLastMonth = 7;
+    if (firstDayDate.day() !== 0){
+        daysToAddFromLastMonth = firstDayDate.day(); 
+    }
+    
+    for (let i = daysToAddFromLastMonth; i > 1; i--) {
         previousMonth.date(previousMonthDays - i + 2);
 
         days.push(

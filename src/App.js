@@ -19,21 +19,22 @@ import Modal from './components/Modal';
 
 
 class App extends Component {
-    
+    /*
     mailingList = "itay84@gmail.com";
     mailingListName = "Itay Gal";
     appUrl = "http://localhost:3002/";
-    
+   */
     timezone = "Asia/Jerusalem";
 
     SECONDS_TO_CLOSE_MODAL = 6;
     EVENT_CREATED_MESSAGE = "Your event was created successfully";
     
-    /*
+    
     appUrl = "https://www.itayg.com/tom/";
     mailingList = "Toluna-Office-Haifa@toluna.com";
     mailingListName = "Toluna Haifa";
-    */
+    
+    
     
     selectReason = (reasonType) => {
         this.props.tomActions.selectReasonAction(reasonType);
