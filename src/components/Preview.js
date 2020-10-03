@@ -28,7 +28,7 @@ export default class Preview extends React.Component {
                     <div className="preview-subject-value">
                         <div className="preview-fixed-text">{subjectText}</div>
                         <div>
-                            <input placeholder="Custom subject..." type="text" onChange={(event) =>  this.props.titleSuffixChange(event.target.value)} />
+                            <input placeholder="Additional text..." type="text" onChange={(event) =>  this.props.titleSuffixChange(event.target.value)} />
                         </div>
                     </div>
                 </div>
