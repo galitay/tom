@@ -16,25 +16,20 @@ import moment from "moment";
 import ReasonType from "./ReasonType";
 import Logger from "./components/Logger";
 import Modal from './components/Modal';
-
+import MailingLists from './components/MailingLists';
 
 class App extends Component {
     
-    mailingList = "itay84@gmail.com";
-    mailingListName = "Itay Gal";
-    appUrl = "http://localhost:3000/";
+    haifaMailingList = window.configs.haifaMailingList; //"itay84@gmail.com";
+    haifaMailingListName = window.configs.haifaMailingListName; // "Itay Gal";
+    timiMailingList = window.configs.timiMailingList; //"itay84@gmail.com";
+    tmiiMailingListName = window.configs.timiMailingListName; // "Itay Gal";
+    appUrl = window.configs.appUrl; // "http://localhost:3000/";
    
     timezone = "Asia/Jerusalem";
 
     SECONDS_TO_CLOSE_MODAL = 6;
-    EVENT_CREATED_MESSAGE = "Your event was created successfully";
-    
-    /*
-    appUrl = "https://www.itayg.com/tom/";
-    mailingList = "Toluna-Office-Haifa@toluna.com";
-    mailingListName = "Toluna Haifa";
-    */
-    
+    EVENT_CREATED_MESSAGE = "Your event was created successfully";  
     
     selectReason = (reasonType) => {
         this.props.tomActions.selectReasonAction(reasonType);
@@ -67,6 +62,31 @@ class App extends Component {
     titleSuffixChange = (suffix) => {
         this.props.tomActions.titleSuffixChangeAction(suffix);
     };
+
+    updateMailingLists = (mailingLists) => {
+        this.props.tomActions.updateMailingListsAction(mailingLists);
+        this.generateAttendeesList(mailingLists);
+    }
+
+    updateMailingListName = (mailingListName) => {
+        this.props.tomActions.updateMailingListNameAction(mailingListName)
+    }
+
+    updateMailingListEmails = (mailingListEmails) => {
+        this.props.tomActions.updateMailingListEmailsAction(mailingListEmails)
+    }
+
+    updateSelectedMailingLists = (listName) => {
+        let items = Object.create(this.props.mailingLists);
+        let index = items.findIndex(item => item.listName === listName);
+        if (index !== -1){
+            items[index].selected = items[index].selected === 1 ? 0 : 1;
+            this.updateUserMailingLists(listName, items[index].emails, items[index].selected);
+            this.updateMailingLists(items);
+        }
+        //console.log(JSON.stringify(items));
+        
+    }
 
     getQueryVariable = (variable) => {
         let query = window.location.hash;
@@ -186,6 +206,7 @@ class App extends Component {
             (data) => {
                 this.props.tomActions.userDataAction(data.DisplayName);
                 localStorage.setItem("name", data.DisplayName);
+                localStorage.setItem("email", data.EmailAddress);
                 console.log("User display name was set to " + data.DisplayName);
                 this.processResults(data);
                 const postData = {
@@ -203,9 +224,98 @@ class App extends Component {
         );
     };
     
+    getUserMailingLists = () => {
+        const apiUrl = "https://www.itayg.com/tom/mailingListController.php";
+        const postData = {
+            "action": "GET",
+            "userId": localStorage.getItem("email"),
+        }
+        fetch(apiUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type':'application/json'
+            },
+            body: JSON.stringify(postData)
+        }).then((res) => res.json())
+            .then(
+            (data) => {
+                this.processResults(data);
+                this.updateMailingLists(data);
+            },
+            (error) => {
+                console.log("Could not get user mailing lists");
+            }
+        );
+    }
+
+    updateUserMailingLists = (listName, emails, selected) => {
+        const apiUrl = "https://www.itayg.com/tom/mailingListController.php";
+        const postData = {
+            "action": "UPDATE",
+            "userId": localStorage.getItem("email"),
+            "listName": listName,
+            "emails": emails,
+            "selected": selected
+        }
+        fetch(apiUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type':'application/json'
+            },
+            body: JSON.stringify(postData)
+        }).then((res) => res.json())
+            .then(
+            (data) => {
+                this.processResults(data);
+                this.updateMailingLists(data);
+            },
+            (error) => {
+                console.log("Could not update user mailing list");
+            }
+        );
+    }
+
     updateEvents = (events) => {
         this.props.tomActions.updateEventsAction(events);
     };
+
+    generateAttendeesList(lists){
+        // console.log("Generate Attendees List");
+        if (!lists){
+            return;
+        }
+        // adding toluna haifa as default
+        let attendees = [{
+            "EmailAddress":
+                {
+                    "Address": this.haifaMailingList,
+                    "Name": this.haifaMailingListName
+                }
+        }];
+        lists.forEach((list) =>{
+            if (!list || !list.selected){
+                //console.log(list.listName + " is not selected")
+                return;
+            }
+            let emails = list.emails.split(";");
+            if (!emails){
+                return;
+            }
+            
+            emails.forEach((email) => {
+                let entry = {
+                    "EmailAddress":
+                        {
+                            "Address": email,
+                            "Name": list.listName
+                        }
+                }
+                attendees.push(entry);
+                // console.log("Adding " + list.listName + " - " + email)
+            });
+        });
+        return attendees;
+    }
 
     createEvent = (startDate, endDate, subject, description) => {
         if (this.isTokenExpired()){
@@ -225,15 +335,7 @@ class App extends Component {
                 "ContentType": "HTML",
                 "Content": description
             },
-            "Attendees": [
-                {
-                    "EmailAddress":
-                        {
-                            "Address": this.mailingList,
-                            "Name": this.mailingListName
-                        }
-                }
-            ],
+            "Attendees": this.generateAttendeesList(this.props.mailingLists),
             "Start": {
                 "DateTime": startDateTime,
                 "TimeZone": this.timezone
@@ -298,8 +400,13 @@ class App extends Component {
             this.selectStartDate(moment());
             this.selectEndDate(moment());
             this.titleSuffixChange("");
+            this.getUserMailingLists();
         }
         
+        if (targetPage === PageType.MAILING_LISTS){
+            this.getUserMailingLists();
+        }
+
         if (targetPage === PageType.LOGOUT) {
             this.logout();
         }
@@ -357,6 +464,7 @@ class App extends Component {
         if (!this.isLoggedIn() && !this.processLoginAnswer()){
             this.login();
         }
+        this.getUserMailingLists();
     }
     
     render() {
@@ -423,7 +531,9 @@ class App extends Component {
                                 halfDay={this.props.halfDay}
                                 titleSuffix={this.props.titleSuffix}
                                 titleSuffixChange={this.titleSuffixChange}
-                                descriptionChanged={this.descriptionChanged} />
+                                descriptionChanged={this.descriptionChanged}
+                                mailingLists={this.props.mailingLists}
+                                updateSelectedMailingLists={this.updateSelectedMailingLists} />
                                 : null}
                             {this.props.showSubmit ?
                             <SubmitButton 
@@ -443,7 +553,22 @@ class App extends Component {
                                 : null}
                         </div> 
                             : null }
-                            
+                        {this.props.pageType === PageType.MAILING_LISTS ?
+                        <div className="mailing-lists-page">
+                            <MailingLists 
+                                mailingLists={this.props.mailingLists} 
+                                newMailingListName={this.props.newMailingListName}
+                                newMailingListEmails={this.props.newMailingListEmails}
+                                updateMailingListName={this.updateMailingListName} 
+                                updateMailingListEmails={this.updateMailingListEmails}
+                                updateLoadingAnimationVisibility={this.updateLoadingAnimationVisibility}
+                                loadingAnimation={this.props.loadingAnimation}
+                                isTokenExpired={this.isTokenExpired}
+                                login={this.login} 
+                                token={this.props.token} 
+                                getUserMailingLists={this.getUserMailingLists} />
+                        </div>
+                        : null }
                         {this.props.pageType === PageType.REPORT ?
                         <div className="report-page">
                             <Calendar selectStartDate={this.selectStartDate} selectEndDate={this.selectEndDate} pageType={this.props.pageType} />
@@ -463,6 +588,7 @@ class App extends Component {
                                 loadingAnimation={this.props.loadingAnimation}
                                 isTokenExpired={this.isTokenExpired}
                                 login={this.login}
+                                buttonStyle={"load-report-button"}
                             />
                             <Report events={this.props.events} token={this.props.token} updateEvents={this.updateEvents} toggleSubmit={this.toggleSubmit} /> 
                         </div>
@@ -492,7 +618,11 @@ const mapStateToProps = (state) => {
         titleSuffix: state.titleSuffix,
         isModal: state.isModal,
         modalMessage: state.modalMessage,
-        modalCountdown: state.modalCountdown
+        modalCountdown: state.modalCountdown,
+        mailingLists: state.mailingLists,
+        newMailingListName: state.newMailingListName,
+        newMailingListEmails: state.newMailingListEmails,
+        selectedMailingLists: state.selectedMailingLists
     };
 };
 

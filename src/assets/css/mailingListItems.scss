@@ -1,0 +1,20 @@
+@import './_theme.scss';
+@import './_variables.scss';
+
+.preview-mailing-list-container{
+  display: flex;
+  flex-grow: 1;
+  flex-wrap: wrap;
+}
+.preview-mailing-list {
+  border: 2px solid #dedede;
+  border-radius: 4px;
+  padding: 5px;
+  user-select: none;
+  font-size: 12px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  &.selected-item{
+    border: 2px solid $primary;
+  }
+}

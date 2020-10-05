@@ -2,7 +2,6 @@ import React from 'react';
 import ReasonType from './../ReasonType';
 import './../assets/css/report.css';
 import moment from "moment";
-import PageType from "../PageType";
 
 export default class Report extends React.Component {
 
@@ -14,6 +13,7 @@ export default class Report extends React.Component {
         return (
             <div className="report-container">
                 <div className="employees-container">
+                {console.log(this.props.events)}
                     {
                         Object.keys(this.props.events).map((employeeKey) => {
                             return <div key={employeeKey} className="employee-container">

@@ -24,10 +24,8 @@ button {
   color: $primary;
   letter-spacing:1px;
   text-shadow: 0;
-  font:{
-    size:12px;
-    weight:bold;
-  }
+  font-size: 12px;
+  font-weight:bold;
   cursor: pointer;
   transition: all 0.25s ease;
   &:hover {
@@ -46,7 +44,23 @@ button {
     content:"LOAD REPORT";
   }
 
-  &.load-report-button.validate:after{
+  &.create-new-mailing-list-button:after{
+    content:"CREATE MAILING LIST";
+  }
+
+  &.delete-mailing-list-button{
+    &:after{
+      content:"DELETE";
+    }
+    
+    &.onclic{
+      width: 30px;
+    }
+  }
+
+  &.load-report-button.validate:after,
+   .create-new-mailing-list-button.validate:after,
+   .delete-mailing-list-button.validate:after {
     font-family:'FontAwesome';
     content:"✓";
   }

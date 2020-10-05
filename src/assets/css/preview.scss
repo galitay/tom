@@ -60,20 +60,12 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: start;
+  justify-content: flex-start;
   
   .preview-fixed-text{
     text-align: left;
     margin-bottom: 10px;
   }
-}
-
-.mailing-list {
-  border: 2px solid $primary;
-  border-radius: 4px;
-  padding: 5px;
-  user-select: none;
-  font-size: 12px;
 }
 
 .preview-section-content-container{

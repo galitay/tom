@@ -1,4 +1,5 @@
 import React from 'react';
+import MailingListItems from './MailingListItems';
 import './../assets/css/preview.css';
 import moment from "moment";
 
@@ -14,13 +15,15 @@ export default class Preview extends React.Component {
         const name = this.props.name;
         const halfDay = this.props.halfDay ? " - Half Day" : "";
         const subjectText = name + " - OOO - " + dateText + " - " + reasonText + " " + halfDay;
-        
+
         return (
             <div className="preview">
                 <div className="preview-title">Preview</div>
                 <div className="preview-section-container">
                     <div className="preview-section-title">TO</div>
-                    <div className="mailing-list">Toluna Haifa</div>
+                    <MailingListItems
+                        mailingLists={this.props.mailingLists}
+                        updateSelectedMailingLists={this.props.updateSelectedMailingLists} />
                 </div>
                 <div className="separator"></div>
                 <div className="preview-section-container">

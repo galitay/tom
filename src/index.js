@@ -26,7 +26,10 @@ const initialData = {
     titleSuffix: "",
     isModal: false,
     modalMessage: "",
-    modalCountdown: 0
+    modalCountdown: 0,
+    mailingLists: [],
+    newMailingListName: "",
+    newMailingListEmails: ""
 };
 
 const tomReducer = (state, action) => {
@@ -67,6 +70,12 @@ const tomReducer = (state, action) => {
             return {...state, isModal: action.isModal, modalMessage: action.modalMessage};
         case 'COUNTDOWN':
             return {...state, modalCountdown: action.modalCountdown};
+        case 'UPDATE_MAILING_LISTS':
+            return {...state, mailingLists: action.mailingLists}
+        case 'UPDATE_MAILING_LIST_NAME':
+            return {...state, newMailingListName: action.newMailingListName}
+        case 'UPDATE_MAILING_LIST_EMAILS':
+            return {...state, newMailingListEmails: action.newMailingListEmails}
         default:
             return state;
     }

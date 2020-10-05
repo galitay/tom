@@ -89,4 +89,18 @@ export const countdownAction = (timeLeft) => ({
     modalCountdown: timeLeft
 });
 
+export const updateMailingListsAction = (mailingLists) => ({
+    type: 'UPDATE_MAILING_LISTS',
+    mailingLists: mailingLists
+});
+
+export const updateMailingListNameAction = (newMailingListName) => ({
+    type: 'UPDATE_MAILING_LIST_NAME',
+    newMailingListName: newMailingListName
+});
+
+export const updateMailingListEmailsAction = (newMailingListEmails) => ({
+    type: 'UPDATE_MAILING_LIST_EMAILS',
+    newMailingListEmails: newMailingListEmails
+});
 

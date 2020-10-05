@@ -1,6 +1,5 @@
 import React from 'react';
 import './../assets/css/submitButton.css';
-import PageType from './../PageType';
 import moment from "moment";
 
 export default class SubmitButton extends React.Component {
@@ -28,9 +27,13 @@ export default class SubmitButton extends React.Component {
     };
     
     render() {
+        let buttonStyle = "";
+        if (this.props.buttonStyle != null){
+            buttonStyle = this.props.buttonStyle;
+        }
         return (
             <div className="submit-container">
-                <button id="button" className={(this.props.pageType === PageType.REPORT ? "load-report-button" : "") + (this.props.loadingAnimation ? " onclic" : "") } onClick={() => this.submitClicked()} />
+                <button id="button" className={buttonStyle + (this.props.loadingAnimation ? " onclic" : "") } onClick={() => this.submitClicked()} />
             </div>
         )
     }

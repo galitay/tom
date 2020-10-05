@@ -32,7 +32,15 @@ button {
     content: "SUBMIT"; }
   button.load-report-button:after {
     content: "LOAD REPORT"; }
-  button.load-report-button.validate:after {
+  button.create-new-mailing-list-button:after {
+    content: "CREATE MAILING LIST"; }
+  button.delete-mailing-list-button:after {
+    content: "DELETE"; }
+  button.delete-mailing-list-button.onclic {
+    width: 30px; }
+  button.load-report-button.validate:after,
+  button .create-new-mailing-list-button.validate:after,
+  button .delete-mailing-list-button.validate:after {
     font-family: 'FontAwesome';
     content: "✓"; }
 
