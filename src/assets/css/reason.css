@@ -11,7 +11,7 @@ body, html {
 
 .reason-container {
   width: 100%;
-  height: 560px;
+  height: 630px;
   margin-top: 10px;
   display: flex;
   flex-direction: column;
@@ -36,13 +36,15 @@ body, html {
   border-radius: 4px;
   cursor: pointer;
   border: 1px solid #cccccc; }
-  .item img {
-    position: absolute;
-    left: 30px;
-    height: 50px;
-    opacity: 0.8; }
-  .item.selected img {
-    opacity: 0.4; }
+
+.item img {
+  position: absolute;
+  left: 30px;
+  height: 50px;
+  opacity: 0.8; }
+
+.item.selected img {
+  opacity: 0.4; }
 
 .item:hover {
   width: 100%;
@@ -71,6 +73,9 @@ body, html {
 
 .item:nth-child(8) {
   top: 490px; }
+
+.item:nth-child(9) {
+  top: 560px; }
 
 .item-text {
   flex-grow: 1;
