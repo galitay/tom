@@ -65,7 +65,7 @@ export default class Reason extends React.Component {
                     {Object.keys(ReasonType).map((reason) => {
                         if (ReasonType[reason].name !== ReasonType.NONE.name) {
                             return <div key={ReasonType[reason].name} className={"item" + (this.props.reasonFormVisible ? " toTop" : "") + (this.props.reasonType === ReasonType[reason] ? " selected" : "")} onClick={(event) => this.reasonSelected(event, ReasonType[reason])}>
-                                <img src={Object.values(ReasonType[reason].image)[0]} alt="{ReasonType[reason].name}" />
+                                <img src={ReasonType[reason].image} alt={ReasonType[reason].name} />
                                 <div className="item-text">{ReasonType[reason].name}</div>
                             </div>;
                         }

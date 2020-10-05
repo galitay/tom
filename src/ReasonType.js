@@ -1,20 +1,13 @@
-import home from "./assets/img/home.png";
-import vacation from "./assets/img/vacation.png";
-import sick from "./assets/img/sick.png";
-import baby from "./assets/img/baby.png";
-import early from "./assets/img/early.png";
-import soldier from "./assets/img/soldier.png";
-import late from "./assets/img/late.png";
-
 const ReasonType = {
     NONE: {id: 0, name: "N/A", image: "none"},
-    WFH: {id: 6, name: "WFH", image: {home}},
-    VACATION: {id: 1, name: "Vacation", image: {vacation}},
-    SICK: {id: 2, name: "Sick", image: {sick}},
-    SICK_CHILD: {id: 3, name: "Sick Child", image: {baby}},
-    LEAVING_EARLY: {id: 5, name: "Leaving Early", image: {early}},
-    ARRIVING_LATE: {id: 7, name: "Arriving Late", image : {late}},
-    RESERVE_DUTY: {id: 4, name: "Reserve Duty", image : {soldier}}
+    WFH: {id: 6, name: "WFH", image: "http://www.itayg.com/tom/static/media/home-white.png"},
+    PTO: {id: 8, name: "PTO", image: "http://www.itayg.com/tom/static/media/pto-white.png"},
+    VACATION: {id: 1, name: "Vacation", image: "http://www.itayg.com/tom/static/media/vacation-white.png"},
+    SICK: {id: 2, name: "Sick", image: "http://www.itayg.com/tom/static/media/sick-white.png"},
+    SICK_CHILD: {id: 3, name: "Sick Child", image: "http://www.itayg.com/tom/static/media/baby-white.png"},
+    LEAVING_EARLY: {id: 5, name: "Leaving Early", image: "http://www.itayg.com/tom/static/media/sun-white.png"},
+    ARRIVING_LATE: {id: 7, name: "Arriving Late", image : "http://www.itayg.com/tom/static/media/late-white.png"},
+    RESERVE_DUTY: {id: 4, name: "Reserve Duty", image : "http://www.itayg.com/tom/static/media/soldier-white.png"}
 };
 
 export default ReasonType;

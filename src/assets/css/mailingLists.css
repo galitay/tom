@@ -25,34 +25,39 @@
 
 .mailing-list-emails {
   width: 100%; }
-  .mailing-list-emails textarea {
-    border: 0;
-    width: 100%;
-    min-height: 60px;
-    outline: none;
-    resize: none; }
+
+.mailing-list-emails textarea {
+  border: 0;
+  width: 100%;
+  min-height: 60px;
+  outline: none;
+  resize: none; }
 
 .new-maling-list-section-container {
   display: flex;
   padding: 0px 15px 0px 15px; }
-  .new-maling-list-section-container .new-maling-list-section-title {
-    margin-right: 15px;
-    flex-basis: 80px;
-    flex-shrink: 0;
-    flex-grow: 0;
-    text-align: left;
-    font-weight: bold; }
-  .new-maling-list-section-container .new-maling-list-section-emails {
-    flex-grow: 1; }
-  .new-maling-list-section-container input, .new-maling-list-section-container textarea, .new-maling-list-section-container textarea:focus {
-    border: 0;
-    box-shadow: none;
-    width: 100%;
-    padding-left: 0;
-    outline: none;
-    resize: none; }
-  .new-maling-list-section-container textarea {
-    height: 80px; }
+
+.new-maling-list-section-container .new-maling-list-section-title {
+  margin-right: 15px;
+  flex-basis: 80px;
+  flex-shrink: 0;
+  flex-grow: 0;
+  text-align: left;
+  font-weight: bold; }
+
+.new-maling-list-section-container .new-maling-list-section-emails {
+  flex-grow: 1; }
+
+.new-maling-list-section-container input, .new-maling-list-section-container textarea, .new-maling-list-section-container textarea:focus {
+  border: 0;
+  box-shadow: none;
+  width: 100%;
+  padding-left: 0;
+  outline: none;
+  resize: none; }
+
+.new-maling-list-section-container textarea {
+  height: 80px; }
 
 .separator {
   width: 100%;
@@ -64,9 +69,10 @@
 
 .delete-mailing-list-button-container {
   align-self: flex-end; }
-  .delete-mailing-list-button-container .submit-container {
-    margin: 10px;
-    height: 30px; }
+
+.delete-mailing-list-button-container .submit-container {
+  margin: 10px;
+  height: 30px; }
 
 .delete-mailing-list-button {
   height: 30px; }

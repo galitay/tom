@@ -8,13 +8,14 @@
   box-sizing: border-box;
   padding: 15px 0px 15px 0px;
   position: relative; }
-  .preview input, .preview textarea, .preview textarea:focus {
-    border: 0;
-    box-shadow: none;
-    width: 100%;
-    padding-left: 0;
-    outline: none;
-    resize: none; }
+
+.preview input, .preview textarea, .preview textarea:focus {
+  border: 0;
+  box-shadow: none;
+  width: 100%;
+  padding-left: 0;
+  outline: none;
+  resize: none; }
 
 .preview-title {
   position: absolute;
@@ -37,22 +38,24 @@
 .preview-section-container {
   display: flex;
   padding: 0px 15px 0px 15px; }
-  .preview-section-container .preview-section-title {
-    margin-right: 15px;
-    flex-basis: 80px;
-    flex-shrink: 0;
-    flex-grow: 0;
-    text-align: left;
-    font-weight: bold; }
+
+.preview-section-container .preview-section-title {
+  margin-right: 15px;
+  flex-basis: 80px;
+  flex-shrink: 0;
+  flex-grow: 0;
+  text-align: left;
+  font-weight: bold; }
 
 .preview-subject-value {
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start; }
-  .preview-subject-value .preview-fixed-text {
-    text-align: left;
-    margin-bottom: 10px; }
+
+.preview-subject-value .preview-fixed-text {
+  text-align: left;
+  margin-bottom: 10px; }
 
 .preview-section-content-container {
   width: 100%; }
