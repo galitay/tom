@@ -23,7 +23,9 @@ export default class Preview extends React.Component {
                     <div className="preview-section-title">TO</div>
                     <MailingListItems
                         mailingLists={this.props.mailingLists}
-                        updateSelectedMailingLists={this.props.updateSelectedMailingLists} />
+                        updateSelectedMailingLists={this.props.updateSelectedMailingLists}
+                        haifaListState={this.props.haifaListState}
+                        updateHaifaListState={this.props.updateHaifaListState} />
                 </div>
                 <div className="separator"></div>
                 <div className="preview-section-container">

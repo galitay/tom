@@ -104,3 +104,12 @@ export const updateMailingListEmailsAction = (newMailingListEmails) => ({
     newMailingListEmails: newMailingListEmails
 });
 
+export const updateHaifaListStateAction = (haifaListState) => ({
+    type: 'UPDATE_HAIFA_LIST_STATE',
+    haifaListState: haifaListState
+});
+
+export const updateCurrentButtonClickedAction = (currentButtonClicked) => ({
+    type: 'UPDATE_CURRENT_BUTTON_CLICKED',
+    currentButtonClicked: currentButtonClicked
+});

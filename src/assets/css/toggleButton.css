@@ -4,28 +4,35 @@
   height: 40px;
   position: relative;
   cursor: pointer; }
-  .toggle-button-container.toggle-on {
-    background-color: #30716D;
-    border: 2px solid #30716D; }
-    .toggle-button-container.toggle-on .toggle-indicator {
-      left: 52%; }
-  .toggle-button-container.toggle-off {
-    background-color: #cccccc;
-    border: 2px solid #cccccc; }
-    .toggle-button-container.toggle-off .toggle-indicator {
-      left: 0; }
-  .toggle-button-container .toggle-indicator {
-    width: 48%;
-    height: 100%;
-    border-radius: 6px;
-    transition: all 0.2s ease;
-    position: absolute;
-    background-color: white;
-    box-sizing: border-box; }
-  .toggle-button-container .out-of-indicator-text {
-    position: absolute;
-    width: 48%;
-    left: 52%; }
-    .toggle-button-container .out-of-indicator-text.toggle-on {
-      left: 0;
-      color: white; }
+
+.toggle-button-container.toggle-on {
+  background-color: #30716D;
+  border: 2px solid #30716D; }
+
+.toggle-button-container.toggle-on .toggle-indicator {
+  left: 52%; }
+
+.toggle-button-container.toggle-off {
+  background-color: #cccccc;
+  border: 2px solid #cccccc; }
+
+.toggle-button-container.toggle-off .toggle-indicator {
+  left: 0; }
+
+.toggle-button-container .toggle-indicator {
+  width: 48%;
+  height: 100%;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  position: absolute;
+  background-color: white;
+  box-sizing: border-box; }
+
+.toggle-button-container .out-of-indicator-text {
+  position: absolute;
+  width: 48%;
+  left: 52%; }
+
+.toggle-button-container .out-of-indicator-text.toggle-on {
+  left: 0;
+  color: white; }

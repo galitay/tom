@@ -35,7 +35,9 @@ export default class MailingLists extends React.Component {
                     login={this.props.login} 
                     token={this.props.token}
                     getUserMailingLists={this.props.getUserMailingLists}
-                    buttonStyle={"create-new-mailing-list-button"} />
+                    buttonStyle={"create-new-mailing-list-button"}
+                    currentButtonClicked={this.props.currentButtonClicked}
+                    updateCurrentButtonClicked={this.props.updateCurrentButtonClicked} />
                 {data.map((mList) => 
                     <div key={mList.listName} className="mailing-list-container">
                         <div className="mailing-list-name">{mList.listName}</div>
@@ -49,7 +51,9 @@ export default class MailingLists extends React.Component {
                                 login={this.props.login} 
                                 token={this.props.token}
                                 getUserMailingLists={this.props.getUserMailingLists}
-                                buttonStyle={"delete-mailing-list-button"} />
+                                buttonStyle={"delete-mailing-list-button"}
+                                currentButtonClicked={this.props.currentButtonClicked}
+                                updateCurrentButtonClicked={this.props.updateCurrentButtonClicked}  />
                         </div>
                     </div>     
                 )}

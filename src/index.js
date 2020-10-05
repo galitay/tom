@@ -29,7 +29,9 @@ const initialData = {
     modalCountdown: 0,
     mailingLists: [],
     newMailingListName: "",
-    newMailingListEmails: ""
+    newMailingListEmails: "",
+    haifaListState: true,
+    currentButtonClicked: ""
 };
 
 const tomReducer = (state, action) => {
@@ -76,6 +78,10 @@ const tomReducer = (state, action) => {
             return {...state, newMailingListName: action.newMailingListName}
         case 'UPDATE_MAILING_LIST_EMAILS':
             return {...state, newMailingListEmails: action.newMailingListEmails}
+        case 'UPDATE_HAIFA_LIST_STATE':
+            return {...state, haifaListState: action.haifaListState}
+        case 'UPDATE_CURRENT_BUTTON_CLICKED':
+            return {...state, currentButtonClicked: action.currentButtonClicked}
         default:
             return state;
     }

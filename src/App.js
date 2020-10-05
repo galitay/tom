@@ -69,12 +69,21 @@ class App extends Component {
     }
 
     updateMailingListName = (mailingListName) => {
-        this.props.tomActions.updateMailingListNameAction(mailingListName)
+        this.props.tomActions.updateMailingListNameAction(mailingListName);
     }
 
     updateMailingListEmails = (mailingListEmails) => {
-        this.props.tomActions.updateMailingListEmailsAction(mailingListEmails)
+        this.props.tomActions.updateMailingListEmailsAction(mailingListEmails);
     }
+
+    updateHaifaListState = (haifaListState) => {
+        this.props.tomActions.updateHaifaListStateAction(haifaListState);
+    }
+
+    updateCurrentButtonClicked = (currentButtonClicked) => {
+        this.props.tomActions.updateCurrentButtonClickedAction(currentButtonClicked);
+    }
+
 
     updateSelectedMailingLists = (listName) => {
         let items = Object.create(this.props.mailingLists);
@@ -285,13 +294,17 @@ class App extends Component {
             return;
         }
         // adding toluna haifa as default
-        let attendees = [{
-            "EmailAddress":
-                {
-                    "Address": this.haifaMailingList,
-                    "Name": this.haifaMailingListName
-                }
-        }];
+        let attendees = [];
+        if (this.props.haifaListState == true){
+            let haifaItem = {
+                "EmailAddress":
+                    {
+                        "Address": this.haifaMailingList,
+                        "Name": this.haifaMailingListName
+                    }
+            };
+            attendees.push(haifaItem);
+        }
         lists.forEach((list) =>{
             if (!list || !list.selected){
                 //console.log(list.listName + " is not selected")
@@ -327,7 +340,7 @@ class App extends Component {
      
         console.log("start " + startDate);
         console.log("end " + endDate);
-        
+
         const apiUrl = "https://outlook.office.com/api/v2.0/me/events";
         const postData = {
             "Subject": subject,
@@ -536,7 +549,9 @@ class App extends Component {
                                 titleSuffixChange={this.titleSuffixChange}
                                 descriptionChanged={this.descriptionChanged}
                                 mailingLists={this.props.mailingLists}
-                                updateSelectedMailingLists={this.updateSelectedMailingLists} />
+                                updateSelectedMailingLists={this.updateSelectedMailingLists} 
+                                haifaListState={this.props.haifaListState}
+                                updateHaifaListState={this.updateHaifaListState} />
                                 : null}
                             {this.props.showSubmit ?
                             <SubmitButton 
@@ -569,7 +584,9 @@ class App extends Component {
                                 isTokenExpired={this.isTokenExpired}
                                 login={this.login} 
                                 token={this.props.token} 
-                                getUserMailingLists={this.getUserMailingLists} />
+                                getUserMailingLists={this.getUserMailingLists}
+                                currentButtonClicked={this.props.currentButtonClicked}
+                                updateCurrentButtonClicked={this.updateCurrentButtonClicked} />
                         </div>
                         : null }
                         {this.props.pageType === PageType.REPORT ?
@@ -625,7 +642,9 @@ const mapStateToProps = (state) => {
         mailingLists: state.mailingLists,
         newMailingListName: state.newMailingListName,
         newMailingListEmails: state.newMailingListEmails,
-        selectedMailingLists: state.selectedMailingLists
+        selectedMailingLists: state.selectedMailingLists,
+        haifaListState: state.haifaListState,
+        currentButtonClicked: state.currentButtonClicked
     };
 };
 
