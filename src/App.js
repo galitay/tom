@@ -479,7 +479,10 @@ class App extends Component {
                         : null }
                     <div className="app">
                         <div className="app-header">
-                            <div><img src="https://www.itayg.com/tom/static/media/tom_logo.png" alt="TOM LOGO"/></div>
+                            <div>
+                                <img src="http://www.itayg.com/tom/static/media/tom_logo.png" alt="TOM LOGO"/>
+                                <img src="http://www.itayg.com/tom/static/media/start.png" className="logo-start" alt="Start"/>
+                            </div>
                             <div className="page-title">{this.props.pageType.name}</div>
                             <div className="menu-container">
                                 <Menu 
@@ -490,13 +493,13 @@ class App extends Component {
                         </div>
                         {this.props.pageType === PageType.LOGIN ?
                             <div className="loading-page">
-                                <img src="https://www.itayg.com/tom/static/media/tom_logo_sign.png" alt="loading" />
+                                <img src="http://www.itayg.com/tom/static/media/tom_logo_sign.png" alt="loading" />
                             </div>
                             : null }
                         {this.props.pageType === PageType.LOGOUT ?
                             <div className="logout-page">
                                 Thank you for using <br />
-                                <img src="https://www.itayg.com/tom/static/media/tom_logo.png" alt="TOM LOGO"/>
+                                <img src="http://www.itayg.com/tom/static/media/tom_logo.png" alt="TOM LOGO"/>
                             </div>
                             : null }
                         {this.props.pageType === PageType.SEND_EVENT ?
