@@ -23,34 +23,26 @@ button {
   font-weight: bold;
   cursor: pointer;
   transition: all 0.25s ease; }
-
-button:hover {
-  color: white;
-  background: #30716D; }
-
-button:active {
-  letter-spacing: 2px; }
-
-button:after {
-  content: "SUBMIT"; }
-
-button.load-report-button:after {
-  content: "LOAD REPORT"; }
-
-button.create-new-mailing-list-button:after {
-  content: "CREATE MAILING LIST"; }
-
-button.delete-mailing-list-button:after {
-  content: "DELETE"; }
-
-button.delete-mailing-list-button.onclic {
-  width: 30px; }
-
-button.load-report-button.validate:after,
-button .create-new-mailing-list-button.validate:after,
-button .delete-mailing-list-button.validate:after {
-  font-family: 'FontAwesome';
-  content: "✓"; }
+  button:hover {
+    color: white;
+    background: #30716D; }
+  button:active {
+    letter-spacing: 2px; }
+  button:after {
+    content: "SUBMIT"; }
+  button.load-report-button:after {
+    content: "LOAD REPORT"; }
+  button.create-new-mailing-list-button:after {
+    content: "CREATE MAILING LIST"; }
+  button.delete-mailing-list-button:after {
+    content: "DELETE"; }
+  button.delete-mailing-list-button.onclic {
+    width: 30px; }
+  button.load-report-button.validate:after,
+  button .create-new-mailing-list-button.validate:after,
+  button .delete-mailing-list-button.validate:after {
+    font-family: 'FontAwesome';
+    content: "✓"; }
 
 .onclic {
   width: 40px;
@@ -60,22 +52,19 @@ button .delete-mailing-list-button.validate:after {
   font-size: 0;
   border-left-color: #30716D;
   animation: rotating 2s 0.25s linear infinite; }
-
-.onclic:after {
-  content: ""; }
-
-.onclic:hover {
-  color: #30716D;
-  background: white; }
+  .onclic:after {
+    content: ""; }
+  .onclic:hover {
+    color: #30716D;
+    background: white; }
 
 .validate {
   font-size: 13px;
   color: white;
   background: #30716D; }
-
-.validate:after {
-  font-family: 'FontAwesome';
-  content: "✓"; }
+  .validate:after {
+    font-family: 'FontAwesome';
+    content: "✓"; }
 
 @keyframes rotating {
   from {

@@ -25,6 +25,8 @@ class App extends Component {
     timiMailingList = window.configs.timiMailingList; //"itay84@gmail.com";
     tmiiMailingListName = window.configs.timiMailingListName; // "Itay Gal";
     appUrl = window.configs.appUrl; // "http://localhost:3000/";
+    BASE_URL = window.configs.baseUrl;
+    MAILING_LIST_CONTROLLER = "mailingListController.php";
    
     timezone = "Asia/Jerusalem";
 
@@ -234,7 +236,7 @@ class App extends Component {
     };
     
     getUserMailingLists = () => {
-        const apiUrl = "https://www.itayg.com/tom/mailingListController.php";
+        const apiUrl = this.BASE_URL + this.MAILING_LIST_CONTROLLER;
         const postData = {
             "action": "GET",
             "userId": localStorage.getItem("email"),
@@ -258,7 +260,7 @@ class App extends Component {
     }
 
     updateUserMailingLists = (listName, emails, selected) => {
-        const apiUrl = "https://www.itayg.com/tom/mailingListController.php";
+        const apiUrl = this.BASE_URL + this.MAILING_LIST_CONTROLLER;
         const postData = {
             "action": "UPDATE",
             "userId": localStorage.getItem("email"),
@@ -493,8 +495,8 @@ class App extends Component {
                     <div className="app">
                         <div className="app-header">
                             <div>
-                                <img src="http://www.itayg.com/tom/static/media/tom_logo.png" alt="TOM LOGO"/>
-                                <img src="http://www.itayg.com/tom/static/media/start.png" className="logo-start" alt="Start"/>
+                                <img src={this.BASE_URL + "static/media/tom_logo.png"} alt="TOM LOGO"/>
+                                <img src={this.BASE_URL + "static/media/start.png"} className="logo-start" alt="Start"/>
                             </div>
                             <div className="page-title">{this.props.pageType.name}</div>
                             <div className="menu-container">
@@ -506,13 +508,13 @@ class App extends Component {
                         </div>
                         {this.props.pageType === PageType.LOGIN ?
                             <div className="loading-page">
-                                <img src="http://www.itayg.com/tom/static/media/tom_logo_sign.png" alt="loading" />
+                                <img src={this.BASE_URL + "static/media/tom_logo_sign.png"} alt="loading" />
                             </div>
                             : null }
                         {this.props.pageType === PageType.LOGOUT ?
                             <div className="logout-page">
                                 Thank you for using <br />
-                                <img src="http://www.itayg.com/tom/static/media/tom_logo.png" alt="TOM LOGO"/>
+                                <img src={this.BASE_URL + "static/media/tom_logo.png"} alt="TOM LOGO"/>
                             </div>
                             : null }
                         {this.props.pageType === PageType.SEND_EVENT ?

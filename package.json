@@ -1,6 +1,7 @@
 {
   "name": "tom-app",
-  "version": "0.1.0",
+  "version": "1.0.0",
+  "homepage": "http://www.itayg.com/tom",
   "private": true,
   "dependencies": {
     "moment": "^2.23.0",

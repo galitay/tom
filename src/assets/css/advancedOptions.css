@@ -10,12 +10,11 @@
   border-radius: 5px;
   box-sizing: border-box;
   padding: 15px; }
-
-.advanced-options-container input {
-  margin-left: 20px;
-  box-sizing: border-box;
-  height: 44px;
-  padding-left: 10px; }
+  .advanced-options-container input {
+    margin-left: 20px;
+    box-sizing: border-box;
+    height: 44px;
+    padding-left: 10px; }
 
 .advanced-options-title {
   position: absolute;

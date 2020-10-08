@@ -1,6 +1,5 @@
 import React from 'react';
 import './../assets/css/modal.css';
-import checkmark from "./../assets/img/checkmark.gif";
 
 export default class Modal extends React.Component {
     

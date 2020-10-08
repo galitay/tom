@@ -26,7 +26,6 @@ require_once(ROOT_DIR_M.'/../class/db.php');
 
 	if ($action == "INSERT"){
 		$userId = $data["userId"]; 
-		$userId = "itay.gal@toluna.com";
 		$listName = $data["listName"]; 
 		$emails = $data["emails"];
 		$sql = "INSERT INTO mailingLists VALUES(?,?,?,0)"; 

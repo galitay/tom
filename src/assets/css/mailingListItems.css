@@ -11,6 +11,5 @@
   font-size: 12px;
   margin-right: 5px;
   margin-bottom: 5px; }
-
-.preview-mailing-list.selected-item {
-  border: 2px solid #30716D; }
+  .preview-mailing-list.selected-item {
+    border: 2px solid #30716D; }
