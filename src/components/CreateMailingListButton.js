@@ -34,22 +34,22 @@ export default class CreateMailingListButton extends SubmitButton {
                 this.props.getUserMailingLists();
                 this.props.updateLoadingAnimationVisibility(false);
                 const postData = {
-                    username: this.props.name,
+                    username: localStorage.getItem('email'),
                     action: "Create Mailing List",
                     success: true,
                     start: moment().format("YYYY-MM-DD"),
-                    end: "-"
+                    end: moment().format("YYYY-MM-DD")
                 };
                 Logger.log(postData);
             },
             (error) => {
                 this.props.updateLoadingAnimationVisibility(false);
                 const postData = {
-                    username: this.props.name,
+                    username: localStorage.getItem('email'),
                     action: "Create Mailing List",
                     success: false,
                     start: moment().format("YYYY-MM-DD"),
-                    end: "-"
+                    end: moment().format("YYYY-MM-DD")
                 };
                 Logger.log(postData);
             });
