@@ -1,5 +1,8 @@
+var BASE_URL = window.configs.baseUrl;
+var LOG_PATH = window.configs.logPath;
+
 export default class Logger{
-    static logPath = "https://www.itayg.com/tom/logger.php";
+    static logPath = BASE_URL + LOG_PATH;
     static log(postData){
         fetch(this.logPath, {
             method: 'POST',

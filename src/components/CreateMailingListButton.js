@@ -15,7 +15,7 @@ export default class CreateMailingListButton extends SubmitButton {
             this.props.login();
         }
        
-        var apiUrl = "https://www.itayg.com/tom/mailingListController.php";
+        var apiUrl = this.props.BASE_URL + "user/mailingLists/";
         const data = {
             "action": "INSERT", 
             "userId": localStorage.getItem('email'),

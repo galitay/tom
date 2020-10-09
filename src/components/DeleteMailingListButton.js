@@ -15,7 +15,7 @@ export default class DeleteMailingListButton extends SubmitButton {
             this.props.login();
         }
        
-        var apiUrl = "https://www.itayg.com/tom/mailingListController.php";
+        var apiUrl = this.props.BASE_URL + "user/mailingLists/";
         const data = {
             "action": "DELETE", 
             "userId": localStorage.getItem('email'),

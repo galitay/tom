@@ -10,12 +10,13 @@ require_once(ROOT_DIR_M.'/../class/db.php');
 		$params = array();
 		$params = [$data["userId"]];
 		$types = "s";
-		$sql = "SELECT listName,emails,selected FROM mailingLists WHERE userId=? ORDER BY listName"; 
+		$sql = "SELECT id,listName,emails,selected FROM mailingLists WHERE userId=? ORDER BY listName"; 
 		$stmt = $db->querySafe($sql, $types, $params);
-		$stmt->bind_result($listName, $emails, $selected);
+		$stmt->bind_result($id,$listName, $emails, $selected);
 		$dbdata = array();
 		while ($stmt->fetch()) {
 			$mList = new stdClass;
+			$mList->id = $id;
 			$mList->listName = $listName;
 			$mList->emails = $emails;
 			$mList->selected = $selected;
@@ -28,7 +29,7 @@ require_once(ROOT_DIR_M.'/../class/db.php');
 		$userId = $data["userId"]; 
 		$listName = $data["listName"]; 
 		$emails = $data["emails"];
-		$sql = "INSERT INTO mailingLists VALUES(?,?,?,0)"; 
+		$sql = "INSERT INTO mailingLists VALUES(NULL,?,?,?,0)"; 
 		$params = array();
 		$params = [$userId, $listName, $emails];
 		$types = "sss";
@@ -56,17 +57,4 @@ require_once(ROOT_DIR_M.'/../class/db.php');
 		$types = "ssiss";
 		$stmt = $db->querySafe($sql, $types, $params);
 	}
-
-
-	// $stmt->bind_result($listName, $emails);
-    /*
-    $data = array();
-	while ($stmt->fetch()) {
-		$mList = new stdClass;
-		$mList->listName = $listName;
-		$mList->emails = $emails;
-		$data[]=$mList;
-	}
-    echo json_encode($data);
-    */
 ?>

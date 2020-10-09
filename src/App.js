@@ -26,7 +26,8 @@ class App extends Component {
     tmiiMailingListName = window.configs.timiMailingListName;
     appUrl = window.configs.appUrl;
     BASE_URL = window.configs.baseUrl;
-    MAILING_LIST_CONTROLLER = "mailingListController.php";
+    IMAGES_PATH = window.configs.imagesPath;
+    MAILING_LIST_CONTROLLER = "user/mailingLists/";
    
     timezone = "Asia/Jerusalem";
 
@@ -291,11 +292,9 @@ class App extends Component {
     };
 
     generateAttendeesList(lists){
-        // console.log("Generate Attendees List");
         if (!lists){
             return;
         }
-        // adding toluna haifa as default
         let attendees = [];
         if (this.props.haifaListState == true){
             let haifaItem = {
@@ -309,7 +308,6 @@ class App extends Component {
         }
         lists.forEach((list) =>{
             if (!list || !list.selected){
-                //console.log(list.listName + " is not selected")
                 return;
             }
             let emails = list.emails.split(";");
@@ -326,7 +324,6 @@ class App extends Component {
                         }
                 }
                 attendees.push(entry);
-                // console.log("Adding " + list.listName + " - " + email)
             });
         });
         return attendees;
@@ -337,7 +334,7 @@ class App extends Component {
             this.login();
         }
         const startDateTime = moment(startDate).format("YYYY-MM-DD") + "T00:00";
-        // end date should be 1 day later at 00:00 - for allDay event
+        /* end date should be 1 day later at 00:00 - for allDay event */
         const endDateTime = moment(endDate).add(1, 'd').format("YYYY-MM-DD") + "T00:00";
      
         console.log("start " + startDate);
@@ -490,13 +487,15 @@ class App extends Component {
                     <Modal
                         toggleModal={this.toggleModal}
                         modalMessage={this.props.modalMessage}
-                        modalCountdown={this.props.modalCountdown} />
+                        modalCountdown={this.props.modalCountdown}
+                        BASE_URL={this.BASE_URL}
+                        IMAGES_PATH={this.IMAGES_PATH} />
                         : null }
                     <div className="app">
                         <div className="app-header">
                             <div>
-                                <img src={this.BASE_URL + "static/media/tom_logo.png"} alt="TOM LOGO"/>
-                                <img src={this.BASE_URL + "static/media/start.png"} className="logo-start" alt="Start"/>
+                                <img src={this.BASE_URL + this.IMAGES_PATH + "tom_logo.png"} alt="TOM LOGO"/>
+                                <img src={this.BASE_URL + this.IMAGES_PATH + "start.png"} className="logo-start" alt="Start"/>
                             </div>
                             <div className="page-title">{this.props.pageType.name}</div>
                             <div className="menu-container">
@@ -508,13 +507,13 @@ class App extends Component {
                         </div>
                         {this.props.pageType === PageType.LOGIN ?
                             <div className="loading-page">
-                                <img src={this.BASE_URL + "static/media/tom_logo_sign.png"} alt="loading" />
+                                <img src={this.BASE_URL + this.IMAGES_PATH+ "tom_logo_sign.png"} alt="loading" />
                             </div>
                             : null }
                         {this.props.pageType === PageType.LOGOUT ?
                             <div className="logout-page">
                                 Thank you for using <br />
-                                <img src={this.BASE_URL + "static/media/tom_logo.png"} alt="TOM LOGO"/>
+                                <img src={this.BASE_URL + this.IMAGES_PATH + "tom_logo.png"} alt="TOM LOGO"/>
                             </div>
                             : null }
                         {this.props.pageType === PageType.SEND_EVENT ?
@@ -588,7 +587,8 @@ class App extends Component {
                                 token={this.props.token} 
                                 getUserMailingLists={this.getUserMailingLists}
                                 currentButtonClicked={this.props.currentButtonClicked}
-                                updateCurrentButtonClicked={this.updateCurrentButtonClicked} />
+                                updateCurrentButtonClicked={this.updateCurrentButtonClicked}
+                                BASE_URL={this.BASE_URL} />
                         </div>
                         : null }
                         {this.props.pageType === PageType.REPORT ?
