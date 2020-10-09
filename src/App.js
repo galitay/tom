@@ -20,11 +20,11 @@ import MailingLists from './components/MailingLists';
 
 class App extends Component {
     
-    haifaMailingList = window.configs.haifaMailingList; //"itay84@gmail.com";
-    haifaMailingListName = window.configs.haifaMailingListName; // "Itay Gal";
-    timiMailingList = window.configs.timiMailingList; //"itay84@gmail.com";
-    tmiiMailingListName = window.configs.timiMailingListName; // "Itay Gal";
-    appUrl = window.configs.appUrl; // "http://localhost:3000/";
+    haifaMailingList = window.configs.haifaMailingList;
+    haifaMailingListName = window.configs.haifaMailingListName;
+    timiMailingList = window.configs.timiMailingList;
+    tmiiMailingListName = window.configs.timiMailingListName;
+    appUrl = window.configs.appUrl;
     BASE_URL = window.configs.baseUrl;
     MAILING_LIST_CONTROLLER = "mailingListController.php";
    

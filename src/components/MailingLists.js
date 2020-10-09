@@ -41,7 +41,7 @@ export default class MailingLists extends React.Component {
                 {data.map((mList) => 
                     <div key={mList.listName} className="mailing-list-container">
                         <div className="mailing-list-name">{mList.listName}</div>
-                        <div className="mailing-list-emails">{mList.emails}</div>
+                        <div className="mailing-list-emails-content">{mList.emails}</div>
                         <div className="delete-mailing-list-button-container">
                             <DeleteMailingListButton
                                 mailingListName={mList.listName}
