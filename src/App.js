@@ -27,7 +27,7 @@ class App extends Component {
     appUrl = window.configs.appUrl;
     BASE_URL = window.configs.baseUrl;
     IMAGES_PATH = window.configs.imagesPath;
-    MAILING_LIST_CONTROLLER = "user/mailingLists/";
+    MAILING_LIST_CONTROLLER = window.configs.mailingListController;
    
     timezone = "Asia/Jerusalem";
 

@@ -5,7 +5,8 @@ var configs = {
     "appUrl": "http://localhost:3000/",
     "baseUrl": "https://www.itayg.com/tom/",
     "imagesPath": "static/media/",
-    "logPath": "logger.php"
+    "logPath": "logger.php",
+    "mailingListController": "user/mailingLists/"
 }
 
 // prod config
@@ -16,6 +17,7 @@ var configs = {
     "appUrl": "https://www.itayg.com/tom/",
     "baseUrl": "https://www.itayg.com/tom/",
     "imagesPath": "static/media/",
-    "logPath": "logger.php"
+    "logPath": "logger.php",
+    "mailingListController": "user/mailingLists/"
 }
 */
